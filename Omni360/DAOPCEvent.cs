@@ -1,6 +1,5 @@
 ﻿using Opc.Ua;
 using Opc.Ua.Client;
-using OPCUADemoClient.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

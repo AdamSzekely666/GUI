@@ -46,11 +46,11 @@ namespace MatroxLDS
             _subscription = CreateSubscription();
             try
             {
-                // Load DANodes custom types for bindings and events.
-                var complexTypeSystem = new ComplexTypeSystem(_session);
+                //// Load DANodes custom types for bindings and events.
+                //var complexTypeSystem = new ComplexTypeSystem(_session);
 
-                complexTypeSystem.LoadType(NodeId.Parse(DANodeMappings.DA_VARIABLE_TYPE_NODEID)).ConfigureAwait(false).GetAwaiter().GetResult();
-                complexTypeSystem.LoadType(NodeId.Parse(DANodeMappings.DA_RUNTIME_EVENT_NODEID)).ConfigureAwait(false).GetAwaiter().GetResult();
+                //complexTypeSystem.LoadType(NodeId.Parse(DANodeMappings.DA_VARIABLE_TYPE_NODEID)).ConfigureAwait(false).GetAwaiter().GetResult();
+                //complexTypeSystem.LoadType(NodeId.Parse(DANodeMappings.DA_RUNTIME_EVENT_NODEID)).ConfigureAwait(false).GetAwaiter().GetResult();
             }
             catch (Exception ex)
             {

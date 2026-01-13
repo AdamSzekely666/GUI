@@ -81,7 +81,7 @@ namespace MatroxLDS
 
         #region UI related properties
 
-        public ICommand EnterLostFocusCommand { get => new UpdateTextboxSourceCommand(); }
+       // public ICommand EnterLostFocusCommand { get => new UpdateTextboxSourceCommand(); }
 
         /// <summary>
         /// The visibility state for the navigation bar.
@@ -282,9 +282,9 @@ namespace MatroxLDS
         /// Called by properties to update the UI when they change.
         /// </summary>
         /// <param name="propertyName"></param>
-        public void NotifyPropertyChanged(string propertyName, bool isInitialization = false)
+        public void NotifyPropertyChanged(string propertyName)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventExtendedArgs(propertyName, isInitialization));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         /// <summary>

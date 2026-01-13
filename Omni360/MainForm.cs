@@ -300,7 +300,7 @@ namespace MatroxLDS
 
                 string dbPath = GetQuarterlyDatabasePath(DateTime.Now);
                 CreateQuarterlyDatabase(dbPath); // <-- This is your new hard-coded method
-
+                await InitializeOPCConnection();
                 // Wait for runtime projects to be started.
                 await EnsureHostProjectRunning(HOST_NAME, PROJECT_NAME1);
                 await EnsureHostProjectRunning(HOST_NAME, PROJECT_NAME2);
@@ -400,6 +400,215 @@ namespace MatroxLDS
                 // defensive: don't assume splash exists
                 try { Program.splashForm?.UpdateProgress($"Error during initialization: {ex.Message}"); } catch { }
                 Debug.WriteLine("MainForm_Load unhandled exception: " + ex);
+            }
+        }
+        private async Task InitializeOPCConnection()
+        {
+            try
+            {
+                Program.splashForm?.UpdateProgress("Initializing OPC UA connection...");
+
+                // Create data model and connection manager
+                opcDataModel = new OPCDataModel();
+                opcConnectionManager = new OPCConnectionManager(opcDataModel);
+
+                // Connect to OPC UA server (adjust server name and port as needed)
+                bool connected = opcConnectionManager.Connect("localhost", "4840");
+
+                if (connected)
+                {
+                    opcSession = opcConnectionManager.Session;
+                    Program.splashForm?.UpdateProgress("OPC UA connected successfully");
+
+                    // Initialize bindings after connection
+                    InitializeOPCBindings();
+                }
+                else
+                {
+                    Program.splashForm?.UpdateProgress("OPC UA connection failed - using fallback");
+                    Debug.WriteLine("OPC UA connection failed");
+                }
+            }
+            catch (Exception ex)
+            {
+                Program.splashForm?.UpdateProgress($"OPC UA error: {ex.Message}");
+                Debug.WriteLine($"OPC UA initialization error: {ex.Message}");
+            }
+        }
+        private void InitializeOPCBindings()
+        {
+            try
+            {
+                if (opcSession == null) return;
+
+                // Camera 1 (ECI1) bindings
+                c1FinishNumberBinding = new DAOPCBinding<int>(opcSession, "ECI1.FinishNumber");
+                c1TotalGoodBinding = new DAOPCBinding<int>(opcSession, "ECI1.TotalGoodCount");
+                c1TotalBadBinding = new DAOPCBinding<int>(opcSession, "ECI1.TotalBadCount");
+                c1TotalThroughputBinding = new DAOPCBinding<int>(opcSession, "ECI1.TotalThroughput");
+                c1CurrentRecipeBinding = new DAOPCBinding<string>(opcSession, "ECI1.CurrentRecipeName");
+
+                // Camera 2 (ECI2) bindings
+                c2BaseNumberBinding = new DAOPCBinding<int>(opcSession, "ECI2.BaseNumber");
+                c2ISWNumberBinding = new DAOPCBinding<int>(opcSession, "ECI2.ISWNumber");
+                c2DentNumberBinding = new DAOPCBinding<int>(opcSession, "ECI2.DentNumber");
+                c2TotalGoodBinding = new DAOPCBinding<int>(opcSession, "ECI2.TotalGoodCount");
+                c2TotalBadBinding = new DAOPCBinding<int>(opcSession, "ECI2.TotalBadCount");
+                c2TotalThroughputBinding = new DAOPCBinding<int>(opcSession, "ECI2.TotalThroughput");
+                c2CurrentRecipeBinding = new DAOPCBinding<string>(opcSession, "ECI2.CurrentRecipeName");
+
+                // Subscribe to Value.PropertyChanged events
+                c1FinishNumberBinding.Value.PropertyChanged += (sender, e) =>
+                {
+                    if (e.PropertyName == nameof(DAComplexVariable<int>.CurrentValue))
+                    {
+                        UpdateUI(() =>
+                        {
+                            Debug.WriteLine($"C1 Finish:  {c1FinishNumberBinding.Value.CurrentValue}");
+                            // Update your UI control here
+                        });
+                    }
+                };
+
+                c1TotalGoodBinding.Value.PropertyChanged += (sender, e) =>
+                {
+                    if (e.PropertyName == nameof(DAComplexVariable<int>.CurrentValue))
+                    {
+                        UpdateUI(() =>
+                        {
+                            Debug.WriteLine($"C1 Total Good: {c1TotalGoodBinding.Value.CurrentValue}");
+                        });
+                    }
+                };
+
+                c1TotalBadBinding.Value.PropertyChanged += (sender, e) =>
+                {
+                    if (e.PropertyName == nameof(DAComplexVariable<int>.CurrentValue))
+                    {
+                        UpdateUI(() =>
+                        {
+                            Debug.WriteLine($"C1 Total Bad: {c1TotalBadBinding.Value.CurrentValue}");
+                        });
+                    }
+                };
+
+                c1TotalThroughputBinding.Value.PropertyChanged += (sender, e) =>
+                {
+                    if (e.PropertyName == nameof(DAComplexVariable<int>.CurrentValue))
+                    {
+                        UpdateUI(() =>
+                        {
+                            Debug.WriteLine($"C1 Throughput: {c1TotalThroughputBinding.Value.CurrentValue}");
+                        });
+                    }
+                };
+
+                c2BaseNumberBinding.Value.PropertyChanged += (sender, e) =>
+                {
+                    if (e.PropertyName == nameof(DAComplexVariable<int>.CurrentValue))
+                    {
+                        UpdateUI(() =>
+                        {
+                            Debug.WriteLine($"C2 Base:  {c2BaseNumberBinding.Value.CurrentValue}");
+                        });
+                    }
+                };
+
+                c2ISWNumberBinding.Value.PropertyChanged += (sender, e) =>
+                {
+                    if (e.PropertyName == nameof(DAComplexVariable<int>.CurrentValue))
+                    {
+                        UpdateUI(() =>
+                        {
+                            Debug.WriteLine($"C2 ISW: {c2ISWNumberBinding.Value.CurrentValue}");
+                        });
+                    }
+                };
+
+                c2DentNumberBinding.Value.PropertyChanged += (sender, e) =>
+                {
+                    if (e.PropertyName == nameof(DAComplexVariable<int>.CurrentValue))
+                    {
+                        UpdateUI(() =>
+                        {
+                            Debug.WriteLine($"C2 Dent: {c2DentNumberBinding.Value.CurrentValue}");
+                        });
+                    }
+                };
+
+                c2TotalGoodBinding.Value.PropertyChanged += (sender, e) =>
+                {
+                    if (e.PropertyName == nameof(DAComplexVariable<int>.CurrentValue))
+                    {
+                        UpdateUI(() =>
+                        {
+                            Debug.WriteLine($"C2 Total Good: {c2TotalGoodBinding.Value.CurrentValue}");
+                        });
+                    }
+                };
+
+                c2TotalBadBinding.Value.PropertyChanged += (sender, e) =>
+                {
+                    if (e.PropertyName == nameof(DAComplexVariable<int>.CurrentValue))
+                    {
+                        UpdateUI(() =>
+                        {
+                            Debug.WriteLine($"C2 Total Bad: {c2TotalBadBinding.Value.CurrentValue}");
+                        });
+                    }
+                };
+
+                c2TotalThroughputBinding.Value.PropertyChanged += (sender, e) =>
+                {
+                    if (e.PropertyName == nameof(DAComplexVariable<int>.CurrentValue))
+                    {
+                        UpdateUI(() =>
+                        {
+                            Debug.WriteLine($"C2 Throughput:  {c2TotalThroughputBinding.Value.CurrentValue}");
+                        });
+                    }
+                };
+
+                c1CurrentRecipeBinding.Value.PropertyChanged += (sender, e) =>
+                {
+                    if (e.PropertyName == nameof(DAComplexVariable<string>.CurrentValue))
+                    {
+                        UpdateUI(() =>
+                        {
+                            Debug.WriteLine($"C1 Recipe: {c1CurrentRecipeBinding.Value.CurrentValue}");
+                            // Update lblCurrentFlavour or similar
+                        });
+                    }
+                };
+
+                c2CurrentRecipeBinding.Value.PropertyChanged += (sender, e) =>
+                {
+                    if (e.PropertyName == nameof(DAComplexVariable<string>.CurrentValue))
+                    {
+                        UpdateUI(() =>
+                        {
+                            Debug.WriteLine($"C2 Recipe: {c2CurrentRecipeBinding.Value.CurrentValue}");
+                        });
+                    }
+                };
+
+                Debug.WriteLine("OPC UA bindings initialized successfully");
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error initializing OPC bindings: {ex.Message}");
+            }
+        }
+
+        private void UpdateUI(Action action)
+        {
+            if (this.InvokeRequired)
+            {
+                this.BeginInvoke(action);
+            }
+            else
+            {
+                action();
             }
         }
         private void OnCardPresented(string cardId)
@@ -604,7 +813,6 @@ namespace MatroxLDS
                 // don't rethrow if you want the app to continue; rethrow if you want to let caller handle it
             }
         }
-        // Internal helper that inserts using an existing open connection (avoids reopening repeatedly)
         private void InsertCameraDataToDB_Internal(SQLiteConnection connection, CameraData camData, DateTime timestamp)
         {
             if (connection == null) throw new ArgumentNullException(nameof(connection));
@@ -847,7 +1055,6 @@ namespace MatroxLDS
                 return 0; // Default value for invalid format
             }
         }
-        // MainForm.cs — replace existing C1CurrentRecipeName
         private void C1CurrentRecipeName(object sender, ValueChangedEventArgs args)
         {
             try
@@ -875,8 +1082,6 @@ namespace MatroxLDS
                 Program.splashForm.UpdateProgress($"Error updating RecipeNameLb: {ex.Message}");
             }
         }
-
-        // MainForm.cs — replace existing C2CurrentRecipeName
         private void C2CurrentRecipeName(object sender, ValueChangedEventArgs args)
         {
             try

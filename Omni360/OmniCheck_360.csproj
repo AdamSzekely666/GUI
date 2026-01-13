@@ -265,6 +265,13 @@
     <Compile Include="OPCConnectionManager.cs" />
     <Compile Include="OPCDataModel.cs" />
     <Compile Include="DAComplexVariable.cs" />
+	<Compile Include="DAOPCEvent.cs" />
+	<Compile Include="InspectionEndEventResult.cs" />
+	<Compile Include="CameraEndEventResult.cs" />
+	<Compile Include="CircularList.cs" />
+	<Compile Include="IEventResult.cs" />
+	<Compile Include="ClientUtils.cs" />
+	<Compile Include="DANodeMappings.cs" />
     <Compile Include="BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace OPCUADemoClient.Models
+namespace MatroxLDS
 {
     public interface IEventResult
     {

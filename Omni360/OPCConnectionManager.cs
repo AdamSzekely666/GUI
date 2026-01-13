@@ -3,7 +3,6 @@ using Opc.Ua.Client;
 using System;
 using System.Threading.Tasks;
 using System.Diagnostics;
-//using OPCUADemoClient.DAOPCUA;
 using System.Windows;
 
 namespace MatroxLDS
