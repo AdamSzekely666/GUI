@@ -236,48 +236,25 @@ namespace MatroxLDS
 
         private void CreateBindings(DAOPCSession session)
         {
-            ImageWriter_ResizeHeight = new DAOPCBinding<int>(session, "ImageWriter_ResizeHeight");
+            // No generic bindings - we create specific bindings in MainForm for ECI1 and ECI2
+            Debug.WriteLine("OPCDataModel. CreateBindings() - Skipped (using custom bindings in MainForm)");
 
-            IntensityChecker_AverageConditionEnabled = new DAOPCBinding<bool>(session, "IntensityChecker_AverageConditionEnabled");
-            IntensityChecker_AverageConditionOperator = new DAOPCBinding<string>(session, "IntensityChecker_AverageConditionOperator");
-            IntensityChecker_AverageConditionLowValue = new DAOPCBinding<double>(session, "IntensityChecker_AverageConditionLowValue");
-            IntensityChecker_AverageConditionHighValue = new DAOPCBinding<double>(session, "IntensityChecker_AverageConditionHighValue");
-
-            IntensityChecker_CountConditionEnabled = new DAOPCBinding<bool>(session, "IntensityChecker_CountConditionEnabled");
-            IntensityChecker_CountConditionOperator = new DAOPCBinding<string>(session, "IntensityChecker_CountConditionOperator");
-            IntensityChecker_CountConditionLowValue = new DAOPCBinding<double>(session, "IntensityChecker_CountConditionLowValue");
-            IntensityChecker_CountConditionHighValue = new DAOPCBinding<double>(session, "IntensityChecker_CountConditionHighValue");
-
-            IntensityChecker_Filter = new DAOPCBinding<string>(session, "IntensityChecker_Filter");
-
-            IntensityChecker_PixelSelection = new DAOPCBinding<string>(session, "IntensityChecker_PixelSelection");
-            IntensityChecker_PixelIncludeHighValue = new DAOPCBinding<double>(session, "IntensityChecker_PixelIncludeHighValue");
-            IntensityChecker_PixelIncludeLowValue = new DAOPCBinding<double>(session, "IntensityChecker_PixelIncludeLowValue");
-
-            IntensityChecker_RegionX = new DAOPCBinding<double>(session, "IntensityChecker_RegionX");
-            IntensityChecker_RegionY = new DAOPCBinding<double>(session, "IntensityChecker_RegionY");
-            IntensityChecker_RegionWidth = new DAOPCBinding<double>(session, "IntensityChecker_RegionWidth");
-            IntensityChecker_RegionHeight = new DAOPCBinding<double>(session, "IntensityChecker_RegionHeight");
-
+            // Notify that properties have been initialized (even though we're not creating any here)
             NotifyPropertyChanged(null);
-
         }
-
         private void CreateEvents(DAOPCSession session)
         {
-            InspectionEndResult = new DAOPCEvent<InspectionEndEventResult>(session, "InspectionEnd", _historySize);
-            InspectionEndResult.OnCurrentResultChange += InspectionEnd_EventVariablesModel_PropertyChanged;
-            UpdateInspectionEndResult(InspectionEndResult.CurrentResult);
+            // No generic events - we create specific events in MainForm for ECI1 and ECI2
+            Debug.WriteLine("OPCDataModel.CreateEvents() - Skipped (using custom events in MainForm)");
 
-            CameraEndResult = new DAOPCEvent<CameraEndEventResult>(session, "CameraEnd", _historySize);
+            // Note: InspectionEndResult and CameraEndResult remain null in this model
+            // We handle events directly in MainForm for each camera
         }
-
         private void CreateFlowcharts(DAOPCSession session)
         {
-            OnSendTrigger = new DAOPCFlowchart(session, DANodeMappings.NEXT_IMAGE_FLOWCHART_NAME);
-            OnRerunTrigger = new DAOPCFlowchart(session, DANodeMappings.RERUN_FLOWCHART_NAME);
+            // Flowcharts not used in this implementation
+            Debug.WriteLine("OPCDataModel.CreateFlowcharts() - Skipped");
         }
-
         /// <summary>
         /// Called by properties to update the UI when they change.
         /// </summary>
@@ -347,17 +324,17 @@ namespace MatroxLDS
                 NbFail++;
             }
 
-            if ((propertyName == nameof(inspectionEndModel.ImageWriter_Image) || propertyName == string.Empty) && inspectionEndModel.ImageWriter_Image?.CurrentValue?.Count() > 0)
-            {
-                try
-                {
-                    InspectionEndResult.CurrentResult.RenderedImage = ClientUtils.GetImageStream((Bitmap)((new ImageConverter()).ConvertFrom(InspectionEndResult.CurrentResult.ImageWriter_Image.CurrentValue)));
-                } 
-                catch (Exception)
-                {
-                    Trace.WriteLine("Could not convert server bytes to ImageSource");
-                }
-            }
+            //if ((propertyName == nameof(inspectionEndModel.ImageWriter_Image) || propertyName == string.Empty) && inspectionEndModel.ImageWriter_Image?.CurrentValue?.Count() > 0)
+            //{
+            //    try
+            //    {
+            //        InspectionEndResult.CurrentResult.RenderedImage = ClientUtils.GetImageStream((Bitmap)((new ImageConverter()).ConvertFrom(InspectionEndResult.CurrentResult.ImageWriter_Image.CurrentValue)));
+            //    } 
+            //    catch (Exception)
+            //    {
+            //        Trace.WriteLine("Could not convert server bytes to ImageSource");
+            //    }
+            //}
 
             // If the results updated are paused, we don't want to show the new images.
             if (!_isDisplayMode)

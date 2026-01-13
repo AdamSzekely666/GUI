@@ -37,28 +37,61 @@ namespace MatroxLDS
         /// <returns>If connection is successful</returns>
         public bool Connect(string serverName, string portNumber)
         {
+            Debug.WriteLine($"🔵 [CONNECT] OPCConnectionManager.Connect() called");
+            Debug.WriteLine($"🔵 [CONNECT] Server: {serverName}, Port: {portNumber}");
+
             bool connected = false;
             try
             {
+                Debug.WriteLine($"🔵 [CONNECT] Creating DAOPCSession...");
                 Session = new DAOPCSession(serverName, portNumber);
-            } 
+                Debug.WriteLine($"✅ [CONNECT] DAOPCSession created");
+            }
             catch (ServiceResultException ex)
             {
+                Debug.WriteLine($"❌ [CONNECT] ServiceResultException thrown!");
+                Debug.WriteLine($"❌ [CONNECT] Message: {ex.Message}");
+                Debug.WriteLine($"❌ [CONNECT] Status Code: {ex.StatusCode}");
+                Debug.WriteLine($"❌ [CONNECT] Stack Trace:");
+                Debug.WriteLine(ex.StackTrace);
                 Trace.WriteLine($"Could not establish connection with message: {ex.Message}");
                 return false;
             }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"❌ [CONNECT] General Exception thrown!");
+                Debug.WriteLine($"❌ [CONNECT] Type: {ex.GetType().Name}");
+                Debug.WriteLine($"❌ [CONNECT] Message: {ex.Message}");
+                Debug.WriteLine($"❌ [CONNECT] Stack Trace:");
+                Debug.WriteLine(ex.StackTrace);
+                return false;
+            }
 
+            Debug.WriteLine($"🔵 [CONNECT] Checking if session is connected...");
             if (Session != null && Session.Connected)
             {
+                Debug.WriteLine($"✅ [CONNECT] Session is connected!");
                 connected = true;
 
-                _model.IsServerConnected = true;                
+                _model.IsServerConnected = true;
                 _model.ReinitializeOnConnect(Session);
-                _model.InitializeOPCProperties(Session);
                 _serverName = serverName;
                 _portNumber = portNumber;
                 Session.KeepAlive += Client_KeepAlive;
+
+                Debug.WriteLine($"✅ [CONNECT] Connection setup complete");
             }
+            else
+            {
+                Debug.WriteLine($"❌ [CONNECT] Session is null or not connected");
+                Debug.WriteLine($"❌ [CONNECT] Session == null?  {Session == null}");
+                if (Session != null)
+                {
+                    Debug.WriteLine($"❌ [CONNECT] Session. Connected = {Session.Connected}");
+                }
+            }
+
+            Debug.WriteLine($"🔵 [CONNECT] Returning:  {connected}");
             return connected;
         }
 
