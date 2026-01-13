@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+  <CommunicationProtocol Name="Modbus" >
+    <HoldingRegisters>
+      <ModbusAddress Address="40001" Access="R/W" Size ="Dint" Name="TotalThroughput"> </ModbusAddress>
+      <ModbusAddress Address="40003" Access="R/W" Size ="Dint" Name="TotalRejects"> </ModbusAddress>
+      <ModbusAddress Address="40005" Access="R/W" Size ="Dint" Name="UpstreamRejects"> </ModbusAddress>
+      <ModbusAddress Address="40007" Access="R/W" Size ="Dint" Name="DownstreamRejects"> </ModbusAddress>
+      <ModbusAddress Address="40009" Access="R" Size ="Dint" Name="PulsesPerSecond"> </ModbusAddress>
+      <ModbusAddress Address="40011" Access="R" Size ="Dint" Name="MeasuredProductWidth"> </ModbusAddress>
+      <ModbusAddress Address="40013" Access="R/W" Size ="Uint" Name="VisionApplication#"> </ModbusAddress>
+      <ModbusAddress Address="40014" Access="R" Size ="7 bit mask" Name="Bullnose_fail_W"> </ModbusAddress>
+      <ModbusAddress Address="40015" Access="R" Size ="7 bit mask" Name="Bullnose_fail_R"> </ModbusAddress>
+      <ModbusAddress Address="40016" Access="R" Size ="7 bit mask" Name="Bullnose_fail_L"> </ModbusAddress>
+      <ModbusAddress Address="40017" Access="R" Size ="7 bit mask" Name="Bullnose_sensors_active"> </ModbusAddress>
+      <ModbusAddress Address="40018" Access="R/W" Size ="Uint" Name="TriggerOffset"> </ModbusAddress>
+      <ModbusAddress Address="40019" Access="R/W" Size ="Uint" Name="CameraOffset"> </ModbusAddress>
+      <ModbusAddress Address="40020" Access="R/W" Size ="Uint" Name="RejectOffset"> </ModbusAddress>
+      <ModbusAddress Address="40021" Access="R/W" Size ="Dint" Name="CameraTriggerDuration"> </ModbusAddress>
+      <ModbusAddress Address="40023" Access="R/W" Size ="Uint" Name="RejectPulseDuration"> </ModbusAddress>
+      <ModbusAddress Address="40024" Access="R/W" Size ="Uint" Name="ProductWidth"> </ModbusAddress>
+      <ModbusAddress Address="40025" Access="R/W" Size ="Dint" Name="NoResultTime"> </ModbusAddress>
+      <ModbusAddress Address="40027" Access="R/W" Size ="Uint" Name="ConsecutiveBadThreshold"> </ModbusAddress>
+      <ModbusAddress Address="40028" Access="R/W" Size ="Int" Name="SlopeDiffThreshold"> </ModbusAddress>
+      <ModbusAddress Address="40029" Access="R/W" Size ="Int" Name="BullnoseMinimum"> </ModbusAddress>
+      <ModbusAddress Address="40030" Access="R/W" Size ="Uint" Name="DownBottleWidth"> </ModbusAddress>
+      <ModbusAddress Address="40031" Access="R/W" Size ="Uint" Name="DownToRejectGap"> </ModbusAddress>
+      <ModbusAddress Address="40032" Access="R" Size ="Dint" Name="MeasuredContainerWidth"> </ModbusAddress>
+      <ModbusAddress Address="40034" Access="R" Size ="Uint" Name="CPS"> </ModbusAddress>
+      <ModbusAddress Address="40035" Access="R/W" Size ="Uint" Name="ConsecutiveUpstream"> </ModbusAddress>
+      <ModbusAddress Address="40036" Access="R/W" Size ="Uint" Name="ConsecutiveDownstream"> </ModbusAddress>
+      <ModbusAddress Address="40037" Access="R/W" Size ="Int" Name="CalibrationMin0"> </ModbusAddress>
+      <ModbusAddress Address="40038" Access="R/W" Size ="Int" Name="CalibrationMin1"> </ModbusAddress>
+      <ModbusAddress Address="40039" Access="R/W" Size ="Int" Name="CalibrationMin2"> </ModbusAddress>
+      <ModbusAddress Address="40040" Access="R/W" Size ="Int" Name="CalibrationMin3"> </ModbusAddress>
+      <ModbusAddress Address="40041" Access="R/W" Size ="Int" Name="CalibrationMin4"> </ModbusAddress>
+      <ModbusAddress Address="40042" Access="R/W" Size ="Int" Name="CalibrationMin5"> </ModbusAddress>
+      <ModbusAddress Address="40043" Access="R/W" Size ="Int" Name="CalibrationMin6"> </ModbusAddress>
+      <ModbusAddress Address="40044" Access="R/W" Size ="Int" Name="CalibrationMax0"> </ModbusAddress>
+      <ModbusAddress Address="40045" Access="R/W" Size ="Int" Name="CalibrationMax1"> </ModbusAddress>
+      <ModbusAddress Address="40046" Access="R/W" Size ="Int" Name="CalibrationMax2"> </ModbusAddress>
+      <ModbusAddress Address="40047" Access="R/W" Size ="Int" Name="CalibrationMax3"> </ModbusAddress>
+      <ModbusAddress Address="40048" Access="R/W" Size ="Int" Name="CalibrationMax4"> </ModbusAddress>
+      <ModbusAddress Address="40049" Access="R/W" Size ="Int" Name="CalibrationMax5"> </ModbusAddress>
+      <ModbusAddress Address="40050" Access="R/W" Size ="Int" Name="CalibrationMax6"> </ModbusAddress>   
+    </HoldingRegisters>
+    <Coils>
+      <ModbusAddress Address="1" Access="R/W" Size ="Bool" Name="CameraTrigger"> </ModbusAddress>
+      <ModbusAddress Address="2" Access="R/W" Size ="Bool" Name="RejectTrigger"> </ModbusAddress>
+      <ModbusAddress Address="3" Access="R/W" Size ="Bool" Name="BeaconGreen"> </ModbusAddress>
+      <ModbusAddress Address="4" Access="R/W" Size ="Bool" Name="BeaconRed"> </ModbusAddress>
+      <ModbusAddress Address="5" Access="R" Size ="Bool" Name="Lights"> </ModbusAddress>
+      <ModbusAddress Address="6" Access="R" Size ="Bool" Name="SystemReady"> </ModbusAddress>
+      <ModbusAddress Address="33" Access="R/W" Size ="Bool" Name="ConsecutiveBad"> </ModbusAddress>
+      <ModbusAddress Address="34" Access="R/W" Size ="Bool" Name="LeftBeacon"> </ModbusAddress>
+      <ModbusAddress Address="35" Access="R/W" Size ="Bool" Name="CenterBeacon"> </ModbusAddress>
+      <ModbusAddress Address="36" Access="R/W" Size ="Bool" Name="RightBeacon"> </ModbusAddress>
+      <ModbusAddress Address="701" Access="R" Size ="Bool" Name="Moving"> </ModbusAddress>
+      <ModbusAddress Address="702" Access="R/W" Size ="Bool" Name="ZeroSystem"> </ModbusAddress>
+      <ModbusAddress Address="703" Access="R/W" Size ="Bool" Name="Measure"> </ModbusAddress>
+      <ModbusAddress Address="704" Access="R/W" Size ="Bool" Name="ResetConsecutive"> </ModbusAddress>
+      <ModbusAddress Address="705" Access="R/W" Size ="Bool" Name="CalibrateMin"> </ModbusAddress>
+      <ModbusAddress Address="706" Access="R/W" Size ="Bool" Name="CalibrateMax"> </ModbusAddress>
+      <ModbusAddress Address="801" Access="R/W" Size ="Bool" Name="ReadyBusy"> </ModbusAddress>
+      <ModbusAddress Address="802" Access="R/W" Size ="Bool" Name="BadGood"> </ModbusAddress>
+      <ModbusAddress Address="803" Access="R/W" Size ="Bool" Name="DisableReject"> </ModbusAddress>
+      <ModbusAddress Address="804" Access="R/W" Size ="Bool" Name="IgnoreMoving"> </ModbusAddress>
+      <ModbusAddress Address="805" Access="R/W" Size ="Bool" Name="IgnoreInterlock"> </ModbusAddress>
+      <ModbusAddress Address="806" Access="R/W" Size ="Bool" Name="RejectorDiverter"> </ModbusAddress>
+      <ModbusAddress Address="807" Access="R/W" Size ="Bool" Name="Bullnose"> </ModbusAddress>
+      <ModbusAddress Address="808" Access="R/W" Size ="Bool" Name="BullnoseLogging"> </ModbusAddress>
+      <ModbusAddress Address="809" Access="R/W" Size ="Bool" Name="DownBottleEnable"> </ModbusAddress>
+    </Coils>
+  </CommunicationProtocol>
+</Configuration>

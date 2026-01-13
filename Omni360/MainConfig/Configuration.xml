@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+  <Application Key="1000" Title="Bullnose Inspector" VisionProject="StartProject" />
+  <Language Culture="en-US" />
+  <UserAccess>
+    <User CurrentUserTxt="Operator" Password="1111">Operator password</User>
+    <User CurrentUserTxt="Electrician" Password="3456">Electrician password</User>
+    <User CurrentUserTxt="Administrator" Password="6900">Admin Password</User>
+  </UserAccess>
+  <Documents>
+    <Doc Name="Bullnose Electrical drawings">ElectricalDrawings</Doc>
+    <Doc Name="Bullnose Operating Manual">OperatingManual</Doc>
+    <Doc Name="Bullnose System Trouble Shooting Manual">TrblShootingManual</Doc>
+    <Doc Name="Bullnose Parts List">PartList</Doc>
+  </Documents>
+  <CommunicationProtocol Name="PLC">
+    <Protocol Type="Modbus" IPAddress="192.168.0.12" Port="502">
+    </Protocol>
+    <Protocol Type="TCP/IP" IPAddress="192.168.4.1" Port="4661">
+    </Protocol>
+  </CommunicationProtocol>
+  <CommunicationCameras Name="Cameras">
+    <Cam IPAddress="192.168.0.67">
+    </Cam>
+    <Cam IPAddress="192.168.0.95">
+    </Cam>
+  </CommunicationCameras>
+  <CommunicationMotorDrives Name="MotorDrives">
+  </CommunicationMotorDrives>
+  <BullnoseSettings NumberOfSensors="7" SamplesPerSensor="12" AdditionalData="4" ResultBuffersPool="50">Settings for Bullnose</BullnoseSettings>
+  <UserDataBase Name="omniDB.db">
+  </UserDataBase>
+  <LogDataBase Name="omniLog.db">
+  </LogDataBase>
+</Configuration>

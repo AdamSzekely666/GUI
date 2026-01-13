@@ -1,0 +1,19 @@
+--- TrackingSystem.cs
++++ TrackingSystem.cs
+@@ -443,6 +445,16 @@
+             }
+         }
+ 
++        private void button1_Click(object sender, EventArgs e)
++        {
++
++            //Hide();
++            PlcUpdateForm.Show();
++            PlcUpdateForm.Focus();
++            PlcUpdateForm.TopMost = true;
++            PlcUpdateForm.Activate();
++        }
++
+         //private void EF_PROD_WIDTH_WRITE_TextChanged(object sender, EventArgs e)
+         //{
+         //    if (!EF_PROD_WIDTH_WRITE.Text.All(char.IsDigit))

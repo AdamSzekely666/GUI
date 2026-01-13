@@ -1,0 +1,27 @@
+--- TrackingSystem.Designer.cs
++++ TrackingSystem.Designer.cs
+@@ -85,6 +85,7 @@
+             this.MeasuredContainerWidth = new System.Windows.Forms.TextBox();
+             this.Measure = new System.Windows.Forms.Button();
+             this.ZeroSystem = new System.Windows.Forms.Button();
++            this.button1 = new System.Windows.Forms.Button();
+             this.grpResults.SuspendLayout();
+             this.groupBox1.SuspendLayout();
+             this.SuspendLayout();
+@@ -724,7 +740,8 @@
+             // TrackingSystem
+             // 
+             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+             this.ClientSize = new System.Drawing.Size(1024, 767);
++            this.Controls.Add(this.button1);
+             this.Controls.Add(this.ZeroSystem);
+             this.Controls.Add(this.Measure);
+             this.Controls.Add(this.MeasuredContainerWidth);
+@@ -792,6 +809,7 @@
+             this.Controls.SetChildIndex(this.MeasuredContainerWidth, 0);
+             this.Controls.SetChildIndex(this.Measure, 0);
+             this.Controls.SetChildIndex(this.ZeroSystem, 0);
++            this.Controls.SetChildIndex(this.button1, 0);
+             this.grpResults.ResumeLayout(false);
+             this.grpResults.PerformLayout();
+             this.groupBox1.ResumeLayout(false);
