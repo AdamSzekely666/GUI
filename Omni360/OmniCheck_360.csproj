@@ -10,6 +10,9 @@
     <PackageReference Include="OPCFoundation.NetStandard.Opc.Ua">
       <Version>1.5.378.65</Version>
     </PackageReference>
+    <PackageReference Include="OPCFoundation.NetStandard.Opc.Ua.Client.ComplexTypes">
+      <Version>1.5.378.65</Version>
+    </PackageReference>
     <PackageReference Include="PdfSharpCore">
       <Version>1.3.67</Version>
     </PackageReference>
@@ -255,6 +258,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAOPCBinding.cs" />
+    <Compile Include="DAOPCSession.cs" />
+    <Compile Include="DAOPCFlowchart.cs" />
+    <Compile Include="DAOPCUtils.cs" />
+    <Compile Include="OPCConnectionManager.cs" />
+    <Compile Include="OPCDataModel.cs" />
+    <Compile Include="DAComplexVariable.cs" />
     <Compile Include="BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -276,7 +286,6 @@
     </Compile>
     <Compile Include="ICardReader.cs" />
     <Compile Include="IniManger.cs" />
-    <Compile Include="OpcUaConnectionManager.cs" />
     <Compile Include="PopUpTimePicker.cs">
       <SubType>Form</SubType>
     </Compile>

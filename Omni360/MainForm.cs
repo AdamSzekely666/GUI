@@ -32,7 +32,9 @@ using Zebra.ADA.OperatorAPI.ControlsPackage;
 using Zebra.ADA.OperatorAPI.InputsPackage;
 using Zebra.ADA.OperatorAPI.OutputsPackage;
 using System.Reflection;
-
+using Opc.Ua;
+using Opc.Ua.Client;
+using System.ComponentModel;
 
 
 namespace MatroxLDS
@@ -133,6 +135,28 @@ namespace MatroxLDS
             return _usersManager;
         }
         public event EventHandler UserStateChanged;
+        // ========== NEW:  OPC UA Fields ==========
+        private OPCConnectionManager opcConnectionManager;
+        private OPCDataModel opcDataModel;
+        public DAOPCSession opcSession;  // Public so other forms can access it
+
+        // OPC UA Bindings for Camera 1 (ECI1)
+        private DAOPCBinding<int> c1FinishNumberBinding;
+        private DAOPCBinding<int> c1TotalGoodBinding;
+        private DAOPCBinding<int> c1TotalBadBinding;
+        private DAOPCBinding<int> c1TotalThroughputBinding;
+        private DAOPCBinding<string> c1CurrentRecipeBinding;
+
+        // OPC UA Bindings for Camera 2 (ECI2)
+        private DAOPCBinding<int> c2BaseNumberBinding;
+        private DAOPCBinding<int> c2ISWNumberBinding;
+        private DAOPCBinding<int> c2DentNumberBinding;
+        private DAOPCBinding<int> c2TotalGoodBinding;
+        private DAOPCBinding<int> c2TotalBadBinding;
+        private DAOPCBinding<int> c2TotalThroughputBinding;
+        private DAOPCBinding<string> c2CurrentRecipeBinding;
+        // ========== END NEW FIELDS ==========
+
         protected virtual void OnUserStateChanged()
         {
             try
