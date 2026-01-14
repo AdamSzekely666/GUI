@@ -43,7 +43,7 @@ namespace MatroxLDS
         public DAOPCEvent(DAOPCSession session, string eventName, int ResultHistoryMaxLength)
         {
             _daOPCSession = session;
-            NodeID = new NodeId(DANodeMappings.DA_NAMESPACE + $"Events.{eventName}");
+            NodeID = new NodeId($"ns=2;s=Events.{eventName}");
             ResultsHistory = new CircularList<T>(ResultHistoryMaxLength);
 
             GetEventInitialValues();

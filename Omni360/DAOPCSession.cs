@@ -2,6 +2,7 @@
 using Opc.Ua.Client;
 using Opc.Ua.Client.ComplexTypes;
 using System;
+using System.Diagnostics;
 using System.Threading;
 
 namespace MatroxLDS
@@ -44,24 +45,27 @@ namespace MatroxLDS
             _session = CreateDAOPCUASession(serverName, portNumber);
             _session.KeepAliveInterval = 30000;
             _subscription = CreateSubscription();
+
             try
             {
-                //// Load DANodes custom types for bindings and events.
-                //var complexTypeSystem = new ComplexTypeSystem(_session);
+                // Load DANodes custom types for bindings and events.
+                var complexTypeSystem = new ComplexTypeSystem(_session);
 
-                //complexTypeSystem.LoadType(NodeId.Parse(DANodeMappings.DA_VARIABLE_TYPE_NODEID)).ConfigureAwait(false).GetAwaiter().GetResult();
-                //complexTypeSystem.LoadType(NodeId.Parse(DANodeMappings.DA_RUNTIME_EVENT_NODEID)).ConfigureAwait(false).GetAwaiter().GetResult();
+                // NEW API - use Load() instead of LoadType()
+                complexTypeSystem.Load().GetAwaiter().GetResult();
+
+                Debug.WriteLine("✅ [DAOPC SESSION] Complex types loaded successfully");
             }
             catch (Exception ex)
             {
+                Debug.WriteLine($"❌ [DAOPC SESSION] Error loading complex types:  {ex.Message}");
+                Debug.WriteLine($"❌ Stack trace: {ex.StackTrace}");
                 Console.WriteLine($"An error occured while initializing the client:{ex.Message}");
             }
-        }
-
-        /// <summary>
-        /// Adds a monitored item to the subscription. This can be a binding or an event.
-        /// </summary>
-        /// <param name="monitoredItem"></param>
+        }        /// <summary>
+                 /// Adds a monitored item to the subscription. This can be a binding or an event.
+                 /// </summary>
+                 /// <param name="monitoredItem"></param>
         public void AddMonitoredItem(MonitoredItem monitoredItem)
         {
             if (_subscription == null)

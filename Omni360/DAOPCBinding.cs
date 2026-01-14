@@ -35,8 +35,7 @@ namespace MatroxLDS
         public DAOPCBinding(DAOPCSession session, string bindingName)
         {
             _daOPCSession = session;
-            NodeID = new NodeId(DANodeMappings.DA_NAMESPACE + $"Bindings.{bindingName}");
-            Value = new DAComplexVariable<T>();
+            NodeID = new NodeId($"ns=2;s={bindingName}"); Value = new DAComplexVariable<T>();
 
             MonitorBinding();
         }
@@ -105,29 +104,84 @@ namespace MatroxLDS
         /// <param name="e"></param>
         private void Binding_Notification(MonitoredItem monitoredItem, MonitoredItemNotificationEventArgs e)
         {
-            var isFirstNotification = Value.AvailableValues == null;
-            var dequeuedValues = monitoredItem.DequeueValues();
-
-            bool isAvailable;
-            Variant currentValue;
-            List<string> availableValues;
-            DAOPCUtils.ExtractDAObjectFields(monitoredItem.StartNodeId, dequeuedValues[0].Value, out isAvailable, out currentValue, out availableValues, out _);
-
-            Value.AvailableValues = availableValues;
-
-            if (isAvailable && !EqualityComparer<T>.Default.Equals((T)Value.CurrentValue, (T)currentValue.Value))
+            try
             {
-                Value.CurrentValue = (T)currentValue.Value;
+                Debug.WriteLine($"🔔 [BINDING] Notification received for:  {monitoredItem.StartNodeId}");
+
+                var isFirstNotification = Value.AvailableValues == null;
+                var dequeuedValues = monitoredItem.DequeueValues();
+
+                bool isAvailable;
+                Variant currentValue;
+                List<string> availableValues;
+
+                try
+                {
+                    DAOPCUtils.ExtractDAObjectFields(monitoredItem.StartNodeId, dequeuedValues[0].Value, out isAvailable, out currentValue, out availableValues, out _);
+                    Debug.WriteLine($"📊 [BINDING] Extracted - IsAvailable: {isAvailable}, CurrentValue: {currentValue.Value}");
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"❌ [BINDING] Error extracting fields: {ex.Message}");
+                    Debug.WriteLine($"❌ Exception type: {ex.GetType().Name}");
+                    return; // Skip this notification
+                }
+
+                Value.AvailableValues = availableValues;
+
+                if (isAvailable)
+                {
+                    try
+                    {
+                        // Safe cast - handle type conversions
+                        object valueToSet = currentValue.Value;
+
+                        // If T is int but value is double, convert it
+                        if (typeof(T) == typeof(int) && valueToSet is double doubleValue)
+                        {
+                            valueToSet = (int)doubleValue;
+                        }
+                        // If T is int but value is long, convert it
+                        else if (typeof(T) == typeof(int) && valueToSet is long longValue)
+                        {
+                            valueToSet = (int)longValue;
+                        }
+                        // If T is int but value is short, convert it
+                        else if (typeof(T) == typeof(int) && valueToSet is short shortValue)
+                        {
+                            valueToSet = (int)shortValue;
+                        }
+                        // If T is int but value is byte, convert it
+                        else if (typeof(T) == typeof(int) && valueToSet is byte byteValue)
+                        {
+                            valueToSet = (int)byteValue;
+                        }
+
+                        // Only update if value changed
+                        if (!EqualityComparer<T>.Default.Equals((T)Value.CurrentValue, (T)valueToSet))
+                        {
+                            Value.CurrentValue = (T)valueToSet;
+                            Debug.WriteLine($"✅ [BINDING] Updated CurrentValue to:  {Value.CurrentValue}");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine($"❌ [BINDING] Error setting CurrentValue:  {ex.Message}");
+                        Debug.WriteLine($"❌ CurrentValue type: {currentValue.Value?.GetType().Name}, Expected: {typeof(T).Name}");
+                    }
+                }
+                Value.IsAvailable = isAvailable;
+                if (isFirstNotification)
+                {
+                    Value.PropertyChanged += ComplexVariable_PropertyChanged;
+                }
             }
-
-            Value.IsAvailable = isAvailable;
-
-            if (isFirstNotification)
+            catch (Exception ex)
             {
-                Value.PropertyChanged += ComplexVariable_PropertyChanged;
+                Debug.WriteLine($"❌ [BINDING] Fatal error in Binding_Notification: {ex.Message}");
+                Debug.WriteLine($"❌ Stack:  {ex.StackTrace}");
             }
         }
-
         /// <summary>
         /// Handles the change of the ComplexVariable, in which case we want to write the update to the DAOPC server.
         /// </summary>

@@ -170,6 +170,15 @@ namespace MatroxLDS
         private DAOPCBinding<int> c2TotalThroughputBinding;
         private DAOPCBinding<string> c2CurrentRecipeBinding;
         // ========== END OPC UA FIELDS ==========
+        // ========== IMAGE DISPLAY CONTROLS ==========
+        private PictureBox pictureBoxCam1;
+        private PictureBox pictureBoxCam2;
+        private PictureBox currentPictureBox; // Tracks which camera is visible
+       // ========== END IMAGE DISPLAY CONTROLS ==========
+       // ========== OPC UA Configuration ==========
+        private string opcEventObjectName = DANodeMappings.DEFAULT_EVENT_OBJECT_NAME;
+        // ========== END OPC UA Configuration ==========
+        // ========== OPC UA BINDINGS - ECI1 ==========
         protected virtual void OnUserStateChanged()
         {
             try
@@ -328,26 +337,26 @@ namespace MatroxLDS
                 await InitializeOPCConnection();
 
                 // now safe to access Projects and OperatorViews
-                try
-                {
-                    CameraPage1 = HostManager.GetHost(HOST_NAME).Projects[PROJECT_NAME1].OperatorViews[OPERATOR_VIEW_NAME];
-                    CameraPage2 = HostManager.GetHost(HOST_NAME).Projects[PROJECT_NAME2].OperatorViews[OPERATOR_VIEW_NAME];
-                }
-                catch (Exception ex)
-                {
-                    Program.splashForm?.UpdateProgress($"Failed binding OperatorViews: {ex.Message}");
-                    Debug.WriteLine("OperatorViews binding failed: " + ex.Message);
-                }
+                //try
+                //{
+                //    //CameraPage1 = HostManager.GetHost(HOST_NAME).Projects[PROJECT_NAME1].OperatorViews[OPERATOR_VIEW_NAME];
+                //    //CameraPage2 = HostManager.GetHost(HOST_NAME).Projects[PROJECT_NAME2].OperatorViews[OPERATOR_VIEW_NAME];
+                //}
+                //catch (Exception ex)
+                //{
+                //    Program.splashForm?.UpdateProgress($"Failed binding OperatorViews: {ex.Message}");
+                //    Debug.WriteLine("OperatorViews binding failed: " + ex.Message);
+                //}
 
                 // then attach handlers (guard for null)
-                try { CameraPage1?.ValueElements[C1CURRENTRECIPENAME].ValueChanged += C1CurrentRecipeName; } catch { }
-                try { CameraPage2?.ValueElements[C2CURRENTRECIPENAME].ValueChanged += C2CurrentRecipeName; } catch { }
+                //try { CameraPage1?.ValueElements[C1CURRENTRECIPENAME].ValueChanged += C1CurrentRecipeName; } catch { }
+                //try { CameraPage2?.ValueElements[C2CURRENTRECIPENAME].ValueChanged += C2CurrentRecipeName; } catch { }
 
                 // Start displays (safe: StartDisplays will be defensive now)
-                try { StartDisplays(Program.splashForm); } catch (Exception ex) { Debug.WriteLine("StartDisplays failed: " + ex.Message); }
+               // try { StartDisplays(Program.splashForm); } catch (Exception ex) { Debug.WriteLine("StartDisplays failed: " + ex.Message); }
 
                 // Connect textboxes and other UI wiring
-                try { ConnectToAllTextboxes(Program.splashForm); } catch (Exception ex) { Debug.WriteLine("ConnectToAllTextboxes failed: " + ex.Message); }
+               // try { ConnectToAllTextboxes(Program.splashForm); } catch (Exception ex) { Debug.WriteLine("ConnectToAllTextboxes failed: " + ex.Message); }
 
                 // Load flavour persisted state
                 try { LoadCurrentFlavourFromDb(); } catch (Exception ex) { Debug.WriteLine("LoadCurrentFlavourFromDb failed: " + ex.Message); }
@@ -368,7 +377,48 @@ namespace MatroxLDS
                 }
 
                 // Create and await display controls
-                try { await CreateAllDisplayControls(); } catch (Exception ex) { Debug.WriteLine("CreateAllDisplayControls failed: " + ex.Message); }
+               // try { await CreateAllDisplayControls(); } catch (Exception ex) { Debug.WriteLine("CreateAllDisplayControls failed: " + ex.Message); }
+
+                // ========== INITIALIZE OPC UA IMAGE DISPLAY ==========
+                try
+                {
+                    Program.splashForm?.UpdateProgress("Initializing OPC UA image displays...");
+
+                    // Create PictureBox for Camera 1
+                    pictureBoxCam1 = new PictureBox
+                    {
+                        Name = "pictureBoxCam1",
+                        Dock = DockStyle.Fill,
+                        SizeMode = PictureBoxSizeMode.Zoom,
+                        BackColor = Color.Black,
+                        Visible = false // Start hidden
+                    };
+                    panelControl.Controls.Add(pictureBoxCam1);
+
+                    // Create PictureBox for Camera 2
+                    pictureBoxCam2 = new PictureBox
+                    {
+                        Name = "pictureBoxCam2",
+                        Dock = DockStyle.Fill,
+                        SizeMode = PictureBoxSizeMode.Zoom,
+                        BackColor = Color.Black,
+                        Visible = false // Start hidden
+                    };
+                    panelControl.Controls.Add(pictureBoxCam2);
+
+                    // Show Camera 1 by default
+                    currentPictureBox = pictureBoxCam1;
+                    pictureBoxCam1.Visible = true;
+                    pictureBoxCam1.BringToFront();
+
+                    Debug.WriteLine("✅ OPC UA image display controls initialized");
+                    Program.splashForm?.UpdateProgress("OPC UA image displays ready");
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"❌ Error initializing OPC UA image displays: {ex.Message}");
+                }
+                // ========== END INITIALIZE OPC UA IMAGE DISPLAY ==========
 
                 // Update current recipe label safely
                 try
@@ -657,69 +707,14 @@ namespace MatroxLDS
                     Debug.WriteLine("🔵 [ECI1 BINDINGS] Creating value bindings...");
 
                     // Camera 1 (ECI1) bindings - use opcSession1
-                    c1FinishNumberBinding = new DAOPCBinding<int>(opcSession1, "ECI1.FinishNumber");
-                    c1TotalGoodBinding = new DAOPCBinding<int>(opcSession1, "ECI1.TotalGoodCount");
-                    c1TotalBadBinding = new DAOPCBinding<int>(opcSession1, "ECI1.TotalBadCount");
-                    c1TotalThroughputBinding = new DAOPCBinding<int>(opcSession1, "ECI1.TotalThroughput");
-                    c1CurrentRecipeBinding = new DAOPCBinding<string>(opcSession1, "ECI1.CurrentRecipeName");
+                    c1FinishNumberBinding = new DAOPCBinding<int>(opcSession1, "Bindings.TotalFinishNumber");
+                    c1TotalGoodBinding = new DAOPCBinding<int>(opcSession1, "Bindings.TotalGoodCount");
+                    c1TotalBadBinding = new DAOPCBinding<int>(opcSession1, "Bindings.TotalBadCount");
+                    c1TotalThroughputBinding = new DAOPCBinding<int>(opcSession1, "Bindings.TotalThroughput");
+                    c1CurrentRecipeBinding = new DAOPCBinding<string>(opcSession1, "Bindings.CurrentRecipeName");
 
-                    // Subscribe to Value. PropertyChanged events
-                    c1FinishNumberBinding.Value.PropertyChanged += (sender, e) =>
-                    {
-                        if (e.PropertyName == nameof(DAComplexVariable<int>.CurrentValue))
-                        {
-                            UpdateUI(() =>
-                            {
-                                Debug.WriteLine($"C1 Finish: {c1FinishNumberBinding.Value.CurrentValue}");
-                                // Update your UI control here
-                            });
-                        }
-                    };
-
-                    c1TotalGoodBinding.Value.PropertyChanged += (sender, e) =>
-                    {
-                        if (e.PropertyName == nameof(DAComplexVariable<int>.CurrentValue))
-                        {
-                            UpdateUI(() =>
-                            {
-                                Debug.WriteLine($"C1 Total Good: {c1TotalGoodBinding.Value.CurrentValue}");
-                            });
-                        }
-                    };
-
-                    c1TotalBadBinding.Value.PropertyChanged += (sender, e) =>
-                    {
-                        if (e.PropertyName == nameof(DAComplexVariable<int>.CurrentValue))
-                        {
-                            UpdateUI(() =>
-                            {
-                                Debug.WriteLine($"C1 Total Bad: {c1TotalBadBinding.Value.CurrentValue}");
-                            });
-                        }
-                    };
-
-                    c1TotalThroughputBinding.Value.PropertyChanged += (sender, e) =>
-                    {
-                        if (e.PropertyName == nameof(DAComplexVariable<int>.CurrentValue))
-                        {
-                            UpdateUI(() =>
-                            {
-                                Debug.WriteLine($"C1 Throughput: {c1TotalThroughputBinding.Value.CurrentValue}");
-                            });
-                        }
-                    };
-
-                    c1CurrentRecipeBinding.Value.PropertyChanged += (sender, e) =>
-                    {
-                        if (e.PropertyName == nameof(DAComplexVariable<string>.CurrentValue))
-                        {
-                            UpdateUI(() =>
-                            {
-                                Debug.WriteLine($"C1 Recipe: {c1CurrentRecipeBinding.Value.CurrentValue}");
-                            });
-                        }
-                    };
-
+                    // Subscribe to value changes
+                    SubscribeToValueChanges_ECI1();
                     Debug.WriteLine("✅ [ECI1 BINDINGS] Value bindings created successfully");
                 }
                 catch (Exception ex)
@@ -730,25 +725,33 @@ namespace MatroxLDS
                 // ========== EVENT SUBSCRIPTION FOR IMAGES ==========
                 try
                 {
-                    Debug.WriteLine("🔵 [ECI1 EVENTS] Subscribing to InspectionEnd event...");
+                    Debug.WriteLine($"🔵 [ECI1 EVENTS] Subscribing to event: '{opcEventObjectName}'");
 
                     c1InspectionEndEvent = new DAOPCEvent<InspectionEndEventResult>(
                         opcSession1,
-                        "InspectionEnd",  // Event name from Design Assistant
-                        20  // Keep last 20 results in history
+                        opcEventObjectName,  // ← Uses value from config. json
+                        20
                     );
 
-                    // Subscribe to event changes
                     c1InspectionEndEvent.OnCurrentResultChange += C1InspectionEnd_OnResultChange;
 
-                    Debug.WriteLine("✅ [ECI1 EVENTS] InspectionEnd event subscribed successfully");
+                    Debug.WriteLine($"✅ [ECI1 EVENTS] Successfully subscribed to '{opcEventObjectName}'");
                 }
                 catch (Exception ex)
                 {
-                    Debug.WriteLine($"❌ [ECI1 EVENTS] Failed to subscribe to InspectionEnd:  {ex.Message}");
-                    Debug.WriteLine($"❌ [ECI1 EVENTS] Stack trace: {ex.StackTrace}");
+                    Debug.WriteLine("❌ [ECI1 EVENTS] ═══════════════════════════════════════");
+                    Debug.WriteLine($"❌ [ECI1 EVENTS] Failed to subscribe to event: '{opcEventObjectName}'");
+                    Debug.WriteLine($"❌ [ECI1 EVENTS] Error: {ex.Message}");
+                    Debug.WriteLine("❌ [ECI1 EVENTS] ═══════════════════════════════════════");
+                    Debug.WriteLine("❌ [ECI1 EVENTS] TROUBLESHOOTING:");
+                    Debug.WriteLine("❌ [ECI1 EVENTS] 1. Open Design Assistant Platform Configuration");
+                    Debug.WriteLine("❌ [ECI1 EVENTS] 2. Go to:  OPC-UA → Events tab");
+                    Debug.WriteLine("❌ [ECI1 EVENTS] 3. Check EventObject name in TOP RIGHT corner");
+                    Debug.WriteLine($"❌ [ECI1 EVENTS] 4. Update config.json → OPCSettings → EventObjectName to match");
+                    Debug.WriteLine($"❌ [ECI1 EVENTS] 5. Current config value: '{opcEventObjectName}'");
+                    Debug.WriteLine("❌ [ECI1 EVENTS] ═══════════════════════════════════════");
+                    Debug.WriteLine($"❌ Stack trace: {ex.StackTrace}");
                 }
-
                 Debug.WriteLine("✅ [ECI1 BINDINGS] Initialization complete");
             }
             catch (Exception ex)
@@ -757,141 +760,296 @@ namespace MatroxLDS
                 Debug.WriteLine($"❌ Stack trace: {ex.StackTrace}");
             }
         }
+        private void SubscribeToValueChanges_ECI1()
+        {
+            Debug.WriteLine("🔵 [ECI1 VALUES] Subscribing to value change events...");
+
+            // Add a timer to check current values every 2 seconds
+            var debugTimer = new System.Windows.Forms.Timer();
+            debugTimer.Interval = 2000;
+            debugTimer.Tick += (s, e) =>
+            {
+                try
+                {
+                    Debug.WriteLine("═══════════════════════════════════════");
+                    Debug.WriteLine("📊 [ECI1 DEBUG] Current binding values:");
+
+                    if (c1FinishNumberBinding?.Value != null)
+                        Debug.WriteLine($"   FinishNumber: {c1FinishNumberBinding.Value.CurrentValue}");
+                    else
+                        Debug.WriteLine("   FinishNumber: NULL");
+
+                    if (c1TotalGoodBinding?.Value != null)
+                        Debug.WriteLine($"   TotalGood: {c1TotalGoodBinding.Value.CurrentValue}");
+                    else
+                        Debug.WriteLine("   TotalGood: NULL");
+
+                    if (c1TotalBadBinding?.Value != null)
+                        Debug.WriteLine($"   TotalBad:   {c1TotalBadBinding.Value.CurrentValue}");
+                    else
+                        Debug.WriteLine("   TotalBad:  NULL");
+
+                    if (c1TotalThroughputBinding?.Value != null)
+                        Debug.WriteLine($"   Throughput:   {c1TotalThroughputBinding.Value.CurrentValue}");
+                    else
+                        Debug.WriteLine("   Throughput: NULL");
+
+                    Debug.WriteLine("═══════════════════════════════════════");
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"❌ [ECI1 DEBUG TIMER] Error: {ex.Message}");
+                }
+            };
+            debugTimer.Start();
+
+            // CRITICAL: Wrap the ENTIRE PropertyChanged subscription in try-catch
+            try
+            {
+                if (c1FinishNumberBinding?.Value != null)
+                {
+                    c1FinishNumberBinding.Value.PropertyChanged += (s, e) =>
+                    {
+                        try
+                        {
+                            Debug.WriteLine($"🔔 [ECI1 EVENT] PropertyChanged fired!  Property: {e.PropertyName}");
+
+                            if (e.PropertyName == "CurrentValue")
+                            {
+                                try
+                                {
+                                    this.Invoke((MethodInvoker)delegate
+                                    {
+                                        try
+                                        {
+                                            var value = c1FinishNumberBinding.Value.CurrentValue;
+                                            FinishNumber.Text = value.ToString();
+                                            Debug.WriteLine($"📊 [ECI1 VALUES] FinishNumber = {value}");
+                                        }
+                                        catch (Exception ex3)
+                                        {
+                                            Debug.WriteLine($"❌ [ECI1 EVENT] Error updating UI: {ex3.Message}");
+                                          //  Debug.WriteLine($"❌ Value type: {c1FinishNumberBinding.Value.CurrentValue?.GetType().Name}");
+                                        }
+                                    });
+                                }
+                                catch (Exception ex2)
+                                {
+                                    Debug.WriteLine($"❌ [ECI1 EVENT] Error invoking:  {ex2.Message}");
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Debug.WriteLine($"❌ [ECI1 EVENT] Error in PropertyChanged handler: {ex.Message}");
+                            Debug.WriteLine($"❌ Property: {e.PropertyName}");
+                            Debug.WriteLine($"❌ Exception type: {ex.GetType().Name}");
+                            Debug.WriteLine($"❌ Stack:  {ex.StackTrace}");
+                        }
+                    };
+                    Debug.WriteLine("✅ [ECI1 VALUES] Subscribed to FinishNumber changes");
+                }
+                else
+                {
+                    Debug.WriteLine("❌ [ECI1 VALUES] c1FinishNumberBinding. Value is NULL!");
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"❌ [ECI1 VALUES] Error subscribing to FinishNumber: {ex.Message}");
+                Debug.WriteLine($"❌ Stack: {ex.StackTrace}");
+            }
+
+            Debug.WriteLine("✅ [ECI1 VALUES] Subscribed to all value changes");
+        }
         private void InitializeOPCBindings_ECI2()
         {
             try
             {
                 if (opcSession2 == null) return;
 
-                Debug.WriteLine("🔵 [ECI2 BINDINGS] Starting initialization.. .");
+                Debug.WriteLine("🔵 [ECI2 BINDINGS] Starting initialization...");
 
-                // ========== BINDINGS ==========
-                try
-                {
-                    Debug.WriteLine("🔵 [ECI2 BINDINGS] Creating value bindings...");
+                // Create bindings with "Bindings." prefix
+                c2DentNumberBinding = new DAOPCBinding<int>(opcSession2, "Bindings.DentNumber");
+                c2ISWNumberBinding = new DAOPCBinding<int>(opcSession2, "Bindings.ISWNumber");
+                c2BaseNumberBinding = new DAOPCBinding<int>(opcSession2, "Bindings.BaseNumber");
+                c2TotalGoodBinding = new DAOPCBinding<int>(opcSession2, "Bindings.TotalGoodCount");
+                c2TotalBadBinding = new DAOPCBinding<int>(opcSession2, "Bindings.TotalBadCount");
+                c2TotalThroughputBinding = new DAOPCBinding<int>(opcSession2, "Bindings.TotalThroughput");
+                c2CurrentRecipeBinding = new DAOPCBinding<string>(opcSession2, "Bindings.CurrentRecipeName");
 
-                    // Camera 2 (ECI2) bindings - use opcSession2
-                    c2BaseNumberBinding = new DAOPCBinding<int>(opcSession2, "ECI2.BaseNumber");
-                    c2ISWNumberBinding = new DAOPCBinding<int>(opcSession2, "ECI2.ISWNumber");
-                    c2DentNumberBinding = new DAOPCBinding<int>(opcSession2, "ECI2.DentNumber");
-                    c2TotalGoodBinding = new DAOPCBinding<int>(opcSession2, "ECI2.TotalGoodCount");
-                    c2TotalBadBinding = new DAOPCBinding<int>(opcSession2, "ECI2.TotalBadCount");
-                    c2TotalThroughputBinding = new DAOPCBinding<int>(opcSession2, "ECI2.TotalThroughput");
-                    c2CurrentRecipeBinding = new DAOPCBinding<string>(opcSession2, "ECI2.CurrentRecipeName");
+                // Subscribe to value changes
+                SubscribeToValueChanges_ECI2();
 
-                    // Subscribe to Value.PropertyChanged events
-                    c2BaseNumberBinding.Value.PropertyChanged += (sender, e) =>
-                    {
-                        if (e.PropertyName == nameof(DAComplexVariable<int>.CurrentValue))
-                        {
-                            UpdateUI(() =>
-                            {
-                                Debug.WriteLine($"C2 Base: {c2BaseNumberBinding.Value.CurrentValue}");
-                            });
-                        }
-                    };
-
-                    c2ISWNumberBinding.Value.PropertyChanged += (sender, e) =>
-                    {
-                        if (e.PropertyName == nameof(DAComplexVariable<int>.CurrentValue))
-                        {
-                            UpdateUI(() =>
-                            {
-                                Debug.WriteLine($"C2 ISW: {c2ISWNumberBinding.Value.CurrentValue}");
-                            });
-                        }
-                    };
-
-                    c2DentNumberBinding.Value.PropertyChanged += (sender, e) =>
-                    {
-                        if (e.PropertyName == nameof(DAComplexVariable<int>.CurrentValue))
-                        {
-                            UpdateUI(() =>
-                            {
-                                Debug.WriteLine($"C2 Dent: {c2DentNumberBinding.Value.CurrentValue}");
-                            });
-                        }
-                    };
-
-                    c2TotalGoodBinding.Value.PropertyChanged += (sender, e) =>
-                    {
-                        if (e.PropertyName == nameof(DAComplexVariable<int>.CurrentValue))
-                        {
-                            UpdateUI(() =>
-                            {
-                                Debug.WriteLine($"C2 Total Good: {c2TotalGoodBinding.Value.CurrentValue}");
-                            });
-                        }
-                    };
-
-                    c2TotalBadBinding.Value.PropertyChanged += (sender, e) =>
-                    {
-                        if (e.PropertyName == nameof(DAComplexVariable<int>.CurrentValue))
-                        {
-                            UpdateUI(() =>
-                            {
-                                Debug.WriteLine($"C2 Total Bad: {c2TotalBadBinding.Value.CurrentValue}");
-                            });
-                        }
-                    };
-
-                    c2TotalThroughputBinding.Value.PropertyChanged += (sender, e) =>
-                    {
-                        if (e.PropertyName == nameof(DAComplexVariable<int>.CurrentValue))
-                        {
-                            UpdateUI(() =>
-                            {
-                                Debug.WriteLine($"C2 Throughput:  {c2TotalThroughputBinding.Value.CurrentValue}");
-                            });
-                        }
-                    };
-
-                    c2CurrentRecipeBinding.Value.PropertyChanged += (sender, e) =>
-                    {
-                        if (e.PropertyName == nameof(DAComplexVariable<string>.CurrentValue))
-                        {
-                            UpdateUI(() =>
-                            {
-                                Debug.WriteLine($"C2 Recipe: {c2CurrentRecipeBinding.Value.CurrentValue}");
-                            });
-                        }
-                    };
-
-                    Debug.WriteLine("✅ [ECI2 BINDINGS] Value bindings created successfully");
-                }
-                catch (Exception ex)
-                {
-                    Debug.WriteLine($"❌ [ECI2 BINDINGS] Error creating value bindings: {ex.Message}");
-                }
-
-                // ========== EVENT SUBSCRIPTION FOR IMAGES ==========
-                try
-                {
-                    Debug.WriteLine("🔵 [ECI2 EVENTS] Subscribing to InspectionEnd event.. .");
-
-                    c2InspectionEndEvent = new DAOPCEvent<InspectionEndEventResult>(
-                        opcSession2,
-                        "InspectionEnd",  // Event name from Design Assistant
-                        20  // Keep last 20 results in history
-                    );
-
-                    // Subscribe to event changes
-                    c2InspectionEndEvent.OnCurrentResultChange += C2InspectionEnd_OnResultChange;
-
-                    Debug.WriteLine("✅ [ECI2 EVENTS] InspectionEnd event subscribed successfully");
-                }
-                catch (Exception ex)
-                {
-                    Debug.WriteLine($"❌ [ECI2 EVENTS] Failed to subscribe to InspectionEnd: {ex.Message}");
-                    Debug.WriteLine($"❌ [ECI2 EVENTS] Stack trace: {ex.StackTrace}");
-                }
-
-                Debug.WriteLine("✅ [ECI2 BINDINGS] Initialization complete");
+                Debug.WriteLine("✅ [ECI2 BINDINGS] Value bindings created successfully");
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"❌ [ECI2 BINDINGS] Fatal error:  {ex.Message}");
-                Debug.WriteLine($"❌ Stack trace: {ex.StackTrace}");
+                Debug.WriteLine($"❌ [ECI2 BINDINGS] Error:  {ex.Message}");
+            }
+        }
+        private void SubscribeToValueChanges_ECI2()
+        {
+            Debug.WriteLine("🔵 [ECI2 VALUES] Subscribing to value change events...");
+
+            try
+            {
+                if (c2DentNumberBinding?.Value != null)
+                {
+                    c2DentNumberBinding.Value.PropertyChanged += (s, e) =>
+                    {
+                        try
+                        {
+                            if (e.PropertyName == "CurrentValue")
+                            {
+                                this.Invoke((MethodInvoker)delegate
+                                {
+                                    DentNumber.Text = c2DentNumberBinding.Value.CurrentValue.ToString();
+                                    Debug.WriteLine($"📊 [ECI2 VALUES] DentNumber = {c2DentNumberBinding.Value.CurrentValue}");
+                                });
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Debug.WriteLine($"❌ [ECI2] Error updating DentNumber:  {ex.Message}");
+                        }
+                    };
+                }
+
+                if (c2ISWNumberBinding?.Value != null)
+                {
+                    c2ISWNumberBinding.Value.PropertyChanged += (s, e) =>
+                    {
+                        try
+                        {
+                            if (e.PropertyName == "CurrentValue")
+                            {
+                                this.Invoke((MethodInvoker)delegate
+                                {
+                                    ISWNumber.Text = c2ISWNumberBinding.Value.CurrentValue.ToString();
+                                    Debug.WriteLine($"📊 [ECI2 VALUES] ISWNumber = {c2ISWNumberBinding.Value.CurrentValue}");
+                                });
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Debug.WriteLine($"❌ [ECI2] Error updating ISWNumber: {ex.Message}");
+                        }
+                    };
+                }
+
+                if (c2BaseNumberBinding?.Value != null)
+                {
+                    c2BaseNumberBinding.Value.PropertyChanged += (s, e) =>
+                    {
+                        try
+                        {
+                            if (e.PropertyName == "CurrentValue")
+                            {
+                                this.Invoke((MethodInvoker)delegate
+                                {
+                                    BaseNumber.Text = c2BaseNumberBinding.Value.CurrentValue.ToString();
+                                    Debug.WriteLine($"📊 [ECI2 VALUES] BaseNumber = {c2BaseNumberBinding.Value.CurrentValue}");
+                                });
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Debug.WriteLine($"❌ [ECI2] Error updating BaseNumber: {ex.Message}");
+                        }
+                    };
+                }
+
+                if (c2TotalGoodBinding?.Value != null)
+                {
+                    c2TotalGoodBinding.Value.PropertyChanged += (s, e) =>
+                    {
+                        try
+                        {
+                            if (e.PropertyName == "CurrentValue")
+                            {
+                                this.Invoke((MethodInvoker)delegate
+                                {
+                                    Debug.WriteLine($"📊 [ECI2 VALUES] TotalGood = {c2TotalGoodBinding.Value.CurrentValue}");
+                                });
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Debug.WriteLine($"❌ [ECI2] Error updating TotalGood: {ex.Message}");
+                        }
+                    };
+                }
+
+                if (c2TotalBadBinding?.Value != null)
+                {
+                    c2TotalBadBinding.Value.PropertyChanged += (s, e) =>
+                    {
+                        try
+                        {
+                            if (e.PropertyName == "CurrentValue")
+                            {
+                                this.Invoke((MethodInvoker)delegate
+                                {
+                                    Debug.WriteLine($"📊 [ECI2 VALUES] TotalBad = {c2TotalBadBinding.Value.CurrentValue}");
+                                });
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Debug.WriteLine($"❌ [ECI2] Error updating TotalBad: {ex.Message}");
+                        }
+                    };
+                }
+
+                if (c2TotalThroughputBinding?.Value != null)
+                {
+                    c2TotalThroughputBinding.Value.PropertyChanged += (s, e) =>
+                    {
+                        try
+                        {
+                            if (e.PropertyName == "CurrentValue")
+                            {
+                                this.Invoke((MethodInvoker)delegate
+                                {
+                                    Debug.WriteLine($"📊 [ECI2 VALUES] Throughput = {c2TotalThroughputBinding.Value.CurrentValue}");
+                                });
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Debug.WriteLine($"❌ [ECI2] Error updating Throughput:  {ex.Message}");
+                        }
+                    };
+                }
+
+                if (c2CurrentRecipeBinding?.Value != null)
+                {
+                    c2CurrentRecipeBinding.Value.PropertyChanged += (s, e) =>
+                    {
+                        try
+                        {
+                            if (e.PropertyName == "CurrentValue")
+                            {
+                                this.Invoke((MethodInvoker)delegate
+                                {
+                                    Debug.WriteLine($"📊 [ECI2 VALUES] Recipe = {c2CurrentRecipeBinding.Value.CurrentValue}");
+                                });
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Debug.WriteLine($"❌ [ECI2] Error updating Recipe: {ex.Message}");
+                        }
+                    };
+                }
+
+                Debug.WriteLine("✅ [ECI2 VALUES] Subscribed to all value changes");
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"❌ [ECI2 VALUES] Error subscribing:  {ex.Message}");
             }
         }
         private void UpdateUI(Action action)
@@ -910,6 +1068,7 @@ namespace MatroxLDS
 
         private void C1InspectionEnd_OnResultChange(object sender, PropertyChangedEventArgs e)
         {
+            Debug.WriteLine("!!! Event fired (C1InspectionEnd_OnResultChange)");
             UpdateUI(() =>
             {
                 try
@@ -1078,18 +1237,41 @@ namespace MatroxLDS
                 {
                     var image = Image.FromStream(ms);
 
-                    // TODO: Replace with your actual Camera 1 image control name
-                    // Examples: 
-                    // pictureBoxCam1.Image = image;
-                    // displayControlCam1.Image = image;
-                    // cam1PictureBox.Image = image;
+                    // Update PictureBox on UI thread
+                    if (pictureBoxCam1.InvokeRequired)
+                    {
+                        pictureBoxCam1.Invoke(new Action(() =>
+                        {
+                            try
+                            {
+                                // Dispose old image to prevent memory leaks
+                                var oldImage = pictureBoxCam1.Image;
+                                pictureBoxCam1.Image = (Image)image.Clone();
+                                oldImage?.Dispose();
 
-                    Debug.WriteLine($"✅ [ECI1] Image displayed ({imageBytes.Length} bytes, {image.Width}x{image.Height})");
+                                Debug.WriteLine($"✅ [ECI1] Image displayed ({imageBytes.Length} bytes, {image.Width}x{image.Height})");
+                            }
+                            catch (Exception ex)
+                            {
+                                Debug.WriteLine($"❌ [ECI1] Error updating PictureBox: {ex.Message}");
+                            }
+                        }));
+                    }
+                    else
+                    {
+                        // Already on UI thread
+                        var oldImage = pictureBoxCam1.Image;
+                        pictureBoxCam1.Image = (Image)image.Clone();
+                        oldImage?.Dispose();
+
+                        Debug.WriteLine($"✅ [ECI1] Image displayed ({imageBytes.Length} bytes, {image.Width}x{image.Height})");
+                    }
                 }
             }
             catch (Exception ex)
             {
                 Debug.WriteLine($"❌ [ECI1] Error displaying image: {ex.Message}");
+                Debug.WriteLine($"❌ Stack trace: {ex.StackTrace}");
             }
         }
 
@@ -1107,18 +1289,41 @@ namespace MatroxLDS
                 {
                     var image = Image.FromStream(ms);
 
-                    // TODO: Replace with your actual Camera 2 image control name
-                    // Examples:
-                    // pictureBoxCam2.Image = image;
-                    // displayControlCam2.Image = image;
-                    // cam2PictureBox.Image = image;
+                    // Update PictureBox on UI thread
+                    if (pictureBoxCam2.InvokeRequired)
+                    {
+                        pictureBoxCam2.Invoke(new Action(() =>
+                        {
+                            try
+                            {
+                                // Dispose old image to prevent memory leaks
+                                var oldImage = pictureBoxCam2.Image;
+                                pictureBoxCam2.Image = (Image)image.Clone();
+                                oldImage?.Dispose();
 
-                    Debug.WriteLine($"✅ [ECI2] Image displayed ({imageBytes.Length} bytes, {image.Width}x{image.Height})");
+                                Debug.WriteLine($"✅ [ECI2] Image displayed ({imageBytes.Length} bytes, {image.Width}x{image.Height})");
+                            }
+                            catch (Exception ex)
+                            {
+                                Debug.WriteLine($"❌ [ECI2] Error updating PictureBox: {ex.Message}");
+                            }
+                        }));
+                    }
+                    else
+                    {
+                        // Already on UI thread
+                        var oldImage = pictureBoxCam2.Image;
+                        pictureBoxCam2.Image = (Image)image.Clone();
+                        oldImage?.Dispose();
+
+                        Debug.WriteLine($"✅ [ECI2] Image displayed ({imageBytes.Length} bytes, {image.Width}x{image.Height})");
+                    }
                 }
             }
             catch (Exception ex)
             {
                 Debug.WriteLine($"❌ [ECI2] Error displaying image: {ex.Message}");
+                Debug.WriteLine($"❌ Stack trace: {ex.StackTrace}");
             }
         }
 
@@ -1369,113 +1574,113 @@ namespace MatroxLDS
                 throw;
             }
         }
-        private async void StartDisplays(SplashScreen splashScreen)
-        {
-            try { splashScreen?.UpdateProgress("Displays Starting"); } catch { }
+        //private async void StartDisplays(SplashScreen splashScreen)
+        //{
+        //    try { splashScreen?.UpdateProgress("Displays Starting"); } catch { }
 
-            try
-            {
-                if (ResetCounterBtn1 != null)
-                {
-                    await ResetCounterBtn1.ConnectAsync();
-                }
-            }
-            catch (Exception ex)
-            {
-                try { splashScreen?.UpdateProgress("ResetCounterBtn1 connect failed: " + ex.Message); } catch { }
-                Debug.WriteLine("ResetCounterBtn1.ConnectAsync failed: " + ex.Message);
-            }
+        //    try
+        //    {
+        //        if (ResetCounterBtn1 != null)
+        //        {
+        //            await ResetCounterBtn1.ConnectAsync();
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        try { splashScreen?.UpdateProgress("ResetCounterBtn1 connect failed: " + ex.Message); } catch { }
+        //        Debug.WriteLine("ResetCounterBtn1.ConnectAsync failed: " + ex.Message);
+        //    }
 
-            try
-            {
-                if (ResetCounterBtn2 != null)
-                {
-                    await ResetCounterBtn2.ConnectAsync();
-                }
-            }
-            catch (Exception ex)
-            {
-                try { splashScreen?.UpdateProgress("ResetCounterBtn2 connect failed: " + ex.Message); } catch { }
-                Debug.WriteLine("ResetCounterBtn2.ConnectAsync failed: " + ex.Message);
-            }
+        //    try
+        //    {
+        //        if (ResetCounterBtn2 != null)
+        //        {
+        //            await ResetCounterBtn2.ConnectAsync();
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        try { splashScreen?.UpdateProgress("ResetCounterBtn2 connect failed: " + ex.Message); } catch { }
+        //        Debug.WriteLine("ResetCounterBtn2.ConnectAsync failed: " + ex.Message);
+        //    }
 
-            try { splashScreen?.UpdateProgress("Displays Started Please wait 2 minutes"); } catch { }
-        }
-        private void ConnectToAllTextboxes(SplashScreen splashScreen)
-        {
-            // CAMERA 1
-            CameraPage1.ValueElements["FinishNumber"].ValueChanged += (sender, args) =>
-            {
-                string newValue = CameraPage1.ValueElements["FinishNumber"].Value?.ToString();
-                if (FinishNumber.InvokeRequired)
-                {
-                    FinishNumber.Invoke(new Action(() => FinishNumber.Text = newValue));
-                }
-                else
-                {
-                    FinishNumber.Text = newValue;
-                }
-                UpdateCameraAndInsertIfComplete(0, CameraPage1);
-                var val = args.NewValue?.ToString();
-                if (!string.IsNullOrEmpty(val) && int.TryParse(val, out int v) && v > 0)
-                    ShowFaultMessage("Finish Failed", Color.Red);
+        //    try { splashScreen?.UpdateProgress("Displays Started Please wait 2 minutes"); } catch { }
+        //}
+        //private void ConnectToAllTextboxes(SplashScreen splashScreen)
+        //{
+        //    // CAMERA 1
+        //    CameraPage1.ValueElements["FinishNumber"].ValueChanged += (sender, args) =>
+        //    {
+        //        string newValue = CameraPage1.ValueElements["FinishNumber"].Value?.ToString();
+        //        if (FinishNumber.InvokeRequired)
+        //        {
+        //            FinishNumber.Invoke(new Action(() => FinishNumber.Text = newValue));
+        //        }
+        //        else
+        //        {
+        //            FinishNumber.Text = newValue;
+        //        }
+        //        UpdateCameraAndInsertIfComplete(0, CameraPage1);
+        //        var val = args.NewValue?.ToString();
+        //        if (!string.IsNullOrEmpty(val) && int.TryParse(val, out int v) && v > 0)
+        //            ShowFaultMessage("Finish Failed", Color.Red);
 
-            };
-            CameraPage2.ValueElements["BaseNumber"].ValueChanged += (sender, args) =>
-            {
-                string newValue = CameraPage2.ValueElements["BaseNumber"].Value?.ToString();
-                if (BaseNumber.InvokeRequired)
-                {
-                    BaseNumber.Invoke(new Action(() => BaseNumber.Text = newValue));
-                }
-                else
-                {
-                    BaseNumber.Text = newValue;
-                }
-                UpdateCameraAndInsertIfComplete(1, CameraPage2);
-                var val = args.NewValue?.ToString();
-                if (!string.IsNullOrEmpty(val) && int.TryParse(val, out int v) && v > 0)
-                    ShowFaultMessage("Base Failed", Color.Red);
+        //    };
+        //    CameraPage2.ValueElements["BaseNumber"].ValueChanged += (sender, args) =>
+        //    {
+        //        string newValue = CameraPage2.ValueElements["BaseNumber"].Value?.ToString();
+        //        if (BaseNumber.InvokeRequired)
+        //        {
+        //            BaseNumber.Invoke(new Action(() => BaseNumber.Text = newValue));
+        //        }
+        //        else
+        //        {
+        //            BaseNumber.Text = newValue;
+        //        }
+        //        UpdateCameraAndInsertIfComplete(1, CameraPage2);
+        //        var val = args.NewValue?.ToString();
+        //        if (!string.IsNullOrEmpty(val) && int.TryParse(val, out int v) && v > 0)
+        //            ShowFaultMessage("Base Failed", Color.Red);
 
-            };
+        //    };
 
-            CameraPage2.ValueElements["ISWNumber"].ValueChanged += (sender, args) =>
-            {
-                string newValue = CameraPage2.ValueElements["ISWNumber"].Value?.ToString();
-                if (ISWNumber.InvokeRequired)
-                {
-                    ISWNumber.Invoke(new Action(() => ISWNumber.Text = newValue));
-                }
-                else
-                {
-                    ISWNumber.Text = newValue;
-                }
-                UpdateCameraAndInsertIfComplete(1, CameraPage2);
-                var val = args.NewValue?.ToString();
-                if (!string.IsNullOrEmpty(val) && int.TryParse(val, out int v) && v > 0)
-                    ShowFaultMessage("ISW Failed", Color.Red);
+        //    CameraPage2.ValueElements["ISWNumber"].ValueChanged += (sender, args) =>
+        //    {
+        //        string newValue = CameraPage2.ValueElements["ISWNumber"].Value?.ToString();
+        //        if (ISWNumber.InvokeRequired)
+        //        {
+        //            ISWNumber.Invoke(new Action(() => ISWNumber.Text = newValue));
+        //        }
+        //        else
+        //        {
+        //            ISWNumber.Text = newValue;
+        //        }
+        //        UpdateCameraAndInsertIfComplete(1, CameraPage2);
+        //        var val = args.NewValue?.ToString();
+        //        if (!string.IsNullOrEmpty(val) && int.TryParse(val, out int v) && v > 0)
+        //            ShowFaultMessage("ISW Failed", Color.Red);
 
-            };
+        //    };
 
-            CameraPage2.ValueElements["DentNumber"].ValueChanged += (sender, args) =>
-            {
-                string newValue = CameraPage2.ValueElements["DentNumber"].Value?.ToString();
-                if (DentNumber.InvokeRequired)
-                {
-                    DentNumber.Invoke(new Action(() => DentNumber.Text = newValue));
-                }
-                else
-                {
-                    DentNumber.Text = newValue;
-                }
-                UpdateCameraAndInsertIfComplete(1, CameraPage2);
-                var val = args.NewValue?.ToString();
-                if (!string.IsNullOrEmpty(val) && int.TryParse(val, out int v) && v > 0)
-                    ShowFaultMessage("Dent Failed", Color.Red);
+        //    CameraPage2.ValueElements["DentNumber"].ValueChanged += (sender, args) =>
+        //    {
+        //        string newValue = CameraPage2.ValueElements["DentNumber"].Value?.ToString();
+        //        if (DentNumber.InvokeRequired)
+        //        {
+        //            DentNumber.Invoke(new Action(() => DentNumber.Text = newValue));
+        //        }
+        //        else
+        //        {
+        //            DentNumber.Text = newValue;
+        //        }
+        //        UpdateCameraAndInsertIfComplete(1, CameraPage2);
+        //        var val = args.NewValue?.ToString();
+        //        if (!string.IsNullOrEmpty(val) && int.TryParse(val, out int v) && v > 0)
+        //            ShowFaultMessage("Dent Failed", Color.Red);
 
 
-            };
-        }
+        //    };
+        //}
 
         private void UpdateCameraAndInsertIfComplete(int cameraIndex, dynamic cameraPage)
         {
@@ -1644,9 +1849,17 @@ namespace MatroxLDS
         }
         public class Configuration
         {
+            public OPCSettings OPCSettings { get; set; }
             public List<User> Users { get; set; }
             public Dictionary<string, Dictionary<string, int>> Buttons { get; set; }
         }
+        public class OPCSettings
+        {
+            public string EventObjectName { get; set; }
+            public string ECI1_Port { get; set; }
+            public string ECI2_Port { get; set; }
+        }
+
         public class User
         {
             public string Username { get; set; }
@@ -1661,16 +1874,19 @@ namespace MatroxLDS
                 var configFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json");
                 var json = File.ReadAllText(configFilePath);
                 var config = JsonConvert.DeserializeObject<Configuration>(json);
+
                 users = config.Users;
                 buttonPermissions = config.Buttons;
 
-                // Log loaded permissions
-                foreach (var formButtons in buttonPermissions)
+                // Load OPC settings
+                if (config.OPCSettings != null && !string.IsNullOrWhiteSpace(config.OPCSettings.EventObjectName))
                 {
-                    foreach (var btn in formButtons.Value)
-                    {
-                        //Console.WriteLine($"Loaded Button: {btn.Key}, Required Level: {btn.Value}");
-                    }
+                    opcEventObjectName = config.OPCSettings.EventObjectName;
+                    Debug.WriteLine($"✅ [CONFIG] Loaded EventObjectName from config: '{opcEventObjectName}'");
+                }
+                else
+                {
+                    Debug.WriteLine($"⚠️ [CONFIG] No OPCSettings in config.json, using default: '{opcEventObjectName}'");
                 }
 
                 splashscreen.UpdateProgress("Configuration loaded.");
@@ -1924,12 +2140,30 @@ namespace MatroxLDS
             int idx = (currentDisplayIndexes["ECI1"] + 1) % displays.Count;
             currentDisplayIndexes["ECI1"] = idx;
 
-            // Show the display for the new index
-            ShowDisplay("ECI1", displays[idx]);
+            // Hide Camera 2 PictureBox, show Camera 1
+            if (pictureBoxCam2 != null) pictureBoxCam2.Visible = false;
+            if (pictureBoxCam1 != null)
+            {
+                pictureBoxCam1.Visible = true;
+                pictureBoxCam1.BringToFront();
+                currentPictureBox = pictureBoxCam1;
+            }
 
-            // Update dots panel for camera 1 (with the new index!)
+            // Refresh image from last event result
+            if (c1InspectionEndEvent?.CurrentResult != null)
+            {
+                string currentDisplay = displays[idx];
+                byte[] imageBytes = GetECI1ImageForDisplay(c1InspectionEndEvent.CurrentResult, currentDisplay);
+                if (imageBytes != null)
+                {
+                    DisplayCamera1Image(imageBytes);
+                }
+            }
+
+            // Update dots panel for camera 1
             DrawDisplayDots(panelCam1Dots, displays, idx);
         }
+
         private void Cam2Scroll_Click(object sender, EventArgs e)
         {
             selectedCameraIndex = 1; // Camera 2
@@ -1941,8 +2175,25 @@ namespace MatroxLDS
             int idx = (currentDisplayIndexes["ECI2"] + 1) % displays.Count;
             currentDisplayIndexes["ECI2"] = idx;
 
-            // Show the display for the new index
-            ShowDisplay("ECI2", displays[idx]);
+            // Hide Camera 1 PictureBox, show Camera 2
+            if (pictureBoxCam1 != null) pictureBoxCam1.Visible = false;
+            if (pictureBoxCam2 != null)
+            {
+                pictureBoxCam2.Visible = true;
+                pictureBoxCam2.BringToFront();
+                currentPictureBox = pictureBoxCam2;
+            }
+
+            // Refresh image from last event result
+            if (c2InspectionEndEvent?.CurrentResult != null)
+            {
+                string currentDisplay = displays[idx];
+                byte[] imageBytes = GetECI2ImageForDisplay(c2InspectionEndEvent.CurrentResult, currentDisplay);
+                if (imageBytes != null)
+                {
+                    DisplayCamera2Image(imageBytes);
+                }
+            }
 
             // Update dots panel for camera 2
             DrawDisplayDots(panelCam2Dots, displays, idx);
@@ -2692,6 +2943,9 @@ namespace MatroxLDS
         }
     }
 }
+
+
 }
+
 
 
