@@ -90,8 +90,8 @@ namespace MatroxLDS
         // Maps each project to its displays
         private readonly Dictionary<string, List<string>> projectDisplays = new Dictionary<string, List<string>>
             {
-                { "ECI1", new List<string> { "All","Finish", "BrokenFinish","FinishLastReject" } },
-                { "ECI2", new List<string> { "All", "FindCan", "DentImage", "ISWImage", "DentInspection", "BaseImage",  "FindCanFaileImage", "DentFailedImage", "ISWFailedImage", "BaseFailedImage" } },
+                { "ECI1", new List<string> { "All","Finish", "BrokenFinish","FinishLastReject", "BrokenFinishLastReject" } },
+                { "ECI2", new List<string> { "All", "FindCan", "DentImage", "ISWImage", "BaseImage",  "FindCanFailedImage", "DentFailedImage", "ISWFailedImage", "BaseFailedImage" } },
             };
 
         // Tracks which display is currently shown for each project
@@ -219,7 +219,7 @@ namespace MatroxLDS
             catch (Exception ex)
             {
                 // Log or show error as appropriate — avoid throwing back to caller
-                Debug.WriteLine("ReloadUsersFromConfig error: " + ex.Message);
+               // Debug.WriteLine("ReloadUsersFromConfig error: " + ex.Message);
             }
         }
         public MainForm()
@@ -317,7 +317,7 @@ namespace MatroxLDS
                 }
                 catch (Exception ex)
                 {
-                    Debug.WriteLine($"Card initialization error: {ex.Message}");
+                   // Debug.WriteLine($"Card initialization error: {ex.Message}");
                 }
 
                 string dbPath = GetQuarterlyDatabasePath(DateTime.Now);
@@ -325,10 +325,10 @@ namespace MatroxLDS
 
                // ========== START PROJECTS FIRST ==========
               // Wait for runtime projects to be started (this starts OPC UA servers)
-                Debug.WriteLine("🔵 Starting Design Assistant projects...");
+              //  Debug.WriteLine("🔵 Starting Design Assistant projects...");
                 await EnsureHostProjectRunning(HOST_NAME, PROJECT_NAME1);
                 await EnsureHostProjectRunning(HOST_NAME, PROJECT_NAME2);
-                Debug.WriteLine("✅ Design Assistant projects started");
+              //  Debug.WriteLine("✅ Design Assistant projects started");
 
                 // Small delay to ensure OPC UA servers are fully initialized
                 await Task.Delay(2000);  // Wait 2 seconds for servers to start
@@ -352,7 +352,7 @@ namespace MatroxLDS
                 }
                 catch (Exception ex)
                 {
-                    Debug.WriteLine("Background worker start failed: " + ex.Message);
+                  //  Debug.WriteLine("Background worker start failed: " + ex.Message);
                 }
 
                 // Create and await display controls
@@ -390,12 +390,12 @@ namespace MatroxLDS
                     pictureBoxCam1.Visible = true;
                     pictureBoxCam1.BringToFront();
 
-                    Debug.WriteLine("✅ OPC UA image display controls initialized");
+                   // Debug.WriteLine("✅ OPC UA image display controls initialized");
                     Program.splashForm?.UpdateProgress("OPC UA image displays ready");
                 }
                 catch (Exception ex)
                 {
-                    Debug.WriteLine($"❌ Error initializing OPC UA image displays: {ex.Message}");
+                  //  Debug.WriteLine($"❌ Error initializing OPC UA image displays: {ex.Message}");
                 }
                 // ========== END INITIALIZE OPC UA IMAGE DISPLAY ==========
 
@@ -420,7 +420,7 @@ namespace MatroxLDS
                 }
                 catch (Exception ex)
                 {
-                    Debug.WriteLine("Extra display initialization failed: " + ex.Message);
+                  //  Debug.WriteLine("Extra display initialization failed: " + ex.Message);
                 }
 
                 // Show Camera 1 "All" and keep it visible
@@ -450,7 +450,7 @@ namespace MatroxLDS
             {
                 // defensive: don't assume splash exists
                 try { Program.splashForm?.UpdateProgress($"Error during initialization: {ex.Message}"); } catch { }
-                Debug.WriteLine("MainForm_Load unhandled exception: " + ex);
+               // Debug.WriteLine("MainForm_Load unhandled exception: " + ex);
             }
         }
         private async Task InitializeOPCConnection()
@@ -458,16 +458,16 @@ namespace MatroxLDS
             try
             {
                 Program.splashForm?.UpdateProgress("Initializing OPC UA connections...");
-                Debug.WriteLine("═══════════════════════════════════════════════════════");
-                Debug.WriteLine("🔵 [START] OPC UA Initialization Starting...");
-                Debug.WriteLine($"🔵 [TIME] {DateTime.Now:yyyy-MM-dd HH:mm:ss. fff}");
-                Debug.WriteLine("═══════════════════════════════════════════════════════");
+                //Debug.WriteLine("═══════════════════════════════════════════════════════");
+                //Debug.WriteLine("🔵 [START] OPC UA Initialization Starting...");
+                //Debug.WriteLine($"🔵 [TIME] {DateTime.Now:yyyy-MM-dd HH:mm:ss. fff}");
+                //Debug.WriteLine("═══════════════════════════════════════════════════════");
 
-                // ========== CONNECTION 1 - ECI1 ==========
-                Debug.WriteLine("");
-                Debug.WriteLine("───────────────────────────────────────────────────────");
-                Debug.WriteLine("🔵 [ECI1] Starting ECI1 Connection...");
-                Debug.WriteLine("───────────────────────────────────────────────────────");
+                //// ========== CONNECTION 1 - ECI1 ==========
+                //Debug.WriteLine("");
+                //Debug.WriteLine("───────────────────────────────────────────────────────");
+                //Debug.WriteLine("🔵 [ECI1] Starting ECI1 Connection...");
+                //Debug.WriteLine("───────────────────────────────────────────────────────");
 
                 try
                 {
@@ -704,12 +704,12 @@ namespace MatroxLDS
                 }
 
                 // ========== EVENT SUBSCRIPTION ==========
-                Debug.WriteLine($"🔵 [ECI1 EVENTS] About to start event subscription task...");
+               // Debug.WriteLine($"🔵 [ECI1 EVENTS] About to start event subscription task...");
 
                 await Task.Run(() =>
                 {
-                    Debug.WriteLine($"🔵 [ECI1 EVENTS] Inside Task.Run()");
-                    Debug.WriteLine($"🔵 [ECI1 EVENTS] About to create DAOPCEvent...");
+                  //  Debug.WriteLine($"🔵 [ECI1 EVENTS] Inside Task.Run()");
+                   // Debug.WriteLine($"🔵 [ECI1 EVENTS] About to create DAOPCEvent...");
 
                     try
                     {
@@ -719,70 +719,70 @@ namespace MatroxLDS
                             20
                         );
 
-                        Debug.WriteLine($"✅ [ECI1 EVENTS] DAOPCEvent constructor completed!");
+                      //  Debug.WriteLine($"✅ [ECI1 EVENTS] DAOPCEvent constructor completed!");
                     }
                     catch (Exception constructorEx)
                     {
-                        Debug.WriteLine($"❌ [ECI1 EVENTS] Exception in DAOPCEvent constructor: {constructorEx.Message}");
-                        Debug.WriteLine($"❌ Stack:  {constructorEx.StackTrace}");
+                       // Debug.WriteLine($"❌ [ECI1 EVENTS] Exception in DAOPCEvent constructor: {constructorEx.Message}");
+                      //  Debug.WriteLine($"❌ Stack:  {constructorEx.StackTrace}");
                         return; // Exit task
                     }
 
-                    Debug.WriteLine($"🔵 [ECI1 EVENTS] Attaching event handler...");
+                 //   Debug.WriteLine($"🔵 [ECI1 EVENTS] Attaching event handler...");
 
                     try
                     {
                         c1InspectionEndEvent.OnCurrentResultChange += C1InspectionEnd_OnResultChange;
-                        Debug.WriteLine($"✅ [ECI1 EVENTS] Event handler attached");
+                       // Debug.WriteLine($"✅ [ECI1 EVENTS] Event handler attached");
                     }
                     catch (Exception handlerEx)
                     {
-                        Debug.WriteLine($"❌ [ECI1 EVENTS] Error attaching handler: {handlerEx.Message}");
+                      //  Debug.WriteLine($"❌ [ECI1 EVENTS] Error attaching handler: {handlerEx.Message}");
                         return;
                     }
 
                     // Check and trigger
-                    Debug.WriteLine($"🔵 [ECI1 EVENTS] Checking CurrentResult...");
+                  //  Debug.WriteLine($"🔵 [ECI1 EVENTS] Checking CurrentResult...");
 
                     if (c1InspectionEndEvent?.CurrentResult != null)
                     {
-                        Debug.WriteLine($"✅ [ECI1 EVENTS] CurrentResult exists!");
+                     //   Debug.WriteLine($"✅ [ECI1 EVENTS] CurrentResult exists!");
 
                         if (c1InspectionEndEvent.CurrentResult.All?.CurrentValue != null)
                         {
-                            Debug.WriteLine($"✅ [ECI1 EVENTS] Image data found: {c1InspectionEndEvent.CurrentResult.All.CurrentValue.Length} bytes");
-                            Debug.WriteLine($"🔵 [ECI1 EVENTS] Triggering handler manually...");
+                          //  Debug.WriteLine($"✅ [ECI1 EVENTS] Image data found: {c1InspectionEndEvent.CurrentResult.All.CurrentValue.Length} bytes");
+                          //  Debug.WriteLine($"🔵 [ECI1 EVENTS] Triggering handler manually...");
 
                             try
                             {
                                 C1InspectionEnd_OnResultChange(c1InspectionEndEvent, new PropertyChangedEventArgs("All"));
-                                Debug.WriteLine($"✅ [ECI1 EVENTS] Handler triggered successfully");
+                              //  Debug.WriteLine($"✅ [ECI1 EVENTS] Handler triggered successfully");
                             }
                             catch (Exception triggerEx)
                             {
-                                Debug.WriteLine($"❌ [ECI1 EVENTS] Error triggering handler: {triggerEx.Message}");
-                                Debug.WriteLine($"❌ Stack: {triggerEx.StackTrace}");
+                             //   Debug.WriteLine($"❌ [ECI1 EVENTS] Error triggering handler: {triggerEx.Message}");
+                              //  Debug.WriteLine($"❌ Stack: {triggerEx.StackTrace}");
                             }
                         }
                         else
                         {
-                            Debug.WriteLine($"⚠️ [ECI1 EVENTS] CurrentResult. All has no image data");
+                          //  Debug.WriteLine($"⚠️ [ECI1 EVENTS] CurrentResult. All has no image data");
                         }
                     }
                     else
                     {
-                        Debug.WriteLine($"⚠️ [ECI1 EVENTS] CurrentResult is null");
+                      //  Debug.WriteLine($"⚠️ [ECI1 EVENTS] CurrentResult is null");
                     }
 
-                    Debug.WriteLine($"✅ [ECI1 EVENTS] Task. Run() complete");
+                  //  Debug.WriteLine($"✅ [ECI1 EVENTS] Task. Run() complete");
                 });
 
-                Debug.WriteLine("✅ [ECI1 BINDINGS] Initialization complete");
+              //  Debug.WriteLine("✅ [ECI1 BINDINGS] Initialization complete");
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"❌ [ECI1 BINDINGS] Fatal error: {ex.Message}");
-                Debug.WriteLine($"❌ Stack: {ex.StackTrace}");
+              //  Debug.WriteLine($"❌ [ECI1 BINDINGS] Fatal error: {ex.Message}");
+              //  Debug.WriteLine($"❌ Stack: {ex.StackTrace}");
             }
         }
         private void SubscribeToValueChanges_ECI1()
@@ -837,7 +837,7 @@ namespace MatroxLDS
                     {
                         try
                         {
-                            Debug.WriteLine($"🔔 [ECI1 EVENT] PropertyChanged fired!  Property: {e.PropertyName}");
+                          //  Debug.WriteLine($"🔔 [ECI1 EVENT] PropertyChanged fired!  Property: {e.PropertyName}");
 
                             if (e.PropertyName == "CurrentValue")
                             {
@@ -849,27 +849,27 @@ namespace MatroxLDS
                                         {
                                             var value = c1FinishNumberBinding.Value.CurrentValue;
                                             FinishNumber.Text = value.ToString();
-                                            Debug.WriteLine($"📊 [ECI1 VALUES] FinishNumber = {value}");
+                                          //  Debug.WriteLine($"📊 [ECI1 VALUES] FinishNumber = {value}");
                                         }
                                         catch (Exception ex3)
                                         {
-                                            Debug.WriteLine($"❌ [ECI1 EVENT] Error updating UI: {ex3.Message}");
+                                           // Debug.WriteLine($"❌ [ECI1 EVENT] Error updating UI: {ex3.Message}");
                                           //  Debug.WriteLine($"❌ Value type: {c1FinishNumberBinding.Value.CurrentValue?.GetType().Name}");
                                         }
                                     });
                                 }
                                 catch (Exception ex2)
                                 {
-                                    Debug.WriteLine($"❌ [ECI1 EVENT] Error invoking:  {ex2.Message}");
+                                   // Debug.WriteLine($"❌ [ECI1 EVENT] Error invoking:  {ex2.Message}");
                                 }
                             }
                         }
                         catch (Exception ex)
                         {
-                            Debug.WriteLine($"❌ [ECI1 EVENT] Error in PropertyChanged handler: {ex.Message}");
-                            Debug.WriteLine($"❌ Property: {e.PropertyName}");
-                            Debug.WriteLine($"❌ Exception type: {ex.GetType().Name}");
-                            Debug.WriteLine($"❌ Stack:  {ex.StackTrace}");
+                            //Debug.WriteLine($"❌ [ECI1 EVENT] Error in PropertyChanged handler: {ex.Message}");
+                            //Debug.WriteLine($"❌ Property: {e.PropertyName}");
+                            //Debug.WriteLine($"❌ Exception type: {ex.GetType().Name}");
+                            //Debug.WriteLine($"❌ Stack:  {ex.StackTrace}");
                         }
                     };
                   //  Debug.WriteLine("✅ [ECI1 VALUES] Subscribed to FinishNumber changes");
@@ -893,7 +893,7 @@ namespace MatroxLDS
             {
                 if (opcSession2 == null) return;
 
-                Debug.WriteLine("🔵 [ECI2 BINDINGS] Starting initialization...");
+               // Debug.WriteLine("🔵 [ECI2 BINDINGS] Starting initialization...");
 
                 // Create bindings with "Bindings." prefix
                 try
@@ -922,7 +922,7 @@ namespace MatroxLDS
                 {
                     try
                     {
-                        Debug.WriteLine($"🔵 [ECI2 EVENTS] Subscribing to event: '{opcEventObjectName}'");
+                     //   Debug.WriteLine($"🔵 [ECI2 EVENTS] Subscribing to event: '{opcEventObjectName}'");
 
                         c2InspectionEndEvent = new DAOPCEvent<InspectionEndEventResult>(
                             opcSession2,
@@ -932,21 +932,21 @@ namespace MatroxLDS
 
                         c2InspectionEndEvent.OnCurrentResultChange += C2InspectionEnd_OnResultChange;
 
-                        Debug.WriteLine($"✅ [ECI2 EVENTS] Successfully subscribed to '{opcEventObjectName}'");
+                      //  Debug.WriteLine($"✅ [ECI2 EVENTS] Successfully subscribed to '{opcEventObjectName}'");
                     }
                     catch (Exception ex)
                     {
-                        Debug.WriteLine($"❌ [ECI2 EVENTS] Failed to subscribe:  {ex.Message}");
-                        Debug.WriteLine($"❌ Stack trace: {ex.StackTrace}");
+                     //   Debug.WriteLine($"❌ [ECI2 EVENTS] Failed to subscribe:  {ex.Message}");
+                      //  Debug.WriteLine($"❌ Stack trace: {ex.StackTrace}");
                     }
                 });
 
-                Debug.WriteLine("✅ [ECI2 BINDINGS] Initialization complete (event subscription in progress)");
+             //   Debug.WriteLine("✅ [ECI2 BINDINGS] Initialization complete (event subscription in progress)");
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"❌ [ECI2 BINDINGS] Error: {ex.Message}");
-                Debug.WriteLine($"❌ Stack trace: {ex.StackTrace}");
+              //  Debug.WriteLine($"❌ [ECI2 BINDINGS] Error: {ex.Message}");
+              //  Debug.WriteLine($"❌ Stack trace: {ex.StackTrace}");
             }
         }
         private void SubscribeToValueChanges_ECI2()
@@ -1128,84 +1128,84 @@ namespace MatroxLDS
 
         private void C1InspectionEnd_OnResultChange(object sender, PropertyChangedEventArgs e)
         {
-            Debug.WriteLine("═══════════════════════════════════════════════════════");
-            Debug.WriteLine($"! !! Event fired (C1InspectionEnd_OnResultChange)");
-            Debug.WriteLine($"!!!  Sender: {sender?.GetType().Name ?? "null"}");
-            Debug.WriteLine($"!!! PropertyName: {e?.PropertyName ?? "null"}");
-            Debug.WriteLine("═══════════════════════════════════════════════════════");
+            //Debug.WriteLine("═══════════════════════════════════════════════════════");
+            //Debug.WriteLine($"! !! Event fired (C1InspectionEnd_OnResultChange)");
+            //Debug.WriteLine($"!!!  Sender: {sender?.GetType().Name ?? "null"}");
+            //Debug.WriteLine($"!!! PropertyName: {e?.PropertyName ?? "null"}");
+            //Debug.WriteLine("═══════════════════════════════════════════════════════");
 
             UpdateUI(() =>
             {
                 try
                 {
-                    Debug.WriteLine("🔵 [EVENT HANDLER] Inside UpdateUI delegate");
+                  //  Debug.WriteLine("🔵 [EVENT HANDLER] Inside UpdateUI delegate");
 
                     if (c1InspectionEndEvent == null)
                     {
-                        Debug.WriteLine("❌ [EVENT HANDLER] c1InspectionEndEvent is null");
+                      //  Debug.WriteLine("❌ [EVENT HANDLER] c1InspectionEndEvent is null");
                         return;
                     }
 
-                    Debug.WriteLine("✅ [EVENT HANDLER] c1InspectionEndEvent exists");
+                 //   Debug.WriteLine("✅ [EVENT HANDLER] c1InspectionEndEvent exists");
 
                     if (c1InspectionEndEvent.CurrentResult == null)
                     {
-                        Debug.WriteLine("❌ [EVENT HANDLER] CurrentResult is null");
+                      //  Debug.WriteLine("❌ [EVENT HANDLER] CurrentResult is null");
                         return;
                     }
 
-                    Debug.WriteLine("✅ [EVENT HANDLER] CurrentResult exists");
+                   // Debug.WriteLine("✅ [EVENT HANDLER] CurrentResult exists");
 
                     var result = c1InspectionEndEvent.CurrentResult;
-                    Debug.WriteLine($"✅ [ECI1 EVENT] InspectionEnd received!  Property: {e.PropertyName}");
+                  //  Debug.WriteLine($"✅ [ECI1 EVENT] InspectionEnd received!  Property: {e.PropertyName}");
 
                     // Check if All property has data
                     if (result.All != null)
                     {
-                        Debug.WriteLine($"   All property:  IsAvailable={result.All.IsAvailable}, " +
-                                      $"CurrentValue={(result.All.CurrentValue != null ? $"byte[{result.All.CurrentValue.Length}]" : "null")}");
+                      //  Debug.WriteLine($"   All property:  IsAvailable={result.All.IsAvailable}, " +
+                        //              $"CurrentValue={(result.All.CurrentValue != null ? $"byte[{result.All.CurrentValue.Length}]" : "null")}");
                     }
                     else
                     {
-                        Debug.WriteLine("   All property is NULL!");
+                      //  Debug.WriteLine("   All property is NULL!");
                     }
 
                     // Get current display selection
                     if (!currentDisplayIndexes.ContainsKey("ECI1"))
                     {
-                        Debug.WriteLine("⚠️ [ECI1 EVENT] ECI1 not in currentDisplayIndexes");
+                      //  Debug.WriteLine("⚠️ [ECI1 EVENT] ECI1 not in currentDisplayIndexes");
                         return;
                     }
 
                     int displayIndex = currentDisplayIndexes["ECI1"];
                     string currentDisplay = projectDisplays["ECI1"][displayIndex];
 
-                    Debug.WriteLine($"   Current display index: {displayIndex}");
-                    Debug.WriteLine($"   Current display name: {currentDisplay}");
+                  //  Debug.WriteLine($"   Current display index: {displayIndex}");
+                  //  Debug.WriteLine($"   Current display name: {currentDisplay}");
 
                     // Get the image for the current display
-                    Debug.WriteLine($"🔵 [ECI1 EVENT] Calling GetECI1ImageForDisplay('{currentDisplay}')...");
+                  //  Debug.WriteLine($"🔵 [ECI1 EVENT] Calling GetECI1ImageForDisplay('{currentDisplay}')...");
                     byte[] imageBytes = GetECI1ImageForDisplay(result, currentDisplay);
 
                     if (imageBytes != null && imageBytes.Length > 0)
                     {
                         Debug.WriteLine($"✅ [ECI1 EVENT] Got image bytes: {imageBytes.Length} bytes");
-                        Debug.WriteLine($"🔵 [ECI1 EVENT] Calling DisplayCamera1Image()...");
+                      //  Debug.WriteLine($"🔵 [ECI1 EVENT] Calling DisplayCamera1Image()...");
 
                         DisplayCamera1Image(imageBytes);
 
-                        Debug.WriteLine($"✅ [ECI1 EVENT] DisplayCamera1Image() returned successfully");
+                      //  Debug.WriteLine($"✅ [ECI1 EVENT] DisplayCamera1Image() returned successfully");
                     }
                     else
                     {
                         Debug.WriteLine($"❌ [ECI1 EVENT] No image data for display:  {currentDisplay}");
-                        Debug.WriteLine($"   imageBytes is {(imageBytes == null ? "null" : $"empty array (length={imageBytes.Length})")}");
+                      //  Debug.WriteLine($"   imageBytes is {(imageBytes == null ? "null" : $"empty array (length={imageBytes.Length})")}");
                     }
                 }
                 catch (Exception ex)
                 {
-                    Debug.WriteLine($"❌ [ECI1 EVENT] Error:  {ex.Message}");
-                    Debug.WriteLine($"❌ Stack trace: {ex.StackTrace}");
+                  //  Debug.WriteLine($"❌ [ECI1 EVENT] Error:  {ex.Message}");
+                  //  Debug.WriteLine($"❌ Stack trace: {ex.StackTrace}");
                 }
             });
         }
@@ -1213,7 +1213,7 @@ namespace MatroxLDS
         {
             try
             {
-                Debug.WriteLine($"🔵 [GetECI1Image] Looking for display:  '{displayName}'");
+             //   Debug.WriteLine($"🔵 [GetECI1Image] Looking for display:  '{displayName}'");
 
                 DAComplexVariable<byte[]> imageProperty = displayName switch
                 {
@@ -1227,26 +1227,26 @@ namespace MatroxLDS
 
                 if (imageProperty == null)
                 {
-                    Debug.WriteLine($"❌ [GetECI1Image] No property found for '{displayName}'");
+                  //  Debug.WriteLine($"❌ [GetECI1Image] No property found for '{displayName}'");
                     return null;
                 }
 
-                Debug.WriteLine($"✅ [GetECI1Image] Property found for '{displayName}'");
-                Debug.WriteLine($"   IsAvailable: {imageProperty.IsAvailable}");
-                Debug.WriteLine($"   CurrentValue: {(imageProperty.CurrentValue != null ? $"byte[{imageProperty.CurrentValue.Length}]" : "null")}");
+                //Debug.WriteLine($"✅ [GetECI1Image] Property found for '{displayName}'");
+                //Debug.WriteLine($"   IsAvailable: {imageProperty.IsAvailable}");
+                //Debug.WriteLine($"   CurrentValue: {(imageProperty.CurrentValue != null ? $"byte[{imageProperty.CurrentValue.Length}]" : "null")}");
 
                 if (imageProperty != null && imageProperty.IsAvailable && imageProperty.CurrentValue != null)
                 {
-                    Debug.WriteLine($"✅ [GetECI1Image] Returning {imageProperty.CurrentValue.Length} bytes for '{displayName}'");
+                  //  Debug.WriteLine($"✅ [GetECI1Image] Returning {imageProperty.CurrentValue.Length} bytes for '{displayName}'");
                     return imageProperty.CurrentValue;
                 }
 
-                Debug.WriteLine($"⚠️ [ECI1] Image property '{displayName}' not available or has no data");
+             //   Debug.WriteLine($"⚠️ [ECI1] Image property '{displayName}' not available or has no data");
                 return null;
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"❌ [ECI1] Error getting image for {displayName}: {ex.Message}");
+              //  Debug.WriteLine($"❌ [ECI1] Error getting image for {displayName}: {ex.Message}");
                 return null;
             }
         }
@@ -1258,23 +1258,23 @@ namespace MatroxLDS
                 {
                     if (c2InspectionEndEvent?.CurrentResult == null)
                     {
-                        Debug.WriteLine("⚠️ [ECI2 EVENT] CurrentResult is null");
+                     //   Debug.WriteLine("⚠️ [ECI2 EVENT] CurrentResult is null");
                         return;
                     }
 
                     var result = c2InspectionEndEvent.CurrentResult;
-                    Debug.WriteLine($"✅ [ECI2 EVENT] InspectionEnd received! Property:  {e.PropertyName}");
+                 //   Debug.WriteLine($"✅ [ECI2 EVENT] InspectionEnd received! Property:  {e.PropertyName}");
 
                     if (!currentDisplayIndexes.ContainsKey("ECI2"))
                     {
-                        Debug.WriteLine("⚠️ [ECI2 EVENT] ECI2 not in currentDisplayIndexes");
+                    //    Debug.WriteLine("⚠️ [ECI2 EVENT] ECI2 not in currentDisplayIndexes");
                         return;
                     }
 
                     int displayIndex = currentDisplayIndexes["ECI2"];
                     string currentDisplay = projectDisplays["ECI2"][displayIndex];
 
-                    Debug.WriteLine($"   Current display: {currentDisplay}");
+                  //  Debug.WriteLine($"   Current display: {currentDisplay}");
 
                     byte[] imageBytes = GetECI2ImageForDisplay(result, currentDisplay);
 
@@ -1290,8 +1290,8 @@ namespace MatroxLDS
                 }
                 catch (Exception ex)
                 {
-                    Debug.WriteLine($"❌ [ECI2 EVENT] Error: {ex.Message}");
-                    Debug.WriteLine($"❌ Stack trace:  {ex.StackTrace}");
+                    //Debug.WriteLine($"❌ [ECI2 EVENT] Error: {ex.Message}");
+                    //Debug.WriteLine($"❌ Stack trace:  {ex.StackTrace}");
                 }
             });
         }
@@ -1319,12 +1319,12 @@ namespace MatroxLDS
                     return imageProperty.CurrentValue;
                 }
 
-                Debug.WriteLine($"⚠️ [ECI2] Image property '{displayName}' not available");
+              //  Debug.WriteLine($"⚠️ [ECI2] Image property '{displayName}' not available");
                 return null;
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"❌ [ECI2] Error getting image for {displayName}:  {ex.Message}");
+               // Debug.WriteLine($"❌ [ECI2] Error getting image for {displayName}:  {ex.Message}");
                 return null;
             }
         }
@@ -1333,15 +1333,15 @@ namespace MatroxLDS
         {
             try
             {
-                Debug.WriteLine($"🔵 [DisplayCamera1Image] Entry - {imageBytes?.Length ?? 0} bytes");
+              //  Debug.WriteLine($"🔵 [DisplayCamera1Image] Entry - {imageBytes?.Length ?? 0} bytes");
 
                 if (imageBytes == null || imageBytes.Length == 0)
                 {
-                    Debug.WriteLine("⚠️ [ECI1] No image data to display");
+                //    Debug.WriteLine("⚠️ [ECI1] No image data to display");
                     return;
                 }
 
-                Debug.WriteLine($"🔵 [DisplayCamera1Image] Converting bytes to Bitmap...");
+              //  Debug.WriteLine($"🔵 [DisplayCamera1Image] Converting bytes to Bitmap...");
 
                 // Convert byte[] to Bitmap (same as WPF sample)
                 Bitmap bitmap = null;
@@ -1352,22 +1352,22 @@ namespace MatroxLDS
                 }
                 catch (Exception ex)
                 {
-                    Debug.WriteLine($"❌ [ECI1] Could not convert bytes to Bitmap: {ex.Message}");
+                  //  Debug.WriteLine($"❌ [ECI1] Could not convert bytes to Bitmap: {ex.Message}");
                     return;
                 }
 
                 if (bitmap == null)
                 {
-                    Debug.WriteLine("⚠️ [ECI1] Bitmap conversion returned null");
+                   // Debug.WriteLine("⚠️ [ECI1] Bitmap conversion returned null");
                     return;
                 }
 
-                Debug.WriteLine($"🔵 [DisplayCamera1Image] Updating PictureBox...");
+               // Debug.WriteLine($"🔵 [DisplayCamera1Image] Updating PictureBox...");
 
                 // Update PictureBox on UI thread
                 if (pictureBoxCam1.InvokeRequired)
                 {
-                    Debug.WriteLine($"   Using Invoke (on background thread)");
+                  //  Debug.WriteLine($"   Using Invoke (on background thread)");
                     pictureBoxCam1.Invoke(new Action(() =>
                     {
                         try
@@ -1376,31 +1376,31 @@ namespace MatroxLDS
                             pictureBoxCam1.Image = bitmap;
                             oldImage?.Dispose();
 
-                            Debug.WriteLine($"✅ [ECI1] PictureBox. Image updated successfully!");
-                            Debug.WriteLine($"   PictureBox:  Visible={pictureBoxCam1.Visible}, Size={pictureBoxCam1.Size}");
+                            //Debug.WriteLine($"✅ [ECI1] PictureBox. Image updated successfully!");
+                            //Debug.WriteLine($"   PictureBox:  Visible={pictureBoxCam1.Visible}, Size={pictureBoxCam1.Size}");
                         }
                         catch (Exception ex)
                         {
-                            Debug.WriteLine($"❌ [ECI1] Error updating PictureBox: {ex.Message}");
+                          //  Debug.WriteLine($"❌ [ECI1] Error updating PictureBox: {ex.Message}");
                             bitmap.Dispose();
                         }
                     }));
                 }
                 else
                 {
-                    Debug.WriteLine($"   Already on UI thread");
+                 //   Debug.WriteLine($"   Already on UI thread");
                     var oldImage = pictureBoxCam1.Image;
                     pictureBoxCam1.Image = bitmap;
                     oldImage?.Dispose();
 
-                    Debug.WriteLine($"✅ [ECI1] PictureBox.Image updated successfully!");
-                    Debug.WriteLine($"   PictureBox: Visible={pictureBoxCam1.Visible}, Size={pictureBoxCam1.Size}");
+                    //Debug.WriteLine($"✅ [ECI1] PictureBox.Image updated successfully!");
+                    //Debug.WriteLine($"   PictureBox: Visible={pictureBoxCam1.Visible}, Size={pictureBoxCam1.Size}");
                 }
             }
             catch (Exception ex)
             {
                 Debug.WriteLine($"❌ [ECI1] Error displaying image: {ex.Message}");
-                Debug.WriteLine($"❌ Stack trace: {ex.StackTrace}");
+                //Debug.WriteLine($"❌ Stack trace: {ex.StackTrace}");
             }
         }
         private void DisplayCamera2Image(byte[] imageBytes)
@@ -1409,7 +1409,7 @@ namespace MatroxLDS
             {
                 if (imageBytes == null || imageBytes.Length == 0)
                 {
-                    Debug.WriteLine("⚠️ [ECI2] No image data to display");
+                  //  Debug.WriteLine("⚠️ [ECI2] No image data to display");
                     return;
                 }
 
@@ -1418,16 +1418,18 @@ namespace MatroxLDS
                 try
                 {
                     bitmap = (Bitmap)(new ImageConverter()).ConvertFrom(imageBytes);
+                    Debug.WriteLine($"✅ [DisplayCamera2Image] Bitmap created:  {bitmap.Width}x{bitmap.Height}");
+
                 }
                 catch (Exception ex)
                 {
-                    Debug.WriteLine($"❌ [ECI2] Could not convert bytes to Bitmap: {ex.Message}");
+                 //   Debug.WriteLine($"❌ [ECI2] Could not convert bytes to Bitmap: {ex.Message}");
                     return;
                 }
 
                 if (bitmap == null)
                 {
-                    Debug.WriteLine("⚠️ [ECI2] Bitmap conversion returned null");
+                 //   Debug.WriteLine("⚠️ [ECI2] Bitmap conversion returned null");
                     return;
                 }
 
@@ -1443,11 +1445,11 @@ namespace MatroxLDS
                             pictureBoxCam2.Image = bitmap;  // Don't clone, use the bitmap directly
                             oldImage?.Dispose();
 
-                            Debug.WriteLine($"✅ [ECI2] Image displayed ({imageBytes.Length} bytes, {bitmap.Width}x{bitmap.Height})");
+                         //   Debug.WriteLine($"✅ [ECI2] Image displayed ({imageBytes.Length} bytes, {bitmap.Width}x{bitmap.Height})");
                         }
                         catch (Exception ex)
                         {
-                            Debug.WriteLine($"❌ [ECI2] Error updating PictureBox: {ex.Message}");
+                          //  Debug.WriteLine($"❌ [ECI2] Error updating PictureBox: {ex.Message}");
                             bitmap.Dispose();
                         }
                     }));
@@ -1459,13 +1461,13 @@ namespace MatroxLDS
                     pictureBoxCam2.Image = bitmap;
                     oldImage?.Dispose();
 
-                    Debug.WriteLine($"✅ [ECI2] Image displayed ({imageBytes.Length} bytes, {bitmap.Width}x{bitmap.Height})");
+                   // Debug.WriteLine($"✅ [ECI2] Image displayed ({imageBytes.Length} bytes, {bitmap.Width}x{bitmap.Height})");
                 }
             }
             catch (Exception ex)
             {
                 Debug.WriteLine($"❌ [ECI2] Error displaying image:  {ex.Message}");
-                Debug.WriteLine($"❌ Stack trace: {ex.StackTrace}");
+                //Debug.WriteLine($"❌ Stack trace: {ex.StackTrace}");
             }
         }
         private void OnCardPresented(string cardId)
@@ -1499,7 +1501,7 @@ namespace MatroxLDS
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("OnCardPresented exception: " + ex.Message);
+              //  Debug.WriteLine("OnCardPresented exception: " + ex.Message);
             }
         }
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -1521,7 +1523,7 @@ namespace MatroxLDS
                     var src = latestCameraData[cameraIndex];
                     if (src == null)
                     {
-                        Debug.WriteLine($"BufferAndInsertCameraData: latestCameraData[{cameraIndex}] is null; skipping.");
+                     //   Debug.WriteLine($"BufferAndInsertCameraData: latestCameraData[{cameraIndex}] is null; skipping.");
                         return;
                     }
 
@@ -1546,24 +1548,24 @@ namespace MatroxLDS
                         bufferedTimestamps[cameraIndex] = DateTime.UtcNow;
                     }
 
-                    Debug.WriteLine($"Buffered camera[{cameraIndex}] snapshot at {DateTime.UtcNow:O} - Finish={snapshot.Finish}, Base={snapshot.Base}, ISW={snapshot.ISW}, Dent={snapshot.Dent}, Total={snapshot.TotalThroughput}, DownCan={snapshot.DownCan}");
+                  //  Debug.WriteLine($"Buffered camera[{cameraIndex}] snapshot at {DateTime.UtcNow:O} - Finish={snapshot.Finish}, Base={snapshot.Base}, ISW={snapshot.ISW}, Dent={snapshot.Dent}, Total={snapshot.TotalThroughput}, DownCan={snapshot.DownCan}");
 
                     // Insert this camera's snapshot immediately
                     try
                     {
                         InsertCameraDataToDB(cameraIndex, snapshot, DateTime.UtcNow);
-                        Debug.WriteLine($"Insert triggered for camera[{cameraIndex}]");
+                   //     Debug.WriteLine($"Insert triggered for camera[{cameraIndex}]");
                     }
                     catch (Exception ex)
                     {
-                        Debug.WriteLine($"Error inserting camera[{cameraIndex}] snapshot: {ex.Message}");
-                        Debug.WriteLine(ex.StackTrace);
+                   //     Debug.WriteLine($"Error inserting camera[{cameraIndex}] snapshot: {ex.Message}");
+                  //      Debug.WriteLine(ex.StackTrace);
                     }
                 }
                 catch (Exception ex)
                 {
-                    Debug.WriteLine("BufferAndInsertCameraData exception: " + ex.Message);
-                    Debug.WriteLine(ex.StackTrace);
+                 //   Debug.WriteLine("BufferAndInsertCameraData exception: " + ex.Message);
+                //    Debug.WriteLine(ex.StackTrace);
                 }
             }
         }
@@ -1622,7 +1624,7 @@ namespace MatroxLDS
             string dbPath = GetQuarterlyDatabasePath(timestamp);
             try
             {
-                Debug.WriteLine($"InsertCameraDataToDB: opening DB at {dbPath} for camera {cameraIndex}");
+               // Debug.WriteLine($"InsertCameraDataToDB: opening DB at {dbPath} for camera {cameraIndex}");
 
                 DatabaseCreator.EnsureCameraResultsTable(dbPath);
 
@@ -1661,12 +1663,12 @@ namespace MatroxLDS
                     connection.Close();
                 }
 
-                Debug.WriteLine($"Inserted CameraResults row: Camera={camData.CameraNumber}, Timestamp={timestamp:O}, DownCan={camData.DownCan}, Total={camData.TotalThroughput}");
+              //  Debug.WriteLine($"Inserted CameraResults row: Camera={camData.CameraNumber}, Timestamp={timestamp:O}, DownCan={camData.DownCan}, Total={camData.TotalThroughput}");
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"InsertCameraDataToDB error (cameraIndex={cameraIndex}, dbPath={dbPath}): {ex.Message}");
-                Debug.WriteLine(ex.StackTrace);
+                //Debug.WriteLine($"InsertCameraDataToDB error (cameraIndex={cameraIndex}, dbPath={dbPath}): {ex.Message}");
+                //Debug.WriteLine(ex.StackTrace);
                 // don't rethrow if you want the app to continue; rethrow if you want to let caller handle it
             }
         }
@@ -1706,122 +1708,15 @@ namespace MatroxLDS
                     cmd.ExecuteNonQuery();
                 }
 
-                Debug.WriteLine($"Inserted CameraResults row: Camera={camData.CameraNumber}, Timestamp={timestamp:O}, DownCan={camData.DownCan}, Total={camData.TotalThroughput}");
+              //  Debug.WriteLine($"Inserted CameraResults row: Camera={camData.CameraNumber}, Timestamp={timestamp:O}, DownCan={camData.DownCan}, Total={camData.TotalThroughput}");
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("InsertCameraDataToDB_Internal error: " + ex.Message);
-                Debug.WriteLine(ex.StackTrace);
+                //Debug.WriteLine("InsertCameraDataToDB_Internal error: " + ex.Message);
+                //Debug.WriteLine(ex.StackTrace);
                 throw;
             }
         }
-        //private async void StartDisplays(SplashScreen splashScreen)
-        //{
-        //    try { splashScreen?.UpdateProgress("Displays Starting"); } catch { }
-
-        //    try
-        //    {
-        //        if (ResetCounterBtn1 != null)
-        //        {
-        //            await ResetCounterBtn1.ConnectAsync();
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        try { splashScreen?.UpdateProgress("ResetCounterBtn1 connect failed: " + ex.Message); } catch { }
-        //        Debug.WriteLine("ResetCounterBtn1.ConnectAsync failed: " + ex.Message);
-        //    }
-
-        //    try
-        //    {
-        //        if (ResetCounterBtn2 != null)
-        //        {
-        //            await ResetCounterBtn2.ConnectAsync();
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        try { splashScreen?.UpdateProgress("ResetCounterBtn2 connect failed: " + ex.Message); } catch { }
-        //        Debug.WriteLine("ResetCounterBtn2.ConnectAsync failed: " + ex.Message);
-        //    }
-
-        //    try { splashScreen?.UpdateProgress("Displays Started Please wait 2 minutes"); } catch { }
-        //}
-        //private void ConnectToAllTextboxes(SplashScreen splashScreen)
-        //{
-        //    // CAMERA 1
-        //    CameraPage1.ValueElements["FinishNumber"].ValueChanged += (sender, args) =>
-        //    {
-        //        string newValue = CameraPage1.ValueElements["FinishNumber"].Value?.ToString();
-        //        if (FinishNumber.InvokeRequired)
-        //        {
-        //            FinishNumber.Invoke(new Action(() => FinishNumber.Text = newValue));
-        //        }
-        //        else
-        //        {
-        //            FinishNumber.Text = newValue;
-        //        }
-        //        UpdateCameraAndInsertIfComplete(0, CameraPage1);
-        //        var val = args.NewValue?.ToString();
-        //        if (!string.IsNullOrEmpty(val) && int.TryParse(val, out int v) && v > 0)
-        //            ShowFaultMessage("Finish Failed", Color.Red);
-
-        //    };
-        //    CameraPage2.ValueElements["BaseNumber"].ValueChanged += (sender, args) =>
-        //    {
-        //        string newValue = CameraPage2.ValueElements["BaseNumber"].Value?.ToString();
-        //        if (BaseNumber.InvokeRequired)
-        //        {
-        //            BaseNumber.Invoke(new Action(() => BaseNumber.Text = newValue));
-        //        }
-        //        else
-        //        {
-        //            BaseNumber.Text = newValue;
-        //        }
-        //        UpdateCameraAndInsertIfComplete(1, CameraPage2);
-        //        var val = args.NewValue?.ToString();
-        //        if (!string.IsNullOrEmpty(val) && int.TryParse(val, out int v) && v > 0)
-        //            ShowFaultMessage("Base Failed", Color.Red);
-
-        //    };
-
-        //    CameraPage2.ValueElements["ISWNumber"].ValueChanged += (sender, args) =>
-        //    {
-        //        string newValue = CameraPage2.ValueElements["ISWNumber"].Value?.ToString();
-        //        if (ISWNumber.InvokeRequired)
-        //        {
-        //            ISWNumber.Invoke(new Action(() => ISWNumber.Text = newValue));
-        //        }
-        //        else
-        //        {
-        //            ISWNumber.Text = newValue;
-        //        }
-        //        UpdateCameraAndInsertIfComplete(1, CameraPage2);
-        //        var val = args.NewValue?.ToString();
-        //        if (!string.IsNullOrEmpty(val) && int.TryParse(val, out int v) && v > 0)
-        //            ShowFaultMessage("ISW Failed", Color.Red);
-
-        //    };
-
-        //    CameraPage2.ValueElements["DentNumber"].ValueChanged += (sender, args) =>
-        //    {
-        //        string newValue = CameraPage2.ValueElements["DentNumber"].Value?.ToString();
-        //        if (DentNumber.InvokeRequired)
-        //        {
-        //            DentNumber.Invoke(new Action(() => DentNumber.Text = newValue));
-        //        }
-        //        else
-        //        {
-        //            DentNumber.Text = newValue;
-        //        }
-        //        UpdateCameraAndInsertIfComplete(1, CameraPage2);
-        //        var val = args.NewValue?.ToString();
-        //        if (!string.IsNullOrEmpty(val) && int.TryParse(val, out int v) && v > 0)
-        //            ShowFaultMessage("Dent Failed", Color.Red);
-
-
-        //    };
-        //}
 
         private void UpdateCameraAndInsertIfComplete(int cameraIndex, dynamic cameraPage)
         {
@@ -1927,11 +1822,11 @@ namespace MatroxLDS
                 {
                     SaveCurrentFlavourToDb(currentSize ?? "", newValue);
                     OnFlavourChanged();
-                    Debug.WriteLine($"C1CurrentRecipeName: saved flavour '{newValue}' and raised FlavourChanged.");
+                  //  Debug.WriteLine($"C1CurrentRecipeName: saved flavour '{newValue}' and raised FlavourChanged.");
                 }
                 catch (Exception ex)
                 {
-                    Debug.WriteLine("C1CurrentRecipeName: error saving flavour: " + ex.Message);
+                   // Debug.WriteLine("C1CurrentRecipeName: error saving flavour: " + ex.Message);
                 }
             }
             catch (Exception ex)
@@ -1954,11 +1849,11 @@ namespace MatroxLDS
                 {
                     SaveCurrentFlavourToDb(currentSize ?? "", newValue);
                     OnFlavourChanged();
-                    Debug.WriteLine($"C2CurrentRecipeName: saved flavour '{newValue}' and raised FlavourChanged.");
+                 //   Debug.WriteLine($"C2CurrentRecipeName: saved flavour '{newValue}' and raised FlavourChanged.");
                 }
                 catch (Exception ex)
                 {
-                    Debug.WriteLine("C2CurrentRecipeName: error saving flavour: " + ex.Message);
+                   // Debug.WriteLine("C2CurrentRecipeName: error saving flavour: " + ex.Message);
                 }
             }
             catch (Exception ex)
@@ -2023,11 +1918,11 @@ namespace MatroxLDS
                 if (config.OPCSettings != null && !string.IsNullOrWhiteSpace(config.OPCSettings.EventObjectName))
                 {
                     opcEventObjectName = config.OPCSettings.EventObjectName;
-                    Debug.WriteLine($"✅ [CONFIG] Loaded EventObjectName from config: '{opcEventObjectName}'");
+                   // Debug.WriteLine($"✅ [CONFIG] Loaded EventObjectName from config: '{opcEventObjectName}'");
                 }
                 else
                 {
-                    Debug.WriteLine($"⚠️ [CONFIG] No OPCSettings in config.json, using default: '{opcEventObjectName}'");
+                  //  Debug.WriteLine($"⚠️ [CONFIG] No OPCSettings in config.json, using default: '{opcEventObjectName}'");
                 }
 
                 splashscreen.UpdateProgress("Configuration loaded.");
@@ -2272,16 +2167,15 @@ namespace MatroxLDS
         }
         private void Cam1Scroll_Click(object sender, EventArgs e)
         {
-            selectedCameraIndex = 0; // Camera 1
-            UpdateCameraDisplayBySelectedCamera();
+            selectedCameraIndex = 0;
 
             var displays = projectDisplays["ECI1"];
-
-            // Advance the index to the next display FIRST
             int idx = (currentDisplayIndexes["ECI1"] + 1) % displays.Count;
             currentDisplayIndexes["ECI1"] = idx;
 
-            // Hide Camera 2 PictureBox, show Camera 1
+            // UPDATE THE DOTS/INDICATORS
+            UpdateCameraDisplayBySelectedCamera();
+
             if (pictureBoxCam2 != null) pictureBoxCam2.Visible = false;
             if (pictureBoxCam1 != null)
             {
@@ -2290,33 +2184,36 @@ namespace MatroxLDS
                 currentPictureBox = pictureBoxCam1;
             }
 
-            // Refresh image from last event result
+            // Get current image and display it
             if (c1InspectionEndEvent?.CurrentResult != null)
             {
                 string currentDisplay = displays[idx];
+                Debug.WriteLine($"🔄 [SCROLL] Switching to display: {currentDisplay}");
+
                 byte[] imageBytes = GetECI1ImageForDisplay(c1InspectionEndEvent.CurrentResult, currentDisplay);
-                if (imageBytes != null)
+
+                if (imageBytes != null && imageBytes.Length > 0)
                 {
                     DisplayCamera1Image(imageBytes);
+                    Debug.WriteLine($"✅ [SCROLL] Displayed {currentDisplay}: {imageBytes.Length} bytes");
+                }
+                else
+                {
+                    Debug.WriteLine($"⚠️ [SCROLL] No image data for {currentDisplay}");
                 }
             }
-
-            // Update dots panel for camera 1
-            DrawDisplayDots(panelCam1Dots, displays, idx);
         }
-
         private void Cam2Scroll_Click(object sender, EventArgs e)
         {
-            selectedCameraIndex = 1; // Camera 2
-            UpdateCameraDisplayBySelectedCamera();
+            selectedCameraIndex = 1;
 
             var displays = projectDisplays["ECI2"];
-
-            // Advance index first
             int idx = (currentDisplayIndexes["ECI2"] + 1) % displays.Count;
             currentDisplayIndexes["ECI2"] = idx;
 
-            // Hide Camera 1 PictureBox, show Camera 2
+            // UPDATE THE DOTS/INDICATORS
+            UpdateCameraDisplayBySelectedCamera();
+
             if (pictureBoxCam1 != null) pictureBoxCam1.Visible = false;
             if (pictureBoxCam2 != null)
             {
@@ -2325,19 +2222,28 @@ namespace MatroxLDS
                 currentPictureBox = pictureBoxCam2;
             }
 
-            // Refresh image from last event result
+            // Get current image and display it
             if (c2InspectionEndEvent?.CurrentResult != null)
             {
                 string currentDisplay = displays[idx];
+                Debug.WriteLine($"🔄 [SCROLL] Switching to ECI2 display: {currentDisplay}");
+
                 byte[] imageBytes = GetECI2ImageForDisplay(c2InspectionEndEvent.CurrentResult, currentDisplay);
-                if (imageBytes != null)
+
+                if (imageBytes != null && imageBytes.Length > 0)
                 {
                     DisplayCamera2Image(imageBytes);
+                    Debug.WriteLine($"✅ [SCROLL] Displayed ECI2 {currentDisplay}: {imageBytes.Length} bytes");
+                }
+                else
+                {
+                    Debug.WriteLine($"⚠️ [SCROLL] No image data for ECI2 {currentDisplay}");
                 }
             }
-
-            // Update dots panel for camera 2
-            DrawDisplayDots(panelCam2Dots, displays, idx);
+            else
+            {
+                Debug.WriteLine($"⚠️ [SCROLL] c2InspectionEndEvent or CurrentResult is null");
+            }
         }
         public static class FlavourIniReader
         {
@@ -2448,11 +2354,11 @@ namespace MatroxLDS
                 SaveCurrentFlavourToDb(currentSize ?? "", selectedRecipe);
                 // Raise event so Data and other subscribers update their UI
                 OnFlavourChanged();
-                Debug.WriteLine($"BtnSelectFlavour_Click: saved flavour '{selectedRecipe}' (size='{currentSize}') and raised FlavourChanged.");
+              //  Debug.WriteLine($"BtnSelectFlavour_Click: saved flavour '{selectedRecipe}' (size='{currentSize}') and raised FlavourChanged.");
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("BtnSelectFlavour_Click: error saving flavour: " + ex.Message);
+             //   Debug.WriteLine("BtnSelectFlavour_Click: error saving flavour: " + ex.Message);
             }
         }
         public void ArchiveCameraSettingsBeforeRecipeSwitch(string oldFlavour, string oldSize)
@@ -2899,7 +2805,7 @@ namespace MatroxLDS
             catch (Exception ex)
             {
                 // HostManager.GetHost may throw if host not present; swallow and try reflection fallback below
-                Debug.WriteLine($"HostManager.GetHost threw: {ex.Message}");
+              //  Debug.WriteLine($"HostManager.GetHost threw: {ex.Message}");
                 host = null;
             }
 
@@ -2919,12 +2825,12 @@ namespace MatroxLDS
                 {
                     try
                     {
-                        Debug.WriteLine($"Invoking HostManager factory '{candidate.Name}' to create host '{hostName}'...");
+                      //  Debug.WriteLine($"Invoking HostManager factory '{candidate.Name}' to create host '{hostName}'...");
                         host = candidate.Invoke(null, new object[] { hostName });
                     }
                     catch (Exception ex)
                     {
-                        Debug.WriteLine($"HostManager factory invocation failed: {ex.Message}");
+                      //  Debug.WriteLine($"HostManager factory invocation failed: {ex.Message}");
                         host = null;
                     }
                 }
@@ -2933,7 +2839,7 @@ namespace MatroxLDS
             // 3) If still no host, bail with a clear log (library may require pre-configured host)
             if (host == null)
             {
-                Debug.WriteLine($"Host '{hostName}' not found in HostManager and no factory available. Create or register the Host before calling EnsureHostProjectRunning.");
+               // Debug.WriteLine($"Host '{hostName}' not found in HostManager and no factory available. Create or register the Host before calling EnsureHostProjectRunning.");
                 return;
             }
 
@@ -2957,20 +2863,20 @@ namespace MatroxLDS
                     var connectMethod = hostType.GetMethod("ConnectAsync", BindingFlags.Public | BindingFlags.Instance);
                     if (connectMethod != null)
                     {
-                        Debug.WriteLine($"Calling ConnectAsync on host '{hostName}'...");
+                      //  Debug.WriteLine($"Calling ConnectAsync on host '{hostName}'...");
                         var task = (Task)connectMethod.Invoke(host, null);
                         await task.ConfigureAwait(false);
-                        Debug.WriteLine($"Host '{hostName}' ConnectAsync finished.");
+                      //  Debug.WriteLine($"Host '{hostName}' ConnectAsync finished.");
                     }
                     else
                     {
-                        Debug.WriteLine($"Host '{hostName}' has no ConnectAsync method and is not marked connected. Continuing (host may already be usable).");
+                      //  Debug.WriteLine($"Host '{hostName}' has no ConnectAsync method and is not marked connected. Continuing (host may already be usable).");
                     }
                 }
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Error ensuring host connection for '{hostName}': {ex.Message}");
+              //  Debug.WriteLine($"Error ensuring host connection for '{hostName}': {ex.Message}");
             }
 
             // 5) Ensure project exists and is running
@@ -3016,14 +2922,14 @@ namespace MatroxLDS
                     var startMethod = hostType.GetMethod("StartProjectAsync", BindingFlags.Public | BindingFlags.Instance);
                     if (startMethod != null)
                     {
-                        Debug.WriteLine($"Project '{projectName}' not found — calling StartProjectAsync on host '{hostName}'...");
+                      //  Debug.WriteLine($"Project '{projectName}' not found — calling StartProjectAsync on host '{hostName}'...");
                         var task = (Task)startMethod.Invoke(host, new object[] { projectName });
                         await task.ConfigureAwait(false);
-                        Debug.WriteLine($"Requested StartProjectAsync('{projectName}') on '{hostName}'.");
+                      //  Debug.WriteLine($"Requested StartProjectAsync('{projectName}') on '{hostName}'.");
                     }
                     else
                     {
-                        Debug.WriteLine($"Project '{projectName}' not found and host does not expose StartProjectAsync. Please ensure the project is present on the host.");
+                      //  Debug.WriteLine($"Project '{projectName}' not found and host does not expose StartProjectAsync. Please ensure the project is present on the host.");
                     }
 
                     // After requesting start, attempt to refresh project reference (best-effort)
@@ -3057,30 +2963,30 @@ namespace MatroxLDS
                         var startMethod = hostType.GetMethod("StartProjectAsync", BindingFlags.Public | BindingFlags.Instance);
                         if (startMethod != null)
                         {
-                            Debug.WriteLine($"Starting project '{projectName}' on host '{hostName}'...");
+                          //  Debug.WriteLine($"Starting project '{projectName}' on host '{hostName}'...");
                             var t = (Task)startMethod.Invoke(host, new object[] { projectName });
                             await t.ConfigureAwait(false);
-                            Debug.WriteLine($"StartProjectAsync('{projectName}') completed.");
+                          //  Debug.WriteLine($"StartProjectAsync('{projectName}') completed.");
                         }
                         else
                         {
-                            Debug.WriteLine($"Project '{projectName}' exists but cannot determine running state and StartProjectAsync not found.");
+                          //  Debug.WriteLine($"Project '{projectName}' exists but cannot determine running state and StartProjectAsync not found.");
                         }
                     }
                     else
                     {
-                        Debug.WriteLine($"Project '{projectName}' on host '{hostName}' is already running.");
+                     //   Debug.WriteLine($"Project '{projectName}' on host '{hostName}' is already running.");
                     }
                 }
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Error ensuring project '{projectName}' is running on host '{hostName}': {ex.Message}");
+              //  Debug.WriteLine($"Error ensuring project '{projectName}' is running on host '{hostName}': {ex.Message}");
             }
         }
         catch (Exception ex)
         {
-            Debug.WriteLine($"EnsureHostProjectRunning unexpected error for {hostName}/{projectName}: {ex.Message}");
+           // Debug.WriteLine($"EnsureHostProjectRunning unexpected error for {hostName}/{projectName}: {ex.Message}");
         }
     }
 }

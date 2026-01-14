@@ -3,6 +3,7 @@ using Opc.Ua.Client;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Threading;
 
 namespace MatroxLDS
@@ -78,8 +79,8 @@ namespace MatroxLDS
                 string allNodeString = NodeID.ToString().Replace(" ", "") + ".All";
                 var allPropertyNode = new NodeId(allNodeString);
 
-                System.Diagnostics.Debug.WriteLine($"   Reading node: '{allPropertyNode}'");
-                System.Diagnostics.Debug.WriteLine($"   Node string:  '{allNodeString}'");
+               // System.Diagnostics.Debug.WriteLine($"   Reading node: '{allPropertyNode}'");
+               // System.Diagnostics.Debug.WriteLine($"   Node string:  '{allNodeString}'");
 
                 var value = _daOPCSession.ReadNode(allPropertyNode, Attributes.Value);
 
@@ -105,17 +106,17 @@ namespace MatroxLDS
                         }
                         else
                         {
-                            System.Diagnostics.Debug.WriteLine($"   ✅ Loaded 'All' but data is not byte[]");
+                            //System.Diagnostics.Debug.WriteLine($"   ✅ Loaded 'All' but data is not byte[]");
                         }
                     }
                     else
                     {
-                        System.Diagnostics.Debug.WriteLine($"   ⚠️ 'All' is not available or has no data");
+                       // System.Diagnostics.Debug.WriteLine($"   ⚠️ 'All' is not available or has no data");
                     }
                 }
                 else
                 {
-                    System.Diagnostics.Debug.WriteLine($"   ⚠️ ReadNode returned null or empty");
+                    //System.Diagnostics.Debug.WriteLine($"   ⚠️ ReadNode returned null or empty");
                 }
             }
             catch (Exception ex)
@@ -296,26 +297,29 @@ namespace MatroxLDS
         {
             EventFieldList notifications = (EventFieldList)e.NotificationValue;
 
-            System.Diagnostics.Debug.WriteLine($"🔔 [EVENT] Notification received!   EventFields count: {notifications.EventFields.Count}");
+            // Get ALL image properties from InspectionEndEventResult
+            var imageProperties = typeof(T).GetProperties()
+                .Where(p => p.PropertyType == typeof(DAComplexVariable<byte[]>))
+                .Select(p => p.Name)
+                .ToArray();
 
-            // Try to get image data from event notification
-            if (notifications.EventFields.Count >= 3 && notifications.EventFields[2].Value != null)
-            {
-                System.Diagnostics.Debug.WriteLine($"✅ [EVENT] Event contains Results data!");
-                // Process the event data (existing code)
-                // ...  
-            }
-            else
-            {
-                System.Diagnostics.Debug.WriteLine($"⚠️ [EVENT] Event has no Results data - reading 'All' property directly.. .");
+            System.Diagnostics.Debug.WriteLine($"🔔 [EVENT] Notification received - will check {imageProperties.Length} properties");
 
-                // Event has no image data, so READ it from the node
+            int successCount = 0;
+            int failCount = 0;
+
+            // Read each image property from OPC-UA
+            foreach (string propertyName in imageProperties)
+            {
                 try
                 {
-                    string allNodeString = NodeID.ToString().Replace(" ", "") + ".All";
-                    var allPropertyNode = new NodeId(allNodeString);
+                    // NO SPACES - Fixed! 
+                    string nodeString = NodeID.ToString().Replace(" ", "") + $".{propertyName}";
+                    var propertyNode = new NodeId(nodeString);
 
-                    var value = _daOPCSession.ReadNode(allPropertyNode, Opc.Ua.Attributes.Value);
+                    System.Diagnostics.Debug.WriteLine($"   🔍 Trying to read:  {nodeString}");
+
+                    var value = _daOPCSession.ReadNode(propertyNode, Opc.Ua.Attributes.Value);
 
                     if (value != null && value.Count > 0 && value[0]?.Value != null)
                     {
@@ -324,27 +328,38 @@ namespace MatroxLDS
                         List<string> availableValues;
                         string variableName;
 
-                        DAOPCUtils.ExtractDAObjectFields(allPropertyNode, value[0].Value,
+                        DAOPCUtils.ExtractDAObjectFields(propertyNode, value[0].Value,
                             out isAvailable, out currentValue, out availableValues, out variableName);
 
-                        if (isAvailable && currentValue.Value != null)
-                        {
-                            CurrentResult.UpdateModel(variableName, isAvailable, currentValue.Value, availableValues);
+                        System.Diagnostics.Debug.WriteLine($"      Extracted - IsAvailable: {isAvailable}, ValueType: {currentValue.Value?.GetType().Name}");
 
-                            if (currentValue.Value is byte[] bytes)
-                            {
-                                System.Diagnostics.Debug.WriteLine($"   ✅ [EVENT] Read updated image:  {bytes.Length} bytes");
-                            }
+                        if (isAvailable && currentValue.Value != null && currentValue.Value is byte[] bytes)
+                        {
+                            CurrentResult.UpdateModel(propertyName, isAvailable, currentValue.Value, availableValues);
+                            System.Diagnostics.Debug.WriteLine($"      ✅ Updated '{propertyName}':  {bytes.Length} bytes");
+                            successCount++;
                         }
+                        else
+                        {
+                            System.Diagnostics.Debug.WriteLine($"      ⚠️ '{propertyName}' not available or wrong type");
+                            failCount++;
+                        }
+                    }
+                    else
+                    {
+                        System.Diagnostics.Debug.WriteLine($"      ⚠️ ReadNode returned null/empty for '{propertyName}'");
+                        failCount++;
                     }
                 }
                 catch (Exception ex)
                 {
-                    System.Diagnostics.Debug.WriteLine($"   ❌ [EVENT] Error reading 'All' property: {ex.Message}");
+                    System.Diagnostics.Debug.WriteLine($"      ❌ Exception reading '{propertyName}': {ex.Message}");
+                    failCount++;
                 }
             }
-        }
 
+            System.Diagnostics.Debug.WriteLine($"🔔 [EVENT] Complete - {successCount} succeeded, {failCount} failed");
+        }
         /// <summary>
         /// Propagates the OnPropertyChange of the current result to the OnCurrentResultChange event.
         /// </summary>

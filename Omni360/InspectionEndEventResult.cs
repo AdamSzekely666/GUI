@@ -103,46 +103,46 @@ namespace MatroxLDS
             try
             {
                 // ========== DEBUG:  Log incoming data ==========
-                System.Diagnostics.Debug.WriteLine("═══════════════════════════════════════════════════════");
-                System.Diagnostics.Debug.WriteLine($"🔔 [UpdateModel] Received property update:");
-                System.Diagnostics.Debug.WriteLine($"   Property Name: '{propertyName}'");
-                System.Diagnostics.Debug.WriteLine($"   IsAvailable: {isAvailable}");
-                System.Diagnostics.Debug.WriteLine($"   CurrentValue Type: {currentValue?.GetType().Name ?? "null"}");
-                System.Diagnostics.Debug.WriteLine($"   CurrentValue: {(currentValue != null ? (currentValue is byte[] bytes ? $"byte[{bytes.Length}]" : currentValue.ToString()) : "null")}");
-                System.Diagnostics.Debug.WriteLine($"   AvailableValues Count: {availableValues?.Count ?? 0}");
+                //System.Diagnostics.Debug.WriteLine("═══════════════════════════════════════════════════════");
+                //System.Diagnostics.Debug.WriteLine($"🔔 [UpdateModel] Received property update:");
+                //System.Diagnostics.Debug.WriteLine($"   Property Name: '{propertyName}'");
+                //System.Diagnostics.Debug.WriteLine($"   IsAvailable: {isAvailable}");
+                //System.Diagnostics.Debug.WriteLine($"   CurrentValue Type: {currentValue?.GetType().Name ?? "null"}");
+                //System.Diagnostics.Debug.WriteLine($"   CurrentValue: {(currentValue != null ? (currentValue is byte[] bytes ? $"byte[{bytes.Length}]" : currentValue.ToString()) : "null")}");
+                //System.Diagnostics.Debug.WriteLine($"   AvailableValues Count: {availableValues?.Count ?? 0}");
 
                 var property = this.GetType().GetProperty(propertyName);
 
                 if (property == null)
                 {
-                    System.Diagnostics.Debug.WriteLine($"❌ [UpdateModel] Property '{propertyName}' NOT FOUND in InspectionEndEventResult!");
-                    System.Diagnostics.Debug.WriteLine($"❌ Available properties in this class:");
+                    //System.Diagnostics.Debug.WriteLine($"❌ [UpdateModel] Property '{propertyName}' NOT FOUND in InspectionEndEventResult!");
+                    //System.Diagnostics.Debug.WriteLine($"❌ Available properties in this class:");
 
                     foreach (var prop in this.GetType().GetProperties())
                     {
                         var propType = prop.PropertyType;
-                        System.Diagnostics.Debug.WriteLine($"      - {prop.Name} (Type: {propType.Name})");
+                       // System.Diagnostics.Debug.WriteLine($"      - {prop.Name} (Type: {propType.Name})");
                     }
 
-                    System.Diagnostics.Debug.WriteLine("═══════════════════════════════════════════════════════");
+                    //System.Diagnostics.Debug.WriteLine("═══════════════════════════════════════════════════════");
                     return;
                 }
 
-                System.Diagnostics.Debug.WriteLine($"✅ [UpdateModel] Property '{propertyName}' found in class");
+                //System.Diagnostics.Debug.WriteLine($"✅ [UpdateModel] Property '{propertyName}' found in class");
 
                 var complexVar = property.GetValue(this);
 
                 if (complexVar == null)
                 {
-                    System.Diagnostics.Debug.WriteLine($"⚠️ [UpdateModel] ComplexVariable for '{propertyName}' is null - this shouldn't happen!");
-                    System.Diagnostics.Debug.WriteLine("═══════════════════════════════════════════════════════");
+                    //System.Diagnostics.Debug.WriteLine($"⚠️ [UpdateModel] ComplexVariable for '{propertyName}' is null - this shouldn't happen!");
+                    //System.Diagnostics.Debug.WriteLine("═══════════════════════════════════════════════════════");
                     return;
                 }
 
-                System.Diagnostics.Debug.WriteLine($"✅ [UpdateModel] ComplexVariable instance exists");
+                //System.Diagnostics.Debug.WriteLine($"✅ [UpdateModel] ComplexVariable instance exists");
 
                 var complexVarType = complexVar.GetType();
-                System.Diagnostics.Debug.WriteLine($"   ComplexVariable Type: {complexVarType.Name}");
+               // System.Diagnostics.Debug.WriteLine($"   ComplexVariable Type: {complexVarType.Name}");
 
                 var valueProperty = complexVarType.GetProperty("CurrentValue");
                 if (valueProperty != null && currentValue != null)
@@ -150,59 +150,59 @@ namespace MatroxLDS
                     try
                     {
                         valueProperty.SetValue(complexVar, currentValue);
-                        System.Diagnostics.Debug.WriteLine($"✅ [UpdateModel] CurrentValue set successfully for '{propertyName}'");
+                      //  System.Diagnostics.Debug.WriteLine($"✅ [UpdateModel] CurrentValue set successfully for '{propertyName}'");
 
                         // If it's a byte array (image), log the size
                         if (currentValue is byte[] imageBytes)
                         {
-                            System.Diagnostics.Debug.WriteLine($"   📸 Image data:  {imageBytes.Length} bytes");
+                           // System.Diagnostics.Debug.WriteLine($"   📸 Image data:  {imageBytes.Length} bytes");
                         }
                     }
                     catch (Exception ex)
                     {
-                        System.Diagnostics.Debug.WriteLine($"❌ [UpdateModel] Error setting CurrentValue for '{propertyName}': {ex.Message}");
-                        System.Diagnostics.Debug.WriteLine($"   Expected Type: {valueProperty.PropertyType.Name}");
-                        System.Diagnostics.Debug.WriteLine($"   Actual Type: {currentValue?.GetType().Name}");
+                      //  System.Diagnostics.Debug.WriteLine($"❌ [UpdateModel] Error setting CurrentValue for '{propertyName}': {ex.Message}");
+                      //  System.Diagnostics.Debug.WriteLine($"   Expected Type: {valueProperty.PropertyType.Name}");
+                      //  System.Diagnostics.Debug.WriteLine($"   Actual Type: {currentValue?.GetType().Name}");
                     }
                 }
                 else
                 {
-                    if (valueProperty == null)
-                        System.Diagnostics.Debug.WriteLine($"⚠️ [UpdateModel] CurrentValue property not found in ComplexVariable");
-                    if (currentValue == null)
-                        System.Diagnostics.Debug.WriteLine($"⚠️ [UpdateModel] currentValue is null for '{propertyName}'");
+                  //  if (valueProperty == null)
+                    //    System.Diagnostics.Debug.WriteLine($"⚠️ [UpdateModel] CurrentValue property not found in ComplexVariable");
+                  //  if (currentValue == null)
+                     //   System.Diagnostics.Debug.WriteLine($"⚠️ [UpdateModel] currentValue is null for '{propertyName}'");
                 }
 
                 var availableProperty = complexVarType.GetProperty("IsAvailable");
                 if (availableProperty != null)
                 {
                     availableProperty.SetValue(complexVar, isAvailable);
-                    System.Diagnostics.Debug.WriteLine($"✅ [UpdateModel] IsAvailable set to {isAvailable}");
+                 //   System.Diagnostics.Debug.WriteLine($"✅ [UpdateModel] IsAvailable set to {isAvailable}");
                 }
 
                 var availableValuesProperty = complexVarType.GetProperty("AvailableValues");
                 if (availableValuesProperty != null && availableValues != null)
                 {
                     availableValuesProperty.SetValue(complexVar, availableValues);
-                    System.Diagnostics.Debug.WriteLine($"✅ [UpdateModel] AvailableValues set ({availableValues.Count} items)");
+                  //  System.Diagnostics.Debug.WriteLine($"✅ [UpdateModel] AvailableValues set ({availableValues.Count} items)");
                 }
 
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-                System.Diagnostics.Debug.WriteLine($"✅ [UpdateModel] PropertyChanged event fired for '{propertyName}'");
-                System.Diagnostics.Debug.WriteLine("═══════════════════════════════════════════════════════");
+                //System.Diagnostics.Debug.WriteLine($"✅ [UpdateModel] PropertyChanged event fired for '{propertyName}'");
+                //System.Diagnostics.Debug.WriteLine("═══════════════════════════════════════════════════════");
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine("═══════════════════════════════════════════════════════");
-                System.Diagnostics.Debug.WriteLine($"❌ [UpdateModel] EXCEPTION updating '{propertyName}':");
-                System.Diagnostics.Debug.WriteLine($"   Message: {ex.Message}");
-                System.Diagnostics.Debug.WriteLine($"   Exception Type: {ex.GetType().FullName}");
-                System.Diagnostics.Debug.WriteLine($"   Stack trace: {ex.StackTrace}");
+                //System.Diagnostics.Debug.WriteLine("═══════════════════════════════════════════════════════");
+                //System.Diagnostics.Debug.WriteLine($"❌ [UpdateModel] EXCEPTION updating '{propertyName}':");
+                //System.Diagnostics.Debug.WriteLine($"   Message: {ex.Message}");
+                //System.Diagnostics.Debug.WriteLine($"   Exception Type: {ex.GetType().FullName}");
+                //System.Diagnostics.Debug.WriteLine($"   Stack trace: {ex.StackTrace}");
                 if (ex.InnerException != null)
                 {
-                    System.Diagnostics.Debug.WriteLine($"   Inner Exception: {ex.InnerException.Message}");
+                 //   System.Diagnostics.Debug.WriteLine($"   Inner Exception: {ex.InnerException.Message}");
                 }
-                System.Diagnostics.Debug.WriteLine("═══════════════════════════════════════════════════════");
+              //  System.Diagnostics.Debug.WriteLine("═══════════════════════════════════════════════════════");
             }
         }
     }
