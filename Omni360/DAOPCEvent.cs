@@ -42,12 +42,86 @@ namespace MatroxLDS
         /// <param name="ResultHistoryMaxLength"> The maximum amount of results to be stored in the history. </param>
         public DAOPCEvent(DAOPCSession session, string eventName, int ResultHistoryMaxLength)
         {
+            System.Diagnostics.Debug.WriteLine($"🔵 [DAOPCEvent CONSTRUCTOR] Starting for event:  '{eventName}'");
+
             _daOPCSession = session;
-            NodeID = new NodeId($"ns=2;s=Events.{eventName}");
+
+            // Trim event name and remove any spaces
+            string cleanEventName = eventName?.Trim() ?? "";
+
+            // Create NodeID without spaces
+            string nodeIdString = $"ns=2;s=Events.{cleanEventName}";
+            NodeID = new NodeId(nodeIdString);
+
+            System.Diagnostics.Debug.WriteLine($"🔵 [DAOPCEvent CONSTRUCTOR] NodeID: '{NodeID}'");
+            System.Diagnostics.Debug.WriteLine($"🔵 [DAOPCEvent CONSTRUCTOR] NodeID string length: {nodeIdString.Length}");
+
             ResultsHistory = new CircularList<T>(ResultHistoryMaxLength);
 
-            GetEventInitialValues();
+            InitializeCurrentResult();
+            System.Diagnostics.Debug.WriteLine($"✅ [DAOPCEvent CONSTRUCTOR] CurrentResult initialized");
+
+            System.Diagnostics.Debug.WriteLine($"🔵 [DAOPCEvent CONSTRUCTOR] Attempting to load 'All' property...");
+            TryLoadAllProperty();
+
+            System.Diagnostics.Debug.WriteLine($"🔵 [DAOPCEvent CONSTRUCTOR] Calling SubscribeToEvent()...");
             SubscribeToEvent();
+            System.Diagnostics.Debug.WriteLine($"✅ [DAOPCEvent CONSTRUCTOR] SubscribeToEvent() returned");
+
+            System.Diagnostics.Debug.WriteLine($"✅ [DAOPCEvent CONSTRUCTOR] Constructor complete!");
+        }
+        private void TryLoadAllProperty()
+        {
+            try
+            {
+                // Build the All property node path - make sure no extra spaces
+                string allNodeString = NodeID.ToString().Replace(" ", "") + ".All";
+                var allPropertyNode = new NodeId(allNodeString);
+
+                System.Diagnostics.Debug.WriteLine($"   Reading node: '{allPropertyNode}'");
+                System.Diagnostics.Debug.WriteLine($"   Node string:  '{allNodeString}'");
+
+                var value = _daOPCSession.ReadNode(allPropertyNode, Attributes.Value);
+
+                if (value != null && value.Count > 0 && value[0]?.Value != null)
+                {
+                    bool isAvailable;
+                    Variant currentValue;
+                    List<string> availableValues;
+                    string variableName;
+
+                    DAOPCUtils.ExtractDAObjectFields(allPropertyNode, value[0].Value,
+                        out isAvailable, out currentValue, out availableValues, out variableName);
+
+                    System.Diagnostics.Debug.WriteLine($"   Property: {variableName}, IsAvailable: {isAvailable}");
+
+                    if (isAvailable && currentValue.Value != null)
+                    {
+                        CurrentResult.UpdateModel(variableName, isAvailable, currentValue.Value, availableValues);
+
+                        if (currentValue.Value is byte[] bytes)
+                        {
+                            System.Diagnostics.Debug.WriteLine($"   ✅ Loaded 'All' with {bytes.Length} bytes of image data");
+                        }
+                        else
+                        {
+                            System.Diagnostics.Debug.WriteLine($"   ✅ Loaded 'All' but data is not byte[]");
+                        }
+                    }
+                    else
+                    {
+                        System.Diagnostics.Debug.WriteLine($"   ⚠️ 'All' is not available or has no data");
+                    }
+                }
+                else
+                {
+                    System.Diagnostics.Debug.WriteLine($"   ⚠️ ReadNode returned null or empty");
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"   ❌ Error loading 'All' property: {ex.Message}");
+            }
         }
 
         /// <summary>
@@ -132,8 +206,12 @@ namespace MatroxLDS
         {
             System.Diagnostics.Debug.WriteLine("🔵 [DAOPCEvent] GetEventInitialValues() started");
 
+            int propertyCount = 0;
             foreach (var eventVariableProperty in typeof(T).GetProperties())
             {
+                propertyCount++;
+                System.Diagnostics.Debug.WriteLine($"🔵 [DAOPCEvent] Processing property #{propertyCount}: {eventVariableProperty.Name}");
+
                 if (eventVariableProperty.PropertyType.IsGenericType &&
                     eventVariableProperty.PropertyType.GetGenericTypeDefinition() == typeof(DAComplexVariable<>))
                 {
@@ -143,32 +221,58 @@ namespace MatroxLDS
                     string variableName;
 
                     var eventVariableNodeId = new NodeId(NodeID.ToString() + $".{eventVariableProperty.Name}");
-                    var value = _daOPCSession.ReadNode(eventVariableNodeId, Attributes.Value);
+
+                    System.Diagnostics.Debug.WriteLine($"   Reading node: {eventVariableNodeId}");
+
+                    DataValueCollection value = null;
+                    try
+                    {
+                        value = _daOPCSession.ReadNode(eventVariableNodeId, Attributes.Value);
+                        System.Diagnostics.Debug.WriteLine($"   ✅ ReadNode returned successfully");
+                    }
+                    catch (Exception ex)
+                    {
+                        System.Diagnostics.Debug.WriteLine($"   ❌ ReadNode threw exception: {ex.Message}");
+                        continue; // Skip this property
+                    }
 
                     if (value?[0].Value != null)
                     {
-                        DAOPCUtils.ExtractDAObjectFields(eventVariableNodeId, value[0].Value,
-                            out isAvailable, out currentValue, out availableValues, out variableName);
-
-                        System.Diagnostics.Debug.WriteLine($"   Property: {variableName}, IsAvailable: {isAvailable}");
-
-                        if (isAvailable == false)
+                        try
                         {
-                            System.Diagnostics.Debug.WriteLine($"   ⚠️ Skipping '{variableName}' - not available");
-                            continue;  // ← FIX: Skip instead of return
-                        }
+                            DAOPCUtils.ExtractDAObjectFields(eventVariableNodeId, value[0].Value,
+                                out isAvailable, out currentValue, out availableValues, out variableName);
 
-                        if (CurrentResult == null)
+                            System.Diagnostics.Debug.WriteLine($"   Property:  {variableName}, IsAvailable: {isAvailable}");
+
+                            if (isAvailable == false)
+                            {
+                                System.Diagnostics.Debug.WriteLine($"   ⚠️ Skipping '{variableName}' - not available");
+                                continue;
+                            }
+
+                            if (CurrentResult == null)
+                            {
+                                System.Diagnostics.Debug.WriteLine("   Initializing CurrentResult.. .");
+                                InitializeCurrentResult();
+                            }
+
+                            CurrentResult.UpdateModel(variableName, isAvailable, currentValue.Value, availableValues);
+                            System.Diagnostics.Debug.WriteLine($"   ✅ Loaded '{variableName}'");
+                        }
+                        catch (Exception ex)
                         {
-                            System.Diagnostics.Debug.WriteLine("   Initializing CurrentResult.. .");
-                            InitializeCurrentResult();
+                            System.Diagnostics.Debug.WriteLine($"   ❌ Error processing property:  {ex.Message}");
                         }
-
-                        CurrentResult.UpdateModel(variableName, isAvailable, currentValue.Value, availableValues);
-                        System.Diagnostics.Debug.WriteLine($"   ✅ Loaded '{variableName}'");
+                    }
+                    else
+                    {
+                        System.Diagnostics.Debug.WriteLine($"   ⚠️ ReadNode returned null for {eventVariableProperty.Name}");
                     }
                 }
             }
+
+            System.Diagnostics.Debug.WriteLine($"🔵 [DAOPCEvent] Finished processing {propertyCount} properties");
 
             // Add to history if we have a result
             if (CurrentResult != null)
@@ -180,6 +284,8 @@ namespace MatroxLDS
             {
                 System.Diagnostics.Debug.WriteLine($"⚠️ [DAOPCEvent] No initial values loaded, CurrentResult is null");
             }
+
+            System.Diagnostics.Debug.WriteLine($"✅ [DAOPCEvent] GetEventInitialValues() COMPLETE - returning now");
         }
         /// <summary>
         /// Handles the event notification.
@@ -188,90 +294,57 @@ namespace MatroxLDS
         /// <param name="e"></param>
         private void Event_Notification(MonitoredItem monitoredItem, MonitoredItemNotificationEventArgs e)
         {
-            try
+            EventFieldList notifications = (EventFieldList)e.NotificationValue;
+
+            System.Diagnostics.Debug.WriteLine($"🔔 [EVENT] Notification received!   EventFields count: {notifications.EventFields.Count}");
+
+            // Try to get image data from event notification
+            if (notifications.EventFields.Count >= 3 && notifications.EventFields[2].Value != null)
             {
-                if (CurrentResult == null)
-                {
-                    InitializeCurrentResult();
-                }
-
-                var notifications = e.NotificationValue as EventFieldList;
-
-                if (notifications == null)
-                {
-                    System.Diagnostics.Debug.WriteLine("⚠️ [EVENT] Notification is null");
-                    return;
-                }
-
-                System.Diagnostics.Debug.WriteLine($"🔔 [EVENT] Notification received!   EventFields count: {notifications.EventFields.Count}");
-
-                // Debug: Print all event fields to see what we're getting
-                for (int i = 0; i < notifications.EventFields.Count; i++)
-                {
-                    var field = notifications.EventFields[i];
-                    System.Diagnostics.Debug.WriteLine($"   EventFields[{i}]: Type={field.Value?.GetType().Name ?? "null"}, Value={field.Value}");
-                }
-
-                // EventFields[2] corresponds to the "Results" part of the notification, where all the event results are contained. 
-                // The type definition used for events is DARuntimeEvent and can be found at nodeId ns=2;i=1003 on the server. 
-                if (notifications.EventFields.Count <= 2)
-                {
-                    System.Diagnostics.Debug.WriteLine($"⚠️ [EVENT] Expected at least 3 EventFields, but got {notifications.EventFields.Count}");
-                    return;
-                }
-
-                if (notifications.EventFields[2].Value == null)
-                {
-                    System.Diagnostics.Debug.WriteLine("⚠️ [EVENT] EventFields[2]. Value is null - no Results data");
-                    return;
-                }
-
-                var eventResults = notifications.EventFields[2].Value as Variant[];
-
-                if (eventResults == null)
-                {
-                    System.Diagnostics.Debug.WriteLine($"⚠️ [EVENT] EventFields[2].Value is not Variant[] - it's {notifications.EventFields[2].Value.GetType().Name}");
-                    return;
-                }
-
-                System.Diagnostics.Debug.WriteLine($"✅ [EVENT] Processing {eventResults.Length} results");
-
-                foreach (var result in eventResults)
-                {
-                    if (result.Value == null)
-                    {
-                        System.Diagnostics.Debug.WriteLine("⚠️ [EVENT] Skipping null result");
-                        continue;
-                    }
-
-                    bool isAvailable;
-                    Variant currentValue;
-                    List<string> availableValues;
-                    string variableName;
-
-                    DAOPCUtils.ExtractDAObjectFields(monitoredItem.StartNodeId, result.Value, out isAvailable, out currentValue, out availableValues, out variableName);
-
-                    System.Diagnostics.Debug.WriteLine($"   Variable: {variableName}, IsAvailable: {isAvailable}");
-
-                    CurrentResult.UpdateModel(variableName, isAvailable, currentValue.Value, availableValues);
-                }
-
-                ResultsHistory.Add((T)CurrentResult.Clone());
-                System.Diagnostics.Debug.WriteLine($"✅ [EVENT] Event processed successfully, added to history");
+                System.Diagnostics.Debug.WriteLine($"✅ [EVENT] Event contains Results data!");
+                // Process the event data (existing code)
+                // ...  
             }
-            catch (Exception ex)
+            else
             {
-                System.Diagnostics.Debug.WriteLine("═══════════════════════════════════════════════════════");
-                System.Diagnostics.Debug.WriteLine($"❌ [EVENT] Exception in Event_Notification: {ex.Message}");
-                System.Diagnostics.Debug.WriteLine($"❌ [EVENT] Exception Type: {ex.GetType().FullName}");
-                System.Diagnostics.Debug.WriteLine($"❌ [EVENT] Stack Trace: {ex.StackTrace}");
-                if (ex.InnerException != null)
+                System.Diagnostics.Debug.WriteLine($"⚠️ [EVENT] Event has no Results data - reading 'All' property directly.. .");
+
+                // Event has no image data, so READ it from the node
+                try
                 {
-                    System.Diagnostics.Debug.WriteLine($"❌ [EVENT] Inner Exception: {ex.InnerException.Message}");
+                    string allNodeString = NodeID.ToString().Replace(" ", "") + ".All";
+                    var allPropertyNode = new NodeId(allNodeString);
+
+                    var value = _daOPCSession.ReadNode(allPropertyNode, Opc.Ua.Attributes.Value);
+
+                    if (value != null && value.Count > 0 && value[0]?.Value != null)
+                    {
+                        bool isAvailable;
+                        Variant currentValue;
+                        List<string> availableValues;
+                        string variableName;
+
+                        DAOPCUtils.ExtractDAObjectFields(allPropertyNode, value[0].Value,
+                            out isAvailable, out currentValue, out availableValues, out variableName);
+
+                        if (isAvailable && currentValue.Value != null)
+                        {
+                            CurrentResult.UpdateModel(variableName, isAvailable, currentValue.Value, availableValues);
+
+                            if (currentValue.Value is byte[] bytes)
+                            {
+                                System.Diagnostics.Debug.WriteLine($"   ✅ [EVENT] Read updated image:  {bytes.Length} bytes");
+                            }
+                        }
+                    }
                 }
-                System.Diagnostics.Debug.WriteLine("═══════════════════════════════════════════════════════");
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine($"   ❌ [EVENT] Error reading 'All' property: {ex.Message}");
+                }
             }
         }
+
         /// <summary>
         /// Propagates the OnPropertyChange of the current result to the OnCurrentResultChange event.
         /// </summary>

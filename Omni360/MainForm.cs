@@ -484,7 +484,7 @@ namespace MatroxLDS
 
                     bool connected1 = opcConnectionManager1.Connect("localhost", "48030");
 
-                    Debug.WriteLine($"🔵 [ECI1] Connection attempt completed.  Result: {connected1}");
+                  //  Debug.WriteLine($"🔵 [ECI1] Connection attempt completed.  Result: {connected1}");
 
                     if (connected1)
                     {
@@ -881,8 +881,8 @@ namespace MatroxLDS
             }
             catch (Exception ex)
             {
-              ////  Debug.WriteLine($"❌ [ECI1 VALUES] Error subscribing to FinishNumber: {ex.Message}");
-                Debug.WriteLine($"❌ Stack: {ex.StackTrace}");
+              //  Debug.WriteLine($"❌ [ECI1 VALUES] Error subscribing to FinishNumber: {ex.Message}");
+               // Debug.WriteLine($"❌ Stack: {ex.StackTrace}");
             }
 
           //  Debug.WriteLine("✅ [ECI1 VALUES] Subscribed to all value changes");
@@ -966,7 +966,7 @@ namespace MatroxLDS
                                 this.Invoke((MethodInvoker)delegate
                                 {
                                     DentNumber.Text = c2DentNumberBinding.Value.CurrentValue.ToString();
-                                  //  Debug.WriteLine($"📊 [ECI2 VALUES] DentNumber = {c2DentNumberBinding.Value.CurrentValue}");
+                                  // Debug.WriteLine($"📊 [ECI2 VALUES] DentNumber = {c2DentNumberBinding.Value.CurrentValue}");
                                 });
                             }
                         }

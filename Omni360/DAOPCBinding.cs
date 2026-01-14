@@ -106,7 +106,7 @@ namespace MatroxLDS
         {
             try
             {
-                Debug.WriteLine($"🔔 [BINDING] Notification received for:  {monitoredItem.StartNodeId}");
+               // Debug.WriteLine($"🔔 [BINDING] Notification received for:  {monitoredItem.StartNodeId}");
 
                 var isFirstNotification = Value.AvailableValues == null;
                 var dequeuedValues = monitoredItem.DequeueValues();
@@ -118,12 +118,12 @@ namespace MatroxLDS
                 try
                 {
                     DAOPCUtils.ExtractDAObjectFields(monitoredItem.StartNodeId, dequeuedValues[0].Value, out isAvailable, out currentValue, out availableValues, out _);
-                    Debug.WriteLine($"📊 [BINDING] Extracted - IsAvailable: {isAvailable}, CurrentValue: {currentValue.Value}");
+                  //  Debug.WriteLine($"📊 [BINDING] Extracted - IsAvailable: {isAvailable}, CurrentValue: {currentValue.Value}");
                 }
                 catch (Exception ex)
                 {
-                    Debug.WriteLine($"❌ [BINDING] Error extracting fields: {ex.Message}");
-                    Debug.WriteLine($"❌ Exception type: {ex.GetType().Name}");
+                  //  Debug.WriteLine($"❌ [BINDING] Error extracting fields: {ex.Message}");
+                 //   Debug.WriteLine($"❌ Exception type: {ex.GetType().Name}");
                     return; // Skip this notification
                 }
 
@@ -161,13 +161,13 @@ namespace MatroxLDS
                         if (!EqualityComparer<T>.Default.Equals((T)Value.CurrentValue, (T)valueToSet))
                         {
                             Value.CurrentValue = (T)valueToSet;
-                            Debug.WriteLine($"✅ [BINDING] Updated CurrentValue to:  {Value.CurrentValue}");
+                           // Debug.WriteLine($"✅ [BINDING] Updated CurrentValue to:  {Value.CurrentValue}");
                         }
                     }
                     catch (Exception ex)
                     {
-                        Debug.WriteLine($"❌ [BINDING] Error setting CurrentValue:  {ex.Message}");
-                        Debug.WriteLine($"❌ CurrentValue type: {currentValue.Value?.GetType().Name}, Expected: {typeof(T).Name}");
+                       // Debug.WriteLine($"❌ [BINDING] Error setting CurrentValue:  {ex.Message}");
+                      //  Debug.WriteLine($"❌ CurrentValue type: {currentValue.Value?.GetType().Name}, Expected: {typeof(T).Name}");
                     }
                 }
                 Value.IsAvailable = isAvailable;
@@ -178,8 +178,8 @@ namespace MatroxLDS
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"❌ [BINDING] Fatal error in Binding_Notification: {ex.Message}");
-                Debug.WriteLine($"❌ Stack:  {ex.StackTrace}");
+               // Debug.WriteLine($"❌ [BINDING] Fatal error in Binding_Notification: {ex.Message}");
+               // Debug.WriteLine($"❌ Stack:  {ex.StackTrace}");
             }
         }
         /// <summary>

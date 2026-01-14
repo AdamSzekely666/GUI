@@ -58,9 +58,9 @@ namespace MatroxLDS
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"❌ [DAOPC SESSION] Error loading complex types:  {ex.Message}");
-                Debug.WriteLine($"❌ Stack trace: {ex.StackTrace}");
-                Console.WriteLine($"An error occured while initializing the client:{ex.Message}");
+               // Debug.WriteLine($"❌ [DAOPC SESSION] Error loading complex types:  {ex.Message}");
+              //  Debug.WriteLine($"❌ Stack trace: {ex.StackTrace}");
+              //  Console.WriteLine($"An error occured while initializing the client:{ex.Message}");
             }
         }        /// <summary>
                  /// Adds a monitored item to the subscription. This can be a binding or an event.

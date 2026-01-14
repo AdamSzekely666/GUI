@@ -237,7 +237,7 @@ namespace MatroxLDS
         private void CreateBindings(DAOPCSession session)
         {
             // No generic bindings - we create specific bindings in MainForm for ECI1 and ECI2
-            Debug.WriteLine("OPCDataModel. CreateBindings() - Skipped (using custom bindings in MainForm)");
+          //  Debug.WriteLine("OPCDataModel. CreateBindings() - Skipped (using custom bindings in MainForm)");
 
             // Notify that properties have been initialized (even though we're not creating any here)
             NotifyPropertyChanged(null);
@@ -245,7 +245,7 @@ namespace MatroxLDS
         private void CreateEvents(DAOPCSession session)
         {
             // No generic events - we create specific events in MainForm for ECI1 and ECI2
-            Debug.WriteLine("OPCDataModel.CreateEvents() - Skipped (using custom events in MainForm)");
+          //  Debug.WriteLine("OPCDataModel.CreateEvents() - Skipped (using custom events in MainForm)");
 
             // Note: InspectionEndResult and CameraEndResult remain null in this model
             // We handle events directly in MainForm for each camera
@@ -253,7 +253,7 @@ namespace MatroxLDS
         private void CreateFlowcharts(DAOPCSession session)
         {
             // Flowcharts not used in this implementation
-            Debug.WriteLine("OPCDataModel.CreateFlowcharts() - Skipped");
+          //  Debug.WriteLine("OPCDataModel.CreateFlowcharts() - Skipped");
         }
         /// <summary>
         /// Called by properties to update the UI when they change.
