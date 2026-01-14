@@ -5,26 +5,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{0F27A61E-33E0-45A6-9FAD-511DA8F89959}|Omni360\\OmniCheck_360.csproj|c:\\users\\zuser\\desktop\\eci 2x1280x1024\\omni360\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0F27A61E-33E0-45A6-9FAD-511DA8F89959}|Omni360\\OmniCheck_360.csproj|solutionrelative:omni360\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0F27A61E-33E0-45A6-9FAD-511DA8F89959}|Omni360\\OmniCheck_360.csproj|c:\\users\\zuser\\desktop\\eci 2x1280x1024\\omni360\\daopcbinding.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0F27A61E-33E0-45A6-9FAD-511DA8F89959}|Omni360\\OmniCheck_360.csproj|solutionrelative:omni360\\daopcbinding.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0F27A61E-33E0-45A6-9FAD-511DA8F89959}|Omni360\\OmniCheck_360.csproj|c:\\users\\zuser\\desktop\\eci 2x1280x1024\\omni360\\daopcsession.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0F27A61E-33E0-45A6-9FAD-511DA8F89959}|Omni360\\OmniCheck_360.csproj|solutionrelative:omni360\\daopcsession.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0F27A61E-33E0-45A6-9FAD-511DA8F89959}|Omni360\\OmniCheck_360.csproj|c:\\users\\zuser\\desktop\\eci 2x1280x1024\\omni360\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{0F27A61E-33E0-45A6-9FAD-511DA8F89959}|Omni360\\OmniCheck_360.csproj|solutionrelative:omni360\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0F27A61E-33E0-45A6-9FAD-511DA8F89959}|Omni360\\OmniCheck_360.csproj|c:\\users\\zuser\\desktop\\eci 2x1280x1024\\omni360\\daopcevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0F27A61E-33E0-45A6-9FAD-511DA8F89959}|Omni360\\OmniCheck_360.csproj|solutionrelative:omni360\\daopcevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0F27A61E-33E0-45A6-9FAD-511DA8F89959}|Omni360\\OmniCheck_360.csproj|c:\\users\\zuser\\desktop\\eci 2x1280x1024\\omni360\\danodemappings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0F27A61E-33E0-45A6-9FAD-511DA8F89959}|Omni360\\OmniCheck_360.csproj|solutionrelative:omni360\\danodemappings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,77 +22,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "DAOPCSession.cs",
-              "DocumentMoniker": "C:\\Users\\ZUser\\Desktop\\ECI 2x1280x1024\\Omni360\\DAOPCSession.cs",
-              "RelativeDocumentMoniker": "Omni360\\DAOPCSession.cs",
-              "ToolTip": "C:\\Users\\ZUser\\Desktop\\ECI 2x1280x1024\\Omni360\\DAOPCSession.cs",
-              "RelativeToolTip": "Omni360\\DAOPCSession.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAAAEAAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-14T00:09:52.014Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "MainForm.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\ZUser\\Desktop\\ECI 2x1280x1024\\Omni360\\MainForm.cs",
-              "RelativeDocumentMoniker": "Omni360\\MainForm.cs",
-              "ToolTip": "C:\\Users\\ZUser\\Desktop\\ECI 2x1280x1024\\Omni360\\MainForm.cs [Design]*",
-              "RelativeToolTip": "Omni360\\MainForm.cs [Design]*",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-13T21:47:49.875Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "DAOPCEvent.cs",
-              "DocumentMoniker": "C:\\Users\\ZUser\\Desktop\\ECI 2x1280x1024\\Omni360\\DAOPCEvent.cs",
-              "RelativeDocumentMoniker": "Omni360\\DAOPCEvent.cs",
-              "ToolTip": "C:\\Users\\ZUser\\Desktop\\ECI 2x1280x1024\\Omni360\\DAOPCEvent.cs",
-              "RelativeToolTip": "Omni360\\DAOPCEvent.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAwC4AAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-13T20:33:27.652Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "DANodeMappings.cs",
-              "DocumentMoniker": "C:\\Users\\ZUser\\Desktop\\ECI 2x1280x1024\\Omni360\\DANodeMappings.cs",
-              "RelativeDocumentMoniker": "Omni360\\DANodeMappings.cs",
-              "ToolTip": "C:\\Users\\ZUser\\Desktop\\ECI 2x1280x1024\\Omni360\\DANodeMappings.cs",
-              "RelativeToolTip": "Omni360\\DANodeMappings.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-13T20:31:07.218Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DAOPCBinding.cs",
-              "DocumentMoniker": "C:\\Users\\ZUser\\Desktop\\ECI 2x1280x1024\\Omni360\\DAOPCBinding.cs",
-              "RelativeDocumentMoniker": "Omni360\\DAOPCBinding.cs",
-              "ToolTip": "C:\\Users\\ZUser\\Desktop\\ECI 2x1280x1024\\Omni360\\DAOPCBinding.cs",
-              "RelativeToolTip": "Omni360\\DAOPCBinding.cs",
-              "ViewState": "AgIAAIgAAAAAAAAAAAAiwKsAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-13T20:30:00.801Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "MainForm.cs",
               "DocumentMoniker": "C:\\Users\\ZUser\\Desktop\\ECI 2x1280x1024\\Omni360\\MainForm.cs",
               "RelativeDocumentMoniker": "Omni360\\MainForm.cs",
-              "ToolTip": "C:\\Users\\ZUser\\Desktop\\ECI 2x1280x1024\\Omni360\\MainForm.cs*",
-              "RelativeToolTip": "Omni360\\MainForm.cs*",
-              "ViewState": "AgIAAHsDAAAAAAAAAAAuwC4EAABQAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\ZUser\\Desktop\\ECI 2x1280x1024\\Omni360\\MainForm.cs",
+              "RelativeToolTip": "Omni360\\MainForm.cs",
+              "ViewState": "AgIAAA8DAAAAAAAAAAAAAB8DAABRAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-13T14:49:59.727Z",
               "EditorCaption": ""

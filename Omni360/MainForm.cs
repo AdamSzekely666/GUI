@@ -336,27 +336,6 @@ namespace MatroxLDS
                 // ========== NOW CONNECT TO OPC UA ==========
                 await InitializeOPCConnection();
 
-                // now safe to access Projects and OperatorViews
-                //try
-                //{
-                //    //CameraPage1 = HostManager.GetHost(HOST_NAME).Projects[PROJECT_NAME1].OperatorViews[OPERATOR_VIEW_NAME];
-                //    //CameraPage2 = HostManager.GetHost(HOST_NAME).Projects[PROJECT_NAME2].OperatorViews[OPERATOR_VIEW_NAME];
-                //}
-                //catch (Exception ex)
-                //{
-                //    Program.splashForm?.UpdateProgress($"Failed binding OperatorViews: {ex.Message}");
-                //    Debug.WriteLine("OperatorViews binding failed: " + ex.Message);
-                //}
-
-                // then attach handlers (guard for null)
-                //try { CameraPage1?.ValueElements[C1CURRENTRECIPENAME].ValueChanged += C1CurrentRecipeName; } catch { }
-                //try { CameraPage2?.ValueElements[C2CURRENTRECIPENAME].ValueChanged += C2CurrentRecipeName; } catch { }
-
-                // Start displays (safe: StartDisplays will be defensive now)
-               // try { StartDisplays(Program.splashForm); } catch (Exception ex) { Debug.WriteLine("StartDisplays failed: " + ex.Message); }
-
-                // Connect textboxes and other UI wiring
-               // try { ConnectToAllTextboxes(Program.splashForm); } catch (Exception ex) { Debug.WriteLine("ConnectToAllTextboxes failed: " + ex.Message); }
 
                 // Load flavour persisted state
                 try { LoadCurrentFlavourFromDb(); } catch (Exception ex) { Debug.WriteLine("LoadCurrentFlavourFromDb failed: " + ex.Message); }
@@ -492,16 +471,16 @@ namespace MatroxLDS
 
                 try
                 {
-                    Debug.WriteLine("🔵 [ECI1] Step 1: Creating OPCDataModel1...");
+                    //Debug.WriteLine("🔵 [ECI1] Step 1: Creating OPCDataModel1...");
                     opcDataModel1 = new OPCDataModel();
-                    Debug.WriteLine("✅ [ECI1] OPCDataModel1 created successfully");
+                   // Debug.WriteLine("✅ [ECI1] OPCDataModel1 created successfully");
 
-                    Debug.WriteLine("🔵 [ECI1] Step 2: Creating OPCConnectionManager1...");
+                   // Debug.WriteLine("🔵 [ECI1] Step 2: Creating OPCConnectionManager1...");
                     opcConnectionManager1 = new OPCConnectionManager(opcDataModel1);
-                    Debug.WriteLine("✅ [ECI1] OPCConnectionManager1 created successfully");
+                  //  Debug.WriteLine("✅ [ECI1] OPCConnectionManager1 created successfully");
 
-                    Debug.WriteLine("🔵 [ECI1] Step 3: Attempting connection to localhost:48030...");
-                    Debug.WriteLine($"🔵 [ECI1] Connection URI: opc.tcp://localhost:48030");
+                   // Debug.WriteLine("🔵 [ECI1] Step 3: Attempting connection to localhost:48030...");
+                   // Debug.WriteLine($"🔵 [ECI1] Connection URI: opc.tcp://localhost:48030");
 
                     bool connected1 = opcConnectionManager1.Connect("localhost", "48030");
 
@@ -510,259 +489,305 @@ namespace MatroxLDS
                     if (connected1)
                     {
                         opcSession1 = opcConnectionManager1.Session;
-                        Debug.WriteLine("✅ [ECI1] ═══════════════════════════════════════════");
-                        Debug.WriteLine("✅ [ECI1] CONNECTION SUCCESSFUL!");
-                        Debug.WriteLine($"✅ [ECI1] Session ID: {opcSession1?.ToString() ?? "null"}");
-                        Debug.WriteLine("✅ [ECI1] ═══════════════════════════════════════════");
+                        //Debug.WriteLine("✅ [ECI1] ═══════════════════════════════════════════");
+                        //Debug.WriteLine("✅ [ECI1] CONNECTION SUCCESSFUL!");
+                        //Debug.WriteLine($"✅ [ECI1] Session ID: {opcSession1?.ToString() ?? "null"}");
+                        //Debug.WriteLine("✅ [ECI1] ═══════════════════════════════════════════");
 
                         Program.splashForm?.UpdateProgress("OPC UA ECI1 connected successfully");
 
-                        Debug.WriteLine("🔵 [ECI1] Step 4: Initializing bindings...");
+                        //Debug.WriteLine("🔵 [ECI1] Step 4: Initializing bindings...");
                         try
                         {
+                          //  Debug.WriteLine("🔵 [ECI1] About to call InitializeOPCBindings_ECI1()...");
                             InitializeOPCBindings_ECI1();
-                            Debug.WriteLine("✅ [ECI1] Bindings initialized successfully");
+                           // Debug.WriteLine("🔵 [ECI1] InitializeOPCBindings_ECI1() returned");
+
                         }
                         catch (Exception bindEx)
                         {
-                            Debug.WriteLine("❌ [ECI1] BINDING INITIALIZATION FAILED!");
-                            Debug.WriteLine($"❌ [ECI1] Error: {bindEx.Message}");
-                            Debug.WriteLine($"❌ [ECI1] Type: {bindEx.GetType().Name}");
-                            Debug.WriteLine($"❌ [ECI1] Stack Trace:");
-                            Debug.WriteLine(bindEx.StackTrace);
+                            //Debug.WriteLine("❌ [ECI1] BINDING INITIALIZATION FAILED!");
+                            //Debug.WriteLine($"❌ [ECI1] Error: {bindEx.Message}");
+                            //Debug.WriteLine("❌ [ECI1] BINDING INITIALIZATION FAILED!");
+                            //Debug.WriteLine($"❌ [ECI1] Error: {bindEx.Message}");
+                            //Debug.WriteLine($"❌ [ECI1] Type: {bindEx.GetType().Name}");
+                            //Debug.WriteLine($"❌ [ECI1] Stack Trace:");
+                            //Debug.WriteLine(bindEx.StackTrace);
                             if (bindEx.InnerException != null)
                             {
-                                Debug.WriteLine($"❌ [ECI1] Inner Exception: {bindEx.InnerException.Message}");
-                                Debug.WriteLine($"❌ [ECI1] Inner Stack Trace:");
-                                Debug.WriteLine(bindEx.InnerException.StackTrace);
+                               // Debug.WriteLine($"❌ [ECI1] Inner Exception: {bindEx.InnerException.Message}");
+                               // Debug.WriteLine($"❌ [ECI1] Inner Stack Trace:");
+                               // Debug.WriteLine(bindEx.InnerException.StackTrace);
                             }
                         }
                     }
                     else
                     {
-                        Debug.WriteLine("❌ [ECI1] ═══════════════════════════════════════════");
-                        Debug.WriteLine("❌ [ECI1] CONNECTION FAILED!");
-                        Debug.WriteLine("❌ [ECI1] Connect() returned false");
-                        Debug.WriteLine("❌ [ECI1] Possible reasons:");
-                        Debug.WriteLine("❌ [ECI1]   - Server not running on port 48030");
-                        Debug.WriteLine("❌ [ECI1]   - Firewall blocking connection");
-                        Debug.WriteLine("❌ [ECI1]   - Wrong port number");
-                        Debug.WriteLine("❌ [ECI1] ═══════════════════════════════════════════");
+                        //Debug.WriteLine("❌ [ECI1] ═══════════════════════════════════════════");
+                        //Debug.WriteLine("❌ [ECI1] CONNECTION FAILED!");
+                        //Debug.WriteLine("❌ [ECI1] Connect() returned false");
+                        //Debug.WriteLine("❌ [ECI1] Possible reasons:");
+                        //Debug.WriteLine("❌ [ECI1]   - Server not running on port 48030");
+                        //Debug.WriteLine("❌ [ECI1]   - Firewall blocking connection");
+                        //Debug.WriteLine("❌ [ECI1]   - Wrong port number");
+                        //Debug.WriteLine("❌ [ECI1] ═══════════════════════════════════════════");
                         Program.splashForm?.UpdateProgress("OPC UA ECI1 connection failed");
                     }
                 }
                 catch (Exception ex1)
                 {
-                    Debug.WriteLine("❌ [ECI1] ═══════════════════════════════════════════");
-                    Debug.WriteLine("❌ [ECI1] EXCEPTION THROWN DURING ECI1 CONNECTION!");
-                    Debug.WriteLine("❌ [ECI1] ═══════════════════════════════════════════");
-                    Debug.WriteLine($"❌ [ECI1] Exception Type: {ex1.GetType().Name}");
-                    Debug.WriteLine($"❌ [ECI1] Message: {ex1.Message}");
-                    Debug.WriteLine($"❌ [ECI1] Source: {ex1.Source}");
-                    Debug.WriteLine($"❌ [ECI1] Stack Trace:");
-                    Debug.WriteLine(ex1.StackTrace);
+                    //Debug.WriteLine("❌ [ECI1] ═══════════════════════════════════════════");
+                    //Debug.WriteLine("❌ [ECI1] EXCEPTION THROWN DURING ECI1 CONNECTION!");
+                    //Debug.WriteLine("❌ [ECI1] ═══════════════════════════════════════════");
+                    //Debug.WriteLine($"❌ [ECI1] Exception Type: {ex1.GetType().Name}");
+                    //Debug.WriteLine($"❌ [ECI1] Message: {ex1.Message}");
+                    //Debug.WriteLine($"❌ [ECI1] Source: {ex1.Source}");
+                    //Debug.WriteLine($"❌ [ECI1] Stack Trace:");
+                    //Debug.WriteLine(ex1.StackTrace);
 
                     if (ex1.InnerException != null)
                     {
-                        Debug.WriteLine($"❌ [ECI1] Inner Exception Type: {ex1.InnerException.GetType().Name}");
-                        Debug.WriteLine($"❌ [ECI1] Inner Message: {ex1.InnerException.Message}");
-                        Debug.WriteLine($"❌ [ECI1] Inner Stack Trace:");
-                        Debug.WriteLine(ex1.InnerException.StackTrace);
+                        //Debug.WriteLine($"❌ [ECI1] Inner Exception Type: {ex1.InnerException.GetType().Name}");
+                        //Debug.WriteLine($"❌ [ECI1] Inner Message: {ex1.InnerException.Message}");
+                        //Debug.WriteLine($"❌ [ECI1] Inner Stack Trace:");
+                        //Debug.WriteLine(ex1.InnerException.StackTrace);
                     }
 
-                    Debug.WriteLine("❌ [ECI1] ═══════════════════════════════════════════");
+                    //Debug.WriteLine("❌ [ECI1] ═══════════════════════════════════════════");
                     Program.splashForm?.UpdateProgress($"ECI1 error: {ex1.Message}");
                 }
 
                 // ========== CONNECTION 2 - ECI2 ==========
-                Debug.WriteLine("");
-                Debug.WriteLine("───────────────────────────────────────────────────────");
-                Debug.WriteLine("🔵 [ECI2] Starting ECI2 Connection...");
-                Debug.WriteLine("───────────────────────────────────────────────────────");
+                //Debug.WriteLine("");
+                //Debug.WriteLine("───────────────────────────────────────────────────────");
+                //Debug.WriteLine("🔵 [ECI2] Starting ECI2 Connection...");
+                //Debug.WriteLine("───────────────────────────────────────────────────────");
 
                 try
                 {
-                    Debug.WriteLine("🔵 [ECI2] Step 1: Creating OPCDataModel2...");
+                   // Debug.WriteLine("🔵 [ECI2] Step 1: Creating OPCDataModel2...");
                     opcDataModel2 = new OPCDataModel();
-                    Debug.WriteLine("✅ [ECI2] OPCDataModel2 created successfully");
+                   // Debug.WriteLine("✅ [ECI2] OPCDataModel2 created successfully");
 
-                    Debug.WriteLine("🔵 [ECI2] Step 2: Creating OPCConnectionManager2...");
+                  //  Debug.WriteLine("🔵 [ECI2] Step 2: Creating OPCConnectionManager2...");
                     opcConnectionManager2 = new OPCConnectionManager(opcDataModel2);
-                    Debug.WriteLine("✅ [ECI2] OPCConnectionManager2 created successfully");
+                  //  Debug.WriteLine("✅ [ECI2] OPCConnectionManager2 created successfully");
 
-                    Debug.WriteLine("🔵 [ECI2] Step 3: Attempting connection to localhost:48031...");
-                    Debug.WriteLine($"🔵 [ECI2] Connection URI: opc.tcp://localhost:48031");
+                  //  Debug.WriteLine("🔵 [ECI2] Step 3: Attempting connection to localhost:48031...");
+                  //  Debug.WriteLine($"🔵 [ECI2] Connection URI: opc.tcp://localhost:48031");
 
                     bool connected2 = opcConnectionManager2.Connect("localhost", "48031");
 
-                    Debug.WriteLine($"🔵 [ECI2] Connection attempt completed.  Result: {connected2}");
+                  //  Debug.WriteLine($"🔵 [ECI2] Connection attempt completed.  Result: {connected2}");
 
                     if (connected2)
                     {
                         opcSession2 = opcConnectionManager2.Session;
-                        Debug.WriteLine("✅ [ECI2] ═══════════════════════════════════════════");
-                        Debug.WriteLine("✅ [ECI2] CONNECTION SUCCESSFUL!");
-                        Debug.WriteLine($"✅ [ECI2] Session ID: {opcSession2?.ToString() ?? "null"}");
-                        Debug.WriteLine("✅ [ECI2] ═══════════════════════════════════════════");
+                        //Debug.WriteLine("✅ [ECI2] ═══════════════════════════════════════════");
+                        //Debug.WriteLine("✅ [ECI2] CONNECTION SUCCESSFUL!");
+                        //Debug.WriteLine($"✅ [ECI2] Session ID: {opcSession2?.ToString() ?? "null"}");
+                        //Debug.WriteLine("✅ [ECI2] ═══════════════════════════════════════════");
 
                         Program.splashForm?.UpdateProgress("OPC UA ECI2 connected successfully");
 
-                        Debug.WriteLine("🔵 [ECI2] Step 4: Initializing bindings...");
+                      //  Debug.WriteLine("🔵 [ECI2] Step 4: Initializing bindings...");
                         try
                         {
                             InitializeOPCBindings_ECI2();
-                            Debug.WriteLine("✅ [ECI2] Bindings initialized successfully");
+                           // Debug.WriteLine("✅ [ECI2] Bindings initialized successfully");
                         }
                         catch (Exception bindEx)
                         {
-                            Debug.WriteLine("❌ [ECI2] BINDING INITIALIZATION FAILED!");
-                            Debug.WriteLine($"❌ [ECI2] Error: {bindEx.Message}");
-                            Debug.WriteLine($"❌ [ECI2] Type: {bindEx.GetType().Name}");
-                            Debug.WriteLine($"❌ [ECI2] Stack Trace:");
-                            Debug.WriteLine(bindEx.StackTrace);
+                            //Debug.WriteLine("❌ [ECI2] BINDING INITIALIZATION FAILED!");
+                            //Debug.WriteLine($"❌ [ECI2] Error: {bindEx.Message}");
+                            //Debug.WriteLine($"❌ [ECI2] Type: {bindEx.GetType().Name}");
+                            //Debug.WriteLine($"❌ [ECI2] Stack Trace:");
+                            //Debug.WriteLine(bindEx.StackTrace);
                             if (bindEx.InnerException != null)
                             {
-                                Debug.WriteLine($"❌ [ECI2] Inner Exception: {bindEx.InnerException.Message}");
-                                Debug.WriteLine($"❌ [ECI2] Inner Stack Trace:");
-                                Debug.WriteLine(bindEx.InnerException.StackTrace);
+                                //Debug.WriteLine($"❌ [ECI2] Inner Exception: {bindEx.InnerException.Message}");
+                                //Debug.WriteLine($"❌ [ECI2] Inner Stack Trace:");
+                                //Debug.WriteLine(bindEx.InnerException.StackTrace);
                             }
                         }
                     }
                     else
                     {
-                        Debug.WriteLine("❌ [ECI2] ═══════════════════════════════════════════");
-                        Debug.WriteLine("❌ [ECI2] CONNECTION FAILED!");
-                        Debug.WriteLine("❌ [ECI2] Connect() returned false");
-                        Debug.WriteLine("❌ [ECI2] Possible reasons:");
-                        Debug.WriteLine("❌ [ECI2]   - Server not running on port 48031");
-                        Debug.WriteLine("❌ [ECI2]   - Firewall blocking connection");
-                        Debug.WriteLine("❌ [ECI2]   - Wrong port number");
-                        Debug.WriteLine("❌ [ECI2] ═══════════════════════════════════════════");
+                        //Debug.WriteLine("❌ [ECI2] ═══════════════════════════════════════════");
+                        //Debug.WriteLine("❌ [ECI2] CONNECTION FAILED!");
+                        //Debug.WriteLine("❌ [ECI2] Connect() returned false");
+                        //Debug.WriteLine("❌ [ECI2] Possible reasons:");
+                        //Debug.WriteLine("❌ [ECI2]   - Server not running on port 48031");
+                        //Debug.WriteLine("❌ [ECI2]   - Firewall blocking connection");
+                        //Debug.WriteLine("❌ [ECI2]   - Wrong port number");
+                        //Debug.WriteLine("❌ [ECI2] ═══════════════════════════════════════════");
                         Program.splashForm?.UpdateProgress("OPC UA ECI2 connection failed");
                     }
                 }
                 catch (Exception ex2)
                 {
-                    Debug.WriteLine("❌ [ECI2] ═══════════════════════════════════════════");
-                    Debug.WriteLine("❌ [ECI2] EXCEPTION THROWN DURING ECI2 CONNECTION!");
-                    Debug.WriteLine("❌ [ECI2] ═══════════════════════════════════════════");
-                    Debug.WriteLine($"❌ [ECI2] Exception Type: {ex2.GetType().Name}");
-                    Debug.WriteLine($"❌ [ECI2] Message: {ex2.Message}");
-                    Debug.WriteLine($"❌ [ECI2] Source: {ex2.Source}");
-                    Debug.WriteLine($"❌ [ECI2] Stack Trace:");
-                    Debug.WriteLine(ex2.StackTrace);
+                    //Debug.WriteLine("❌ [ECI2] ═══════════════════════════════════════════");
+                    //Debug.WriteLine("❌ [ECI2] EXCEPTION THROWN DURING ECI2 CONNECTION!");
+                    //Debug.WriteLine("❌ [ECI2] ═══════════════════════════════════════════");
+                    //Debug.WriteLine($"❌ [ECI2] Exception Type: {ex2.GetType().Name}");
+                    //Debug.WriteLine($"❌ [ECI2] Message: {ex2.Message}");
+                    //Debug.WriteLine($"❌ [ECI2] Source: {ex2.Source}");
+                    //Debug.WriteLine($"❌ [ECI2] Stack Trace:");
+                    //Debug.WriteLine(ex2.StackTrace);
 
                     if (ex2.InnerException != null)
                     {
-                        Debug.WriteLine($"❌ [ECI2] Inner Exception Type: {ex2.InnerException.GetType().Name}");
-                        Debug.WriteLine($"❌ [ECI2] Inner Message: {ex2.InnerException.Message}");
-                        Debug.WriteLine($"❌ [ECI2] Inner Stack Trace:");
-                        Debug.WriteLine(ex2.InnerException.StackTrace);
+                        //Debug.WriteLine($"❌ [ECI2] Inner Exception Type: {ex2.InnerException.GetType().Name}");
+                        //Debug.WriteLine($"❌ [ECI2] Inner Message: {ex2.InnerException.Message}");
+                        //Debug.WriteLine($"❌ [ECI2] Inner Stack Trace:");
+                        //Debug.WriteLine(ex2.InnerException.StackTrace);
                     }
 
-                    Debug.WriteLine("❌ [ECI2] ════════════════════════════════════��══════");
+                    //Debug.WriteLine("❌ [ECI2] ════════════════════════════════════��══════");
                     Program.splashForm?.UpdateProgress($"ECI2 error: {ex2.Message}");
                 }
 
-                Debug.WriteLine("");
-                Debug.WriteLine("═══════════════════════════════════════════════════════");
-                Debug.WriteLine("🔵 [END] OPC UA Initialization Complete");
-                Debug.WriteLine($"🔵 [TIME] {DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}");
-                Debug.WriteLine("═══════════════════════════════════════════════════════");
+                //Debug.WriteLine("");
+                //Debug.WriteLine("═══════════════════════════════════════════════════════");
+                //Debug.WriteLine("🔵 [END] OPC UA Initialization Complete");
+                //Debug.WriteLine($"🔵 [TIME] {DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}");
+                //Debug.WriteLine("═══════════════════════════════════════════════════════");
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("");
-                Debug.WriteLine("═══════════════════════════════════════════════════════");
-                Debug.WriteLine("❌ [FATAL] OUTER EXCEPTION CAUGHT!");
-                Debug.WriteLine("═══════════════════════════════════════════════════════");
-                Debug.WriteLine($"❌ [FATAL] Exception Type:  {ex.GetType().Name}");
-                Debug.WriteLine($"❌ [FATAL] Message: {ex.Message}");
-                Debug.WriteLine($"❌ [FATAL] Source: {ex.Source}");
-                Debug.WriteLine($"❌ [FATAL] Stack Trace:");
-                Debug.WriteLine(ex.StackTrace);
+                //Debug.WriteLine("");
+                //Debug.WriteLine("═══════════════════════════════════════════════════════");
+                //Debug.WriteLine("❌ [FATAL] OUTER EXCEPTION CAUGHT!");
+                //Debug.WriteLine("═══════════════════════════════════════════════════════");
+                //Debug.WriteLine($"❌ [FATAL] Exception Type:  {ex.GetType().Name}");
+                //Debug.WriteLine($"❌ [FATAL] Message: {ex.Message}");
+                //Debug.WriteLine($"❌ [FATAL] Source: {ex.Source}");
+                //Debug.WriteLine($"❌ [FATAL] Stack Trace:");
+                //Debug.WriteLine(ex.StackTrace);
 
                 if (ex.InnerException != null)
                 {
-                    Debug.WriteLine($"❌ [FATAL] Inner Exception:  {ex.InnerException.Message}");
-                    Debug.WriteLine($"❌ [FATAL] Inner Stack Trace:");
-                    Debug.WriteLine(ex.InnerException.StackTrace);
+                    //Debug.WriteLine($"❌ [FATAL] Inner Exception:  {ex.InnerException.Message}");
+                    //Debug.WriteLine($"❌ [FATAL] Inner Stack Trace:");
+                    //Debug.WriteLine(ex.InnerException.StackTrace);
                 }
 
-                Debug.WriteLine("═══════════════════════════════════════════════════════");
+                //Debug.WriteLine("═══════════════════════════════════════════════════════");
                 Program.splashForm?.UpdateProgress($"OPC UA fatal error: {ex.Message}");
             }
         }
-        private void InitializeOPCBindings_ECI1()
+        private async void InitializeOPCBindings_ECI1()
         {
             try
             {
                 if (opcSession1 == null) return;
 
-                Debug.WriteLine("🔵 [ECI1 BINDINGS] Starting initialization...");
+                //Debug.WriteLine("🔵 [ECI1 BINDINGS] Starting initialization...");
 
                 // ========== BINDINGS ==========
                 try
                 {
-                    Debug.WriteLine("🔵 [ECI1 BINDINGS] Creating value bindings...");
+                    //Debug.WriteLine("🔵 [ECI1 BINDINGS] Creating value bindings...");
 
-                    // Camera 1 (ECI1) bindings - use opcSession1
                     c1FinishNumberBinding = new DAOPCBinding<int>(opcSession1, "Bindings.TotalFinishNumber");
                     c1TotalGoodBinding = new DAOPCBinding<int>(opcSession1, "Bindings.TotalGoodCount");
                     c1TotalBadBinding = new DAOPCBinding<int>(opcSession1, "Bindings.TotalBadCount");
                     c1TotalThroughputBinding = new DAOPCBinding<int>(opcSession1, "Bindings.TotalThroughput");
                     c1CurrentRecipeBinding = new DAOPCBinding<string>(opcSession1, "Bindings.CurrentRecipeName");
 
-                    // Subscribe to value changes
                     SubscribeToValueChanges_ECI1();
-                    Debug.WriteLine("✅ [ECI1 BINDINGS] Value bindings created successfully");
+                    //Debug.WriteLine("✅ [ECI1 BINDINGS] Value bindings created successfully");
                 }
                 catch (Exception ex)
                 {
-                    Debug.WriteLine($"❌ [ECI1 BINDINGS] Error creating value bindings: {ex.Message}");
+                    //Debug.WriteLine($"❌ [ECI1 BINDINGS] Error creating value bindings: {ex.Message}");
                 }
 
-                // ========== EVENT SUBSCRIPTION FOR IMAGES ==========
-                try
+                // ========== EVENT SUBSCRIPTION ==========
+                Debug.WriteLine($"🔵 [ECI1 EVENTS] About to start event subscription task...");
+
+                await Task.Run(() =>
                 {
-                    Debug.WriteLine($"🔵 [ECI1 EVENTS] Subscribing to event: '{opcEventObjectName}'");
+                    Debug.WriteLine($"🔵 [ECI1 EVENTS] Inside Task.Run()");
+                    Debug.WriteLine($"🔵 [ECI1 EVENTS] About to create DAOPCEvent...");
 
-                    c1InspectionEndEvent = new DAOPCEvent<InspectionEndEventResult>(
-                        opcSession1,
-                        opcEventObjectName,  // ← Uses value from config. json
-                        20
-                    );
+                    try
+                    {
+                        c1InspectionEndEvent = new DAOPCEvent<InspectionEndEventResult>(
+                            opcSession1,
+                            opcEventObjectName,
+                            20
+                        );
 
-                    c1InspectionEndEvent.OnCurrentResultChange += C1InspectionEnd_OnResultChange;
+                        Debug.WriteLine($"✅ [ECI1 EVENTS] DAOPCEvent constructor completed!");
+                    }
+                    catch (Exception constructorEx)
+                    {
+                        Debug.WriteLine($"❌ [ECI1 EVENTS] Exception in DAOPCEvent constructor: {constructorEx.Message}");
+                        Debug.WriteLine($"❌ Stack:  {constructorEx.StackTrace}");
+                        return; // Exit task
+                    }
 
-                    Debug.WriteLine($"✅ [ECI1 EVENTS] Successfully subscribed to '{opcEventObjectName}'");
-                }
-                catch (Exception ex)
-                {
-                    Debug.WriteLine("❌ [ECI1 EVENTS] ═══════════════════════════════════════");
-                    Debug.WriteLine($"❌ [ECI1 EVENTS] Failed to subscribe to event: '{opcEventObjectName}'");
-                    Debug.WriteLine($"❌ [ECI1 EVENTS] Error: {ex.Message}");
-                    Debug.WriteLine("❌ [ECI1 EVENTS] ═══════════════════════════════════════");
-                    Debug.WriteLine("❌ [ECI1 EVENTS] TROUBLESHOOTING:");
-                    Debug.WriteLine("❌ [ECI1 EVENTS] 1. Open Design Assistant Platform Configuration");
-                    Debug.WriteLine("❌ [ECI1 EVENTS] 2. Go to:  OPC-UA → Events tab");
-                    Debug.WriteLine("❌ [ECI1 EVENTS] 3. Check EventObject name in TOP RIGHT corner");
-                    Debug.WriteLine($"❌ [ECI1 EVENTS] 4. Update config.json → OPCSettings → EventObjectName to match");
-                    Debug.WriteLine($"❌ [ECI1 EVENTS] 5. Current config value: '{opcEventObjectName}'");
-                    Debug.WriteLine("❌ [ECI1 EVENTS] ═══════════════════════════════════════");
-                    Debug.WriteLine($"❌ Stack trace: {ex.StackTrace}");
-                }
+                    Debug.WriteLine($"🔵 [ECI1 EVENTS] Attaching event handler...");
+
+                    try
+                    {
+                        c1InspectionEndEvent.OnCurrentResultChange += C1InspectionEnd_OnResultChange;
+                        Debug.WriteLine($"✅ [ECI1 EVENTS] Event handler attached");
+                    }
+                    catch (Exception handlerEx)
+                    {
+                        Debug.WriteLine($"❌ [ECI1 EVENTS] Error attaching handler: {handlerEx.Message}");
+                        return;
+                    }
+
+                    // Check and trigger
+                    Debug.WriteLine($"🔵 [ECI1 EVENTS] Checking CurrentResult...");
+
+                    if (c1InspectionEndEvent?.CurrentResult != null)
+                    {
+                        Debug.WriteLine($"✅ [ECI1 EVENTS] CurrentResult exists!");
+
+                        if (c1InspectionEndEvent.CurrentResult.All?.CurrentValue != null)
+                        {
+                            Debug.WriteLine($"✅ [ECI1 EVENTS] Image data found: {c1InspectionEndEvent.CurrentResult.All.CurrentValue.Length} bytes");
+                            Debug.WriteLine($"🔵 [ECI1 EVENTS] Triggering handler manually...");
+
+                            try
+                            {
+                                C1InspectionEnd_OnResultChange(c1InspectionEndEvent, new PropertyChangedEventArgs("All"));
+                                Debug.WriteLine($"✅ [ECI1 EVENTS] Handler triggered successfully");
+                            }
+                            catch (Exception triggerEx)
+                            {
+                                Debug.WriteLine($"❌ [ECI1 EVENTS] Error triggering handler: {triggerEx.Message}");
+                                Debug.WriteLine($"❌ Stack: {triggerEx.StackTrace}");
+                            }
+                        }
+                        else
+                        {
+                            Debug.WriteLine($"⚠️ [ECI1 EVENTS] CurrentResult. All has no image data");
+                        }
+                    }
+                    else
+                    {
+                        Debug.WriteLine($"⚠️ [ECI1 EVENTS] CurrentResult is null");
+                    }
+
+                    Debug.WriteLine($"✅ [ECI1 EVENTS] Task. Run() complete");
+                });
+
                 Debug.WriteLine("✅ [ECI1 BINDINGS] Initialization complete");
             }
             catch (Exception ex)
             {
                 Debug.WriteLine($"❌ [ECI1 BINDINGS] Fatal error: {ex.Message}");
-                Debug.WriteLine($"❌ Stack trace: {ex.StackTrace}");
+                Debug.WriteLine($"❌ Stack: {ex.StackTrace}");
             }
         }
         private void SubscribeToValueChanges_ECI1()
         {
-            Debug.WriteLine("🔵 [ECI1 VALUES] Subscribing to value change events...");
+           // Debug.WriteLine("🔵 [ECI1 VALUES] Subscribing to value change events...");
 
             // Add a timer to check current values every 2 seconds
             var debugTimer = new System.Windows.Forms.Timer();
@@ -771,34 +796,34 @@ namespace MatroxLDS
             {
                 try
                 {
-                    Debug.WriteLine("═══════════════════════════════════════");
-                    Debug.WriteLine("📊 [ECI1 DEBUG] Current binding values:");
+                    //Debug.WriteLine("═══════════════════════════════════════");
+                    //Debug.WriteLine("📊 [ECI1 DEBUG] Current binding values:");
 
-                    if (c1FinishNumberBinding?.Value != null)
-                        Debug.WriteLine($"   FinishNumber: {c1FinishNumberBinding.Value.CurrentValue}");
+                    if (c1FinishNumberBinding?.Value != null) ;
+                    //  Debug.WriteLine($"   FinishNumber: {c1FinishNumberBinding.Value.CurrentValue}");
                     else
-                        Debug.WriteLine("   FinishNumber: NULL");
+                    // Debug.WriteLine("   FinishNumber: NULL");
 
-                    if (c1TotalGoodBinding?.Value != null)
-                        Debug.WriteLine($"   TotalGood: {c1TotalGoodBinding.Value.CurrentValue}");
+                    if (c1TotalGoodBinding?.Value != null) ;
+                    //  Debug.WriteLine($"   TotalGood: {c1TotalGoodBinding.Value.CurrentValue}");
                     else
-                        Debug.WriteLine("   TotalGood: NULL");
+                    //  Debug.WriteLine("   TotalGood: NULL");
 
-                    if (c1TotalBadBinding?.Value != null)
-                        Debug.WriteLine($"   TotalBad:   {c1TotalBadBinding.Value.CurrentValue}");
+                    if (c1TotalBadBinding?.Value != null) ;
+                    // Debug.WriteLine($"   TotalBad:   {c1TotalBadBinding.Value.CurrentValue}");
                     else
-                        Debug.WriteLine("   TotalBad:  NULL");
+                    //  Debug.WriteLine("   TotalBad:  NULL");
 
-                    if (c1TotalThroughputBinding?.Value != null)
-                        Debug.WriteLine($"   Throughput:   {c1TotalThroughputBinding.Value.CurrentValue}");
-                    else
-                        Debug.WriteLine("   Throughput: NULL");
+                    if (c1TotalThroughputBinding?.Value != null) ;
+                    //  Debug.WriteLine($"   Throughput:   {c1TotalThroughputBinding.Value.CurrentValue}");
+                    else;
+                      //  Debug.WriteLine("   Throughput: NULL");
 
-                    Debug.WriteLine("═══════════════════════════════════════");
+                   // Debug.WriteLine("═══════════════════════════════════════");
                 }
                 catch (Exception ex)
                 {
-                    Debug.WriteLine($"❌ [ECI1 DEBUG TIMER] Error: {ex.Message}");
+                   // Debug.WriteLine($"❌ [ECI1 DEBUG TIMER] Error: {ex.Message}");
                 }
             };
             debugTimer.Start();
@@ -847,22 +872,22 @@ namespace MatroxLDS
                             Debug.WriteLine($"❌ Stack:  {ex.StackTrace}");
                         }
                     };
-                    Debug.WriteLine("✅ [ECI1 VALUES] Subscribed to FinishNumber changes");
+                  //  Debug.WriteLine("✅ [ECI1 VALUES] Subscribed to FinishNumber changes");
                 }
                 else
                 {
-                    Debug.WriteLine("❌ [ECI1 VALUES] c1FinishNumberBinding. Value is NULL!");
+                 //   Debug.WriteLine("❌ [ECI1 VALUES] c1FinishNumberBinding. Value is NULL!");
                 }
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"❌ [ECI1 VALUES] Error subscribing to FinishNumber: {ex.Message}");
+              ////  Debug.WriteLine($"❌ [ECI1 VALUES] Error subscribing to FinishNumber: {ex.Message}");
                 Debug.WriteLine($"❌ Stack: {ex.StackTrace}");
             }
 
-            Debug.WriteLine("✅ [ECI1 VALUES] Subscribed to all value changes");
+          //  Debug.WriteLine("✅ [ECI1 VALUES] Subscribed to all value changes");
         }
-        private void InitializeOPCBindings_ECI2()
+        private async void InitializeOPCBindings_ECI2()
         {
             try
             {
@@ -871,27 +896,62 @@ namespace MatroxLDS
                 Debug.WriteLine("🔵 [ECI2 BINDINGS] Starting initialization...");
 
                 // Create bindings with "Bindings." prefix
-                c2DentNumberBinding = new DAOPCBinding<int>(opcSession2, "Bindings.DentNumber");
-                c2ISWNumberBinding = new DAOPCBinding<int>(opcSession2, "Bindings.ISWNumber");
-                c2BaseNumberBinding = new DAOPCBinding<int>(opcSession2, "Bindings.BaseNumber");
-                c2TotalGoodBinding = new DAOPCBinding<int>(opcSession2, "Bindings.TotalGoodCount");
-                c2TotalBadBinding = new DAOPCBinding<int>(opcSession2, "Bindings.TotalBadCount");
-                c2TotalThroughputBinding = new DAOPCBinding<int>(opcSession2, "Bindings.TotalThroughput");
-                c2CurrentRecipeBinding = new DAOPCBinding<string>(opcSession2, "Bindings.CurrentRecipeName");
+                try
+                {
+                    c2DentNumberBinding = new DAOPCBinding<int>(opcSession2, "Bindings.DentNumber");
+                    c2ISWNumberBinding = new DAOPCBinding<int>(opcSession2, "Bindings.ISWNumber");
+                    c2BaseNumberBinding = new DAOPCBinding<int>(opcSession2, "Bindings.BaseNumber");
+                    c2TotalGoodBinding = new DAOPCBinding<int>(opcSession2, "Bindings.TotalGoodCount");
+                    c2TotalBadBinding = new DAOPCBinding<int>(opcSession2, "Bindings.TotalBadCount");
+                    c2TotalThroughputBinding = new DAOPCBinding<int>(opcSession2, "Bindings.TotalThroughput");
+                    c2CurrentRecipeBinding = new DAOPCBinding<string>(opcSession2, "Bindings.CurrentRecipeName");
 
-                // Subscribe to value changes
-                SubscribeToValueChanges_ECI2();
+                    // Subscribe to value changes
+                    SubscribeToValueChanges_ECI2();
 
-                Debug.WriteLine("✅ [ECI2 BINDINGS] Value bindings created successfully");
+                   // Debug.WriteLine("✅ [ECI2 BINDINGS] Value bindings created successfully");
+                }
+                catch (Exception ex)
+                {
+                  //  Debug.WriteLine($"❌ [ECI2 BINDINGS] Error creating bindings: {ex.Message}");
+                  //  Debug.WriteLine($"❌ Stack trace: {ex.StackTrace}");
+                }
+
+                // ========== EVENT SUBSCRIPTION FOR IMAGES ==========
+               await Task.Run(() =>
+                {
+                    try
+                    {
+                        Debug.WriteLine($"🔵 [ECI2 EVENTS] Subscribing to event: '{opcEventObjectName}'");
+
+                        c2InspectionEndEvent = new DAOPCEvent<InspectionEndEventResult>(
+                            opcSession2,
+                            opcEventObjectName,
+                            20
+                        );
+
+                        c2InspectionEndEvent.OnCurrentResultChange += C2InspectionEnd_OnResultChange;
+
+                        Debug.WriteLine($"✅ [ECI2 EVENTS] Successfully subscribed to '{opcEventObjectName}'");
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine($"❌ [ECI2 EVENTS] Failed to subscribe:  {ex.Message}");
+                        Debug.WriteLine($"❌ Stack trace: {ex.StackTrace}");
+                    }
+                });
+
+                Debug.WriteLine("✅ [ECI2 BINDINGS] Initialization complete (event subscription in progress)");
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"❌ [ECI2 BINDINGS] Error:  {ex.Message}");
+                Debug.WriteLine($"❌ [ECI2 BINDINGS] Error: {ex.Message}");
+                Debug.WriteLine($"❌ Stack trace: {ex.StackTrace}");
             }
         }
         private void SubscribeToValueChanges_ECI2()
         {
-            Debug.WriteLine("🔵 [ECI2 VALUES] Subscribing to value change events...");
+          //  Debug.WriteLine("🔵 [ECI2 VALUES] Subscribing to value change events...");
 
             try
             {
@@ -906,13 +966,13 @@ namespace MatroxLDS
                                 this.Invoke((MethodInvoker)delegate
                                 {
                                     DentNumber.Text = c2DentNumberBinding.Value.CurrentValue.ToString();
-                                    Debug.WriteLine($"📊 [ECI2 VALUES] DentNumber = {c2DentNumberBinding.Value.CurrentValue}");
+                                  //  Debug.WriteLine($"📊 [ECI2 VALUES] DentNumber = {c2DentNumberBinding.Value.CurrentValue}");
                                 });
                             }
                         }
                         catch (Exception ex)
                         {
-                            Debug.WriteLine($"❌ [ECI2] Error updating DentNumber:  {ex.Message}");
+                           // Debug.WriteLine($"❌ [ECI2] Error updating DentNumber:  {ex.Message}");
                         }
                     };
                 }
@@ -928,13 +988,13 @@ namespace MatroxLDS
                                 this.Invoke((MethodInvoker)delegate
                                 {
                                     ISWNumber.Text = c2ISWNumberBinding.Value.CurrentValue.ToString();
-                                    Debug.WriteLine($"📊 [ECI2 VALUES] ISWNumber = {c2ISWNumberBinding.Value.CurrentValue}");
+                                  //  Debug.WriteLine($"📊 [ECI2 VALUES] ISWNumber = {c2ISWNumberBinding.Value.CurrentValue}");
                                 });
                             }
                         }
                         catch (Exception ex)
                         {
-                            Debug.WriteLine($"❌ [ECI2] Error updating ISWNumber: {ex.Message}");
+                         //   Debug.WriteLine($"❌ [ECI2] Error updating ISWNumber: {ex.Message}");
                         }
                     };
                 }
@@ -950,13 +1010,13 @@ namespace MatroxLDS
                                 this.Invoke((MethodInvoker)delegate
                                 {
                                     BaseNumber.Text = c2BaseNumberBinding.Value.CurrentValue.ToString();
-                                    Debug.WriteLine($"📊 [ECI2 VALUES] BaseNumber = {c2BaseNumberBinding.Value.CurrentValue}");
+                                  //  Debug.WriteLine($"📊 [ECI2 VALUES] BaseNumber = {c2BaseNumberBinding.Value.CurrentValue}");
                                 });
                             }
                         }
                         catch (Exception ex)
                         {
-                            Debug.WriteLine($"❌ [ECI2] Error updating BaseNumber: {ex.Message}");
+                           // Debug.WriteLine($"❌ [ECI2] Error updating BaseNumber: {ex.Message}");
                         }
                     };
                 }
@@ -971,13 +1031,13 @@ namespace MatroxLDS
                             {
                                 this.Invoke((MethodInvoker)delegate
                                 {
-                                    Debug.WriteLine($"📊 [ECI2 VALUES] TotalGood = {c2TotalGoodBinding.Value.CurrentValue}");
+                                  //  Debug.WriteLine($"📊 [ECI2 VALUES] TotalGood = {c2TotalGoodBinding.Value.CurrentValue}");
                                 });
                             }
                         }
                         catch (Exception ex)
                         {
-                            Debug.WriteLine($"❌ [ECI2] Error updating TotalGood: {ex.Message}");
+                           // Debug.WriteLine($"❌ [ECI2] Error updating TotalGood: {ex.Message}");
                         }
                     };
                 }
@@ -992,13 +1052,13 @@ namespace MatroxLDS
                             {
                                 this.Invoke((MethodInvoker)delegate
                                 {
-                                    Debug.WriteLine($"📊 [ECI2 VALUES] TotalBad = {c2TotalBadBinding.Value.CurrentValue}");
+                                  //  Debug.WriteLine($"📊 [ECI2 VALUES] TotalBad = {c2TotalBadBinding.Value.CurrentValue}");
                                 });
                             }
                         }
                         catch (Exception ex)
                         {
-                            Debug.WriteLine($"❌ [ECI2] Error updating TotalBad: {ex.Message}");
+                          //  Debug.WriteLine($"❌ [ECI2] Error updating TotalBad: {ex.Message}");
                         }
                     };
                 }
@@ -1013,13 +1073,13 @@ namespace MatroxLDS
                             {
                                 this.Invoke((MethodInvoker)delegate
                                 {
-                                    Debug.WriteLine($"📊 [ECI2 VALUES] Throughput = {c2TotalThroughputBinding.Value.CurrentValue}");
+                                   // Debug.WriteLine($"📊 [ECI2 VALUES] Throughput = {c2TotalThroughputBinding.Value.CurrentValue}");
                                 });
                             }
                         }
                         catch (Exception ex)
                         {
-                            Debug.WriteLine($"❌ [ECI2] Error updating Throughput:  {ex.Message}");
+                          //  Debug.WriteLine($"❌ [ECI2] Error updating Throughput:  {ex.Message}");
                         }
                     };
                 }
@@ -1034,22 +1094,22 @@ namespace MatroxLDS
                             {
                                 this.Invoke((MethodInvoker)delegate
                                 {
-                                    Debug.WriteLine($"📊 [ECI2 VALUES] Recipe = {c2CurrentRecipeBinding.Value.CurrentValue}");
+                                   // Debug.WriteLine($"📊 [ECI2 VALUES] Recipe = {c2CurrentRecipeBinding.Value.CurrentValue}");
                                 });
                             }
                         }
                         catch (Exception ex)
                         {
-                            Debug.WriteLine($"❌ [ECI2] Error updating Recipe: {ex.Message}");
+                           // Debug.WriteLine($"❌ [ECI2] Error updating Recipe: {ex.Message}");
                         }
                     };
                 }
 
-                Debug.WriteLine("✅ [ECI2 VALUES] Subscribed to all value changes");
+               // Debug.WriteLine("✅ [ECI2 VALUES] Subscribed to all value changes");
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"❌ [ECI2 VALUES] Error subscribing:  {ex.Message}");
+              //  Debug.WriteLine($"❌ [ECI2 VALUES] Error subscribing:  {ex.Message}");
             }
         }
         private void UpdateUI(Action action)
@@ -1068,19 +1128,47 @@ namespace MatroxLDS
 
         private void C1InspectionEnd_OnResultChange(object sender, PropertyChangedEventArgs e)
         {
-            Debug.WriteLine("!!! Event fired (C1InspectionEnd_OnResultChange)");
+            Debug.WriteLine("═══════════════════════════════════════════════════════");
+            Debug.WriteLine($"! !! Event fired (C1InspectionEnd_OnResultChange)");
+            Debug.WriteLine($"!!!  Sender: {sender?.GetType().Name ?? "null"}");
+            Debug.WriteLine($"!!! PropertyName: {e?.PropertyName ?? "null"}");
+            Debug.WriteLine("═══════════════════════════════════════════════════════");
+
             UpdateUI(() =>
             {
                 try
                 {
-                    if (c1InspectionEndEvent?.CurrentResult == null)
+                    Debug.WriteLine("🔵 [EVENT HANDLER] Inside UpdateUI delegate");
+
+                    if (c1InspectionEndEvent == null)
                     {
-                        Debug.WriteLine("⚠️ [ECI1 EVENT] CurrentResult is null");
+                        Debug.WriteLine("❌ [EVENT HANDLER] c1InspectionEndEvent is null");
                         return;
                     }
 
+                    Debug.WriteLine("✅ [EVENT HANDLER] c1InspectionEndEvent exists");
+
+                    if (c1InspectionEndEvent.CurrentResult == null)
+                    {
+                        Debug.WriteLine("❌ [EVENT HANDLER] CurrentResult is null");
+                        return;
+                    }
+
+                    Debug.WriteLine("✅ [EVENT HANDLER] CurrentResult exists");
+
                     var result = c1InspectionEndEvent.CurrentResult;
                     Debug.WriteLine($"✅ [ECI1 EVENT] InspectionEnd received!  Property: {e.PropertyName}");
+
+                    // Check if All property has data
+                    if (result.All != null)
+                    {
+                        Debug.WriteLine($"   All property:  IsAvailable={result.All.IsAvailable}, " +
+                                      $"CurrentValue={(result.All.CurrentValue != null ? $"byte[{result.All.CurrentValue.Length}]" : "null")}");
+                    }
+                    else
+                    {
+                        Debug.WriteLine("   All property is NULL!");
+                    }
 
                     // Get current display selection
                     if (!currentDisplayIndexes.ContainsKey("ECI1"))
@@ -1092,19 +1180,26 @@ namespace MatroxLDS
                     int displayIndex = currentDisplayIndexes["ECI1"];
                     string currentDisplay = projectDisplays["ECI1"][displayIndex];
 
-                    Debug.WriteLine($"   Current display: {currentDisplay}");
+                    Debug.WriteLine($"   Current display index: {displayIndex}");
+                    Debug.WriteLine($"   Current display name: {currentDisplay}");
 
                     // Get the image for the current display
+                    Debug.WriteLine($"🔵 [ECI1 EVENT] Calling GetECI1ImageForDisplay('{currentDisplay}')...");
                     byte[] imageBytes = GetECI1ImageForDisplay(result, currentDisplay);
 
                     if (imageBytes != null && imageBytes.Length > 0)
                     {
+                        Debug.WriteLine($"✅ [ECI1 EVENT] Got image bytes: {imageBytes.Length} bytes");
+                        Debug.WriteLine($"🔵 [ECI1 EVENT] Calling DisplayCamera1Image()...");
+
                         DisplayCamera1Image(imageBytes);
-                        Debug.WriteLine($"✅ [ECI1 EVENT] Image displayed ({imageBytes.Length} bytes)");
+
+                        Debug.WriteLine($"✅ [ECI1 EVENT] DisplayCamera1Image() returned successfully");
                     }
                     else
                     {
-                        Debug.WriteLine($"⚠️ [ECI1 EVENT] No image data for display:  {currentDisplay}");
+                        Debug.WriteLine($"❌ [ECI1 EVENT] No image data for display:  {currentDisplay}");
+                        Debug.WriteLine($"   imageBytes is {(imageBytes == null ? "null" : $"empty array (length={imageBytes.Length})")}");
                     }
                 }
                 catch (Exception ex)
@@ -1114,11 +1209,12 @@ namespace MatroxLDS
                 }
             });
         }
-
         private byte[] GetECI1ImageForDisplay(InspectionEndEventResult result, string displayName)
         {
             try
             {
+                Debug.WriteLine($"🔵 [GetECI1Image] Looking for display:  '{displayName}'");
+
                 DAComplexVariable<byte[]> imageProperty = displayName switch
                 {
                     "All" => result.All,
@@ -1129,12 +1225,23 @@ namespace MatroxLDS
                     _ => null
                 };
 
+                if (imageProperty == null)
+                {
+                    Debug.WriteLine($"❌ [GetECI1Image] No property found for '{displayName}'");
+                    return null;
+                }
+
+                Debug.WriteLine($"✅ [GetECI1Image] Property found for '{displayName}'");
+                Debug.WriteLine($"   IsAvailable: {imageProperty.IsAvailable}");
+                Debug.WriteLine($"   CurrentValue: {(imageProperty.CurrentValue != null ? $"byte[{imageProperty.CurrentValue.Length}]" : "null")}");
+
                 if (imageProperty != null && imageProperty.IsAvailable && imageProperty.CurrentValue != null)
                 {
+                    Debug.WriteLine($"✅ [GetECI1Image] Returning {imageProperty.CurrentValue.Length} bytes for '{displayName}'");
                     return imageProperty.CurrentValue;
                 }
 
-                Debug.WriteLine($"⚠️ [ECI1] Image property '{displayName}' not available");
+                Debug.WriteLine($"⚠️ [ECI1] Image property '{displayName}' not available or has no data");
                 return null;
             }
             catch (Exception ex)
@@ -1143,7 +1250,6 @@ namespace MatroxLDS
                 return null;
             }
         }
-
         private void C2InspectionEnd_OnResultChange(object sender, PropertyChangedEventArgs e)
         {
             UpdateUI(() =>
@@ -1227,45 +1333,68 @@ namespace MatroxLDS
         {
             try
             {
+                Debug.WriteLine($"🔵 [DisplayCamera1Image] Entry - {imageBytes?.Length ?? 0} bytes");
+
                 if (imageBytes == null || imageBytes.Length == 0)
                 {
                     Debug.WriteLine("⚠️ [ECI1] No image data to display");
                     return;
                 }
 
-                using (var ms = new MemoryStream(imageBytes))
+                Debug.WriteLine($"🔵 [DisplayCamera1Image] Converting bytes to Bitmap...");
+
+                // Convert byte[] to Bitmap (same as WPF sample)
+                Bitmap bitmap = null;
+                try
                 {
-                    var image = Image.FromStream(ms);
+                    bitmap = (Bitmap)(new ImageConverter()).ConvertFrom(imageBytes);
+                    Debug.WriteLine($"✅ [DisplayCamera1Image] Bitmap created:  {bitmap.Width}x{bitmap.Height}");
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"❌ [ECI1] Could not convert bytes to Bitmap: {ex.Message}");
+                    return;
+                }
 
-                    // Update PictureBox on UI thread
-                    if (pictureBoxCam1.InvokeRequired)
+                if (bitmap == null)
+                {
+                    Debug.WriteLine("⚠️ [ECI1] Bitmap conversion returned null");
+                    return;
+                }
+
+                Debug.WriteLine($"🔵 [DisplayCamera1Image] Updating PictureBox...");
+
+                // Update PictureBox on UI thread
+                if (pictureBoxCam1.InvokeRequired)
+                {
+                    Debug.WriteLine($"   Using Invoke (on background thread)");
+                    pictureBoxCam1.Invoke(new Action(() =>
                     {
-                        pictureBoxCam1.Invoke(new Action(() =>
+                        try
                         {
-                            try
-                            {
-                                // Dispose old image to prevent memory leaks
-                                var oldImage = pictureBoxCam1.Image;
-                                pictureBoxCam1.Image = (Image)image.Clone();
-                                oldImage?.Dispose();
+                            var oldImage = pictureBoxCam1.Image;
+                            pictureBoxCam1.Image = bitmap;
+                            oldImage?.Dispose();
 
-                                Debug.WriteLine($"✅ [ECI1] Image displayed ({imageBytes.Length} bytes, {image.Width}x{image.Height})");
-                            }
-                            catch (Exception ex)
-                            {
-                                Debug.WriteLine($"❌ [ECI1] Error updating PictureBox: {ex.Message}");
-                            }
-                        }));
-                    }
-                    else
-                    {
-                        // Already on UI thread
-                        var oldImage = pictureBoxCam1.Image;
-                        pictureBoxCam1.Image = (Image)image.Clone();
-                        oldImage?.Dispose();
+                            Debug.WriteLine($"✅ [ECI1] PictureBox. Image updated successfully!");
+                            Debug.WriteLine($"   PictureBox:  Visible={pictureBoxCam1.Visible}, Size={pictureBoxCam1.Size}");
+                        }
+                        catch (Exception ex)
+                        {
+                            Debug.WriteLine($"❌ [ECI1] Error updating PictureBox: {ex.Message}");
+                            bitmap.Dispose();
+                        }
+                    }));
+                }
+                else
+                {
+                    Debug.WriteLine($"   Already on UI thread");
+                    var oldImage = pictureBoxCam1.Image;
+                    pictureBoxCam1.Image = bitmap;
+                    oldImage?.Dispose();
 
-                        Debug.WriteLine($"✅ [ECI1] Image displayed ({imageBytes.Length} bytes, {image.Width}x{image.Height})");
-                    }
+                    Debug.WriteLine($"✅ [ECI1] PictureBox.Image updated successfully!");
+                    Debug.WriteLine($"   PictureBox: Visible={pictureBoxCam1.Visible}, Size={pictureBoxCam1.Size}");
                 }
             }
             catch (Exception ex)
@@ -1274,7 +1403,6 @@ namespace MatroxLDS
                 Debug.WriteLine($"❌ Stack trace: {ex.StackTrace}");
             }
         }
-
         private void DisplayCamera2Image(byte[] imageBytes)
         {
             try
@@ -1285,48 +1413,61 @@ namespace MatroxLDS
                     return;
                 }
 
-                using (var ms = new MemoryStream(imageBytes))
+                // Convert byte[] to Bitmap (same as WPF sample)
+                Bitmap bitmap = null;
+                try
                 {
-                    var image = Image.FromStream(ms);
+                    bitmap = (Bitmap)(new ImageConverter()).ConvertFrom(imageBytes);
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"❌ [ECI2] Could not convert bytes to Bitmap: {ex.Message}");
+                    return;
+                }
 
-                    // Update PictureBox on UI thread
-                    if (pictureBoxCam2.InvokeRequired)
+                if (bitmap == null)
+                {
+                    Debug.WriteLine("⚠️ [ECI2] Bitmap conversion returned null");
+                    return;
+                }
+
+                // Update PictureBox on UI thread
+                if (pictureBoxCam2.InvokeRequired)
+                {
+                    pictureBoxCam2.Invoke(new Action(() =>
                     {
-                        pictureBoxCam2.Invoke(new Action(() =>
+                        try
                         {
-                            try
-                            {
-                                // Dispose old image to prevent memory leaks
-                                var oldImage = pictureBoxCam2.Image;
-                                pictureBoxCam2.Image = (Image)image.Clone();
-                                oldImage?.Dispose();
+                            // Dispose old image to prevent memory leaks
+                            var oldImage = pictureBoxCam2.Image;
+                            pictureBoxCam2.Image = bitmap;  // Don't clone, use the bitmap directly
+                            oldImage?.Dispose();
 
-                                Debug.WriteLine($"✅ [ECI2] Image displayed ({imageBytes.Length} bytes, {image.Width}x{image.Height})");
-                            }
-                            catch (Exception ex)
-                            {
-                                Debug.WriteLine($"❌ [ECI2] Error updating PictureBox: {ex.Message}");
-                            }
-                        }));
-                    }
-                    else
-                    {
-                        // Already on UI thread
-                        var oldImage = pictureBoxCam2.Image;
-                        pictureBoxCam2.Image = (Image)image.Clone();
-                        oldImage?.Dispose();
+                            Debug.WriteLine($"✅ [ECI2] Image displayed ({imageBytes.Length} bytes, {bitmap.Width}x{bitmap.Height})");
+                        }
+                        catch (Exception ex)
+                        {
+                            Debug.WriteLine($"❌ [ECI2] Error updating PictureBox: {ex.Message}");
+                            bitmap.Dispose();
+                        }
+                    }));
+                }
+                else
+                {
+                    // Already on UI thread
+                    var oldImage = pictureBoxCam2.Image;
+                    pictureBoxCam2.Image = bitmap;
+                    oldImage?.Dispose();
 
-                        Debug.WriteLine($"✅ [ECI2] Image displayed ({imageBytes.Length} bytes, {image.Width}x{image.Height})");
-                    }
+                    Debug.WriteLine($"✅ [ECI2] Image displayed ({imageBytes.Length} bytes, {bitmap.Width}x{bitmap.Height})");
                 }
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"❌ [ECI2] Error displaying image: {ex.Message}");
+                Debug.WriteLine($"❌ [ECI2] Error displaying image:  {ex.Message}");
                 Debug.WriteLine($"❌ Stack trace: {ex.StackTrace}");
             }
         }
-
         private void OnCardPresented(string cardId)
         {
             if (this.InvokeRequired)

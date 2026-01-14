@@ -126,13 +126,17 @@ namespace MatroxLDS
         }
 
         /// <summary>
-        /// Reads the intial values of the event.
+        /// Reads the intial values of the event. 
         /// </summary>
         private void GetEventInitialValues()
         {
+            System.Diagnostics.Debug.WriteLine("🔵 [DAOPCEvent] GetEventInitialValues() started");
+
             foreach (var eventVariableProperty in typeof(T).GetProperties())
             {
-                if (eventVariableProperty.PropertyType.IsGenericType && eventVariableProperty.PropertyType.GetGenericTypeDefinition() == typeof(DAComplexVariable<>)){
+                if (eventVariableProperty.PropertyType.IsGenericType &&
+                    eventVariableProperty.PropertyType.GetGenericTypeDefinition() == typeof(DAComplexVariable<>))
+                {
                     bool isAvailable;
                     Variant currentValue;
                     List<string> availableValues;
@@ -141,27 +145,42 @@ namespace MatroxLDS
                     var eventVariableNodeId = new NodeId(NodeID.ToString() + $".{eventVariableProperty.Name}");
                     var value = _daOPCSession.ReadNode(eventVariableNodeId, Attributes.Value);
 
-                    if(value?[0].Value != null)
+                    if (value?[0].Value != null)
                     {
-                        DAOPCUtils.ExtractDAObjectFields(eventVariableNodeId, value[0].Value, out isAvailable, out currentValue, out availableValues, out variableName);
+                        DAOPCUtils.ExtractDAObjectFields(eventVariableNodeId, value[0].Value,
+                            out isAvailable, out currentValue, out availableValues, out variableName);
+
+                        System.Diagnostics.Debug.WriteLine($"   Property: {variableName}, IsAvailable: {isAvailable}");
 
                         if (isAvailable == false)
                         {
-                            return;
+                            System.Diagnostics.Debug.WriteLine($"   ⚠️ Skipping '{variableName}' - not available");
+                            continue;  // ← FIX: Skip instead of return
                         }
 
                         if (CurrentResult == null)
                         {
+                            System.Diagnostics.Debug.WriteLine("   Initializing CurrentResult.. .");
                             InitializeCurrentResult();
                         }
 
                         CurrentResult.UpdateModel(variableName, isAvailable, currentValue.Value, availableValues);
+                        System.Diagnostics.Debug.WriteLine($"   ✅ Loaded '{variableName}'");
                     }
                 }
             }
-            ResultsHistory.Add((T)CurrentResult.Clone());
-        }
 
+            // Add to history if we have a result
+            if (CurrentResult != null)
+            {
+                ResultsHistory.Add((T)CurrentResult.Clone());
+                System.Diagnostics.Debug.WriteLine($"✅ [DAOPCEvent] Initial values loaded, added to history");
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine($"⚠️ [DAOPCEvent] No initial values loaded, CurrentResult is null");
+            }
+        }
         /// <summary>
         /// Handles the event notification.
         /// </summary>
@@ -169,30 +188,90 @@ namespace MatroxLDS
         /// <param name="e"></param>
         private void Event_Notification(MonitoredItem monitoredItem, MonitoredItemNotificationEventArgs e)
         {
-            if (CurrentResult == null)
+            try
             {
-                InitializeCurrentResult();
+                if (CurrentResult == null)
+                {
+                    InitializeCurrentResult();
+                }
+
+                var notifications = e.NotificationValue as EventFieldList;
+
+                if (notifications == null)
+                {
+                    System.Diagnostics.Debug.WriteLine("⚠️ [EVENT] Notification is null");
+                    return;
+                }
+
+                System.Diagnostics.Debug.WriteLine($"🔔 [EVENT] Notification received!   EventFields count: {notifications.EventFields.Count}");
+
+                // Debug: Print all event fields to see what we're getting
+                for (int i = 0; i < notifications.EventFields.Count; i++)
+                {
+                    var field = notifications.EventFields[i];
+                    System.Diagnostics.Debug.WriteLine($"   EventFields[{i}]: Type={field.Value?.GetType().Name ?? "null"}, Value={field.Value}");
+                }
+
+                // EventFields[2] corresponds to the "Results" part of the notification, where all the event results are contained. 
+                // The type definition used for events is DARuntimeEvent and can be found at nodeId ns=2;i=1003 on the server. 
+                if (notifications.EventFields.Count <= 2)
+                {
+                    System.Diagnostics.Debug.WriteLine($"⚠️ [EVENT] Expected at least 3 EventFields, but got {notifications.EventFields.Count}");
+                    return;
+                }
+
+                if (notifications.EventFields[2].Value == null)
+                {
+                    System.Diagnostics.Debug.WriteLine("⚠️ [EVENT] EventFields[2]. Value is null - no Results data");
+                    return;
+                }
+
+                var eventResults = notifications.EventFields[2].Value as Variant[];
+
+                if (eventResults == null)
+                {
+                    System.Diagnostics.Debug.WriteLine($"⚠️ [EVENT] EventFields[2].Value is not Variant[] - it's {notifications.EventFields[2].Value.GetType().Name}");
+                    return;
+                }
+
+                System.Diagnostics.Debug.WriteLine($"✅ [EVENT] Processing {eventResults.Length} results");
+
+                foreach (var result in eventResults)
+                {
+                    if (result.Value == null)
+                    {
+                        System.Diagnostics.Debug.WriteLine("⚠️ [EVENT] Skipping null result");
+                        continue;
+                    }
+
+                    bool isAvailable;
+                    Variant currentValue;
+                    List<string> availableValues;
+                    string variableName;
+
+                    DAOPCUtils.ExtractDAObjectFields(monitoredItem.StartNodeId, result.Value, out isAvailable, out currentValue, out availableValues, out variableName);
+
+                    System.Diagnostics.Debug.WriteLine($"   Variable: {variableName}, IsAvailable: {isAvailable}");
+
+                    CurrentResult.UpdateModel(variableName, isAvailable, currentValue.Value, availableValues);
+                }
+
+                ResultsHistory.Add((T)CurrentResult.Clone());
+                System.Diagnostics.Debug.WriteLine($"✅ [EVENT] Event processed successfully, added to history");
             }
-
-            var notifications = e.NotificationValue as EventFieldList;
-            // EventFields[2] corresponds to the "Results" part of the notification, where all the event results are contained.
-            // The type definition used for events is DARuntimeEvent and can be found at nodeId ns=2;i=1003 on the server.  
-            var eventResults = (Variant[])notifications.EventFields[2].Value;
-
-            foreach (var result in eventResults)
+            catch (Exception ex)
             {
-                bool isAvailable;
-                Variant currentValue;
-                List<string> availableValues;
-                string variableName;
-
-                DAOPCUtils.ExtractDAObjectFields(monitoredItem.StartNodeId, result.Value, out isAvailable, out currentValue, out availableValues, out variableName);
-
-                CurrentResult.UpdateModel(variableName, isAvailable, currentValue.Value, availableValues);
+                System.Diagnostics.Debug.WriteLine("═══════════════════════════════════════════════════════");
+                System.Diagnostics.Debug.WriteLine($"❌ [EVENT] Exception in Event_Notification: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"❌ [EVENT] Exception Type: {ex.GetType().FullName}");
+                System.Diagnostics.Debug.WriteLine($"❌ [EVENT] Stack Trace: {ex.StackTrace}");
+                if (ex.InnerException != null)
+                {
+                    System.Diagnostics.Debug.WriteLine($"❌ [EVENT] Inner Exception: {ex.InnerException.Message}");
+                }
+                System.Diagnostics.Debug.WriteLine("═══════════════════════════════════════════════════════");
             }
-            ResultsHistory.Add((T)CurrentResult.Clone());
         }
-
         /// <summary>
         /// Propagates the OnPropertyChange of the current result to the OnCurrentResultChange event.
         /// </summary>
