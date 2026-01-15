@@ -297,7 +297,6 @@ namespace MatroxLDS
         {
             EventFieldList notifications = (EventFieldList)e.NotificationValue;
 
-            // Get ALL image properties from InspectionEndEventResult
             var imageProperties = typeof(T).GetProperties()
                 .Where(p => p.PropertyType == typeof(DAComplexVariable<byte[]>))
                 .Select(p => p.Name)
@@ -308,13 +307,12 @@ namespace MatroxLDS
             int successCount = 0;
             int failCount = 0;
 
-            // Read each image property from OPC-UA
             foreach (string propertyName in imageProperties)
             {
                 try
                 {
-                    // NO SPACES - Fixed! 
-                    string nodeString = NodeID.ToString().Replace(" ", "") + $".{propertyName}";
+                    // Add .CurrentValue to access the actual byte array
+                    string nodeString = NodeID.ToString().Replace(" ", "") + $".{propertyName}.CurrentValue";
                     var propertyNode = new NodeId(nodeString);
 
                     System.Diagnostics.Debug.WriteLine($"   🔍 Trying to read:  {nodeString}");
@@ -323,31 +321,29 @@ namespace MatroxLDS
 
                     if (value != null && value.Count > 0 && value[0]?.Value != null)
                     {
-                        bool isAvailable;
-                        Variant currentValue;
-                        List<string> availableValues;
-                        string variableName;
-
-                        DAOPCUtils.ExtractDAObjectFields(propertyNode, value[0].Value,
-                            out isAvailable, out currentValue, out availableValues, out variableName);
-
-                        System.Diagnostics.Debug.WriteLine($"      Extracted - IsAvailable: {isAvailable}, ValueType: {currentValue.Value?.GetType().Name}");
-
-                        if (isAvailable && currentValue.Value != null && currentValue.Value is byte[] bytes)
+                        if (value[0].Value is byte[] bytes && bytes.Length > 0)
                         {
-                            CurrentResult.UpdateModel(propertyName, isAvailable, currentValue.Value, availableValues);
-                            System.Diagnostics.Debug.WriteLine($"      ✅ Updated '{propertyName}':  {bytes.Length} bytes");
-                            successCount++;
+                            var property = typeof(T).GetProperty(propertyName);
+                            if (property != null)
+                            {
+                                var complexVar = property.GetValue(CurrentResult) as DAComplexVariable<byte[]>;
+                                if (complexVar != null)
+                                {
+                                    complexVar.CurrentValue = bytes;
+                                    complexVar.IsAvailable = true;
+
+                                    System.Diagnostics.Debug.WriteLine($"      ✅ Updated '{propertyName}':  {bytes.Length} bytes");
+                                    successCount++;
+                                }
+                            }
                         }
                         else
                         {
-                            System.Diagnostics.Debug.WriteLine($"      ⚠️ '{propertyName}' not available or wrong type");
                             failCount++;
                         }
                     }
                     else
                     {
-                        System.Diagnostics.Debug.WriteLine($"      ⚠️ ReadNode returned null/empty for '{propertyName}'");
                         failCount++;
                     }
                 }
