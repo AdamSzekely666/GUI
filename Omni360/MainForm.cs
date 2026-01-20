@@ -38,7 +38,7 @@ namespace Omnicheck360
         private static IniConfigSource InterfaceSource;
         private static StringBuilder mystring;
         public static MainForm Instance = null;
-        public static string MainCurrentUserTxt = "Mode opérateur";
+        public static string MainCurrentUserTxt = "Operate Mode";
         public static int nUserAccess = 0;
         private static string PLC_IP = "0.0.0.0";
         private static int Rack = 0;
@@ -154,8 +154,8 @@ namespace Omnicheck360
         private string currentSize = "";
         private string currentFlavour = "";
         // Camera configuration arrays
-        private int[] cam1UnitNumbers = { 1, 2, 3, 4, 5 };
-        private int[] cam2UnitNumbers = { 1, 2, 3, 4, 5 };
+        private int[] cam1UnitNumbers = { 3, 5, 6, 8, 3, 5, 6, 8 };
+        private int[] cam2UnitNumbers = { 3, 5, 6, 7, 8, 10, 3, 5, 6, 7, 8, 10 };
 
         // Configure which units show LAST_NG (red) vs FREEZE (blue)
         // Index 0 = UnitNo 1, Index 1 = UnitNo 2, etc.
@@ -164,19 +164,31 @@ namespace Omnicheck360
         FZ_Control.UPDATE_IMAGE.FREEZE,
         FZ_Control.UPDATE_IMAGE.FREEZE,
         FZ_Control.UPDATE_IMAGE.FREEZE,
+        FZ_Control.UPDATE_IMAGE.FREEZE,
         FZ_Control.UPDATE_IMAGE.NG_IMAGE,
-        FZ_Control.UPDATE_IMAGE.FREEZE
+        FZ_Control.UPDATE_IMAGE.NG_IMAGE,
+        FZ_Control.UPDATE_IMAGE.NG_IMAGE,
+        FZ_Control.UPDATE_IMAGE.NG_IMAGE
+
+       // FZ_Control.UPDATE_IMAGE.NG_IMAGE
     };
 
         private FZ_Control.UPDATE_IMAGE[] cam2UpdateModes = {
         FZ_Control.UPDATE_IMAGE.FREEZE,
-        FZ_Control.UPDATE_IMAGE. FREEZE,
-        FZ_Control.UPDATE_IMAGE. NG_IMAGE,
-        FZ_Control.UPDATE_IMAGE. FREEZE,
-        FZ_Control.UPDATE_IMAGE. FREEZE
+        FZ_Control.UPDATE_IMAGE.FREEZE,
+        FZ_Control.UPDATE_IMAGE.FREEZE,
+        FZ_Control.UPDATE_IMAGE.FREEZE,
+        FZ_Control.UPDATE_IMAGE.FREEZE,
+        FZ_Control.UPDATE_IMAGE.FREEZE,
+        FZ_Control.UPDATE_IMAGE.NG_IMAGE,
+        FZ_Control.UPDATE_IMAGE.NG_IMAGE,
+        FZ_Control.UPDATE_IMAGE.NG_IMAGE,
+        FZ_Control.UPDATE_IMAGE.NG_IMAGE,
+        FZ_Control.UPDATE_IMAGE.NG_IMAGE,
+        FZ_Control.UPDATE_IMAGE.NG_IMAGE
     };
 
-        private int cam1CurrentIndex = 1; // Start at UnitNo 2 (index 1)
+        private int cam1CurrentIndex = 0; // Start at UnitNo 2 (index 1)
         private int cam2CurrentIndex = 0;
 
         private bool cam2Visible = false;
@@ -274,26 +286,30 @@ namespace Omnicheck360
         }
         private void InitializeCameraSystem()
         {
-            // Move imageWindows inside panelControl
+            // Position imageWindows inside panelControl
             imageWindow1.Parent = panelControl;
             imageWindow1.Dock = DockStyle.Fill;
-            imageWindow1.BringToFront();
 
             imageWindow2.Parent = panelControl;
             imageWindow2.Dock = DockStyle.Fill;
-            imageWindow2.Visible = false; // Hide cam2 initially
+            imageWindow2.Visible = false;
 
-            // Set initial camera 1 display (UnitNo = 2)
+            // Set initial state
+            //cam1CurrentIndex = 1; // Start at UnitNo 2
+            //cam2CurrentIndex = 0;
+            //cam2Visible = false;
+
+            // Create initial camera 1 display with proper CoreRA connection
             UpdateCamera1Display();
-
+            UpdateCamera2Display();
+            imageWindow1.Visible = true;
+            imageWindow2.Visible = false;
             // Create indicator dots
             CreateIndicatorDots();
             UpdateDotIndicators();
 
-            // Wire up button events
-            Cam1Scroll.Click += Cam1Scroll_Click;
-            Cam2Scroll.Click += Cam2Scroll_Click;
         }
+
         private void CreateIndicatorDots()
         {
             panelCam1Dots.Controls.Clear();
@@ -301,14 +317,14 @@ namespace Omnicheck360
             cam1Dots.Clear();
             cam2Dots.Clear();
 
-            int dotSize = 15;
+            int dotSize = 8;
             int spacing = 5;
             int totalWidth = (dotSize * 5) + (spacing * 4);
             int startX = (panelCam1Dots.Width - totalWidth) / 2;
             int startY = (panelCam1Dots.Height - dotSize) / 2;
 
             // Create 5 dots for camera 1
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < cam1UnitNumbers.Length; i++)
             {
                 Panel dot = new Panel
                 {
@@ -329,7 +345,7 @@ namespace Omnicheck360
             }
 
             // Create 5 dots for camera 2
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < cam2UnitNumbers.Length; i++)
             {
                 Panel dot = new Panel
                 {
@@ -417,38 +433,104 @@ namespace Omnicheck360
 
         private void UpdateCamera1Display()
         {
-            // Show imageWindow1, hide imageWindow2
-            imageWindow1.Visible = true;
-            imageWindow2.Visible = false;
-            imageWindow1.BringToFront();
+            try
+            {
+                // Dispose existing coreRA1 connection
+                if (coreRA1 != null)
+                {
+                    coreRA1.Dispose();
+                }
 
-            // Change UnitNo - imageWindow will automatically update! 
-            imageWindow1.UnitNo = cam1UnitNumbers[cam1CurrentIndex];
+                // Create new CoreRA instance
+                //coreRA2 = new FZ_Control.CoreRA();
+                //coreRA2.ContainerControl = this;
 
-            // Change UpdateImage mode
-            imageWindow1.UpdateImage = cam1UpdateModes[cam1CurrentIndex];
+                // Configure connection
+                coreRA1.FzPath = FZ_PATH;
+                coreRA1.ConnectMode = FZ_Control.ConnectionMode.Remote;
+                coreRA1.IpAddress = OMRON_IP;
+                coreRA1.LineNo = Camera1LineNo;
 
-            // Log for debugging
-            log.Info($"Camera 1 Display: UnitNo={imageWindow1.UnitNo}, Mode={imageWindow1.UpdateImage}");
+                // Connect
+                var connectResult = coreRA1.ConnectStart();
+
+                if (connectResult != FZ_Control.ConnectionState.Success)
+                {
+                    MessageBox.Show($"Vision Controller Camera 1 Connection fail! Unit: {cam1UnitNumbers[cam1CurrentIndex]}");
+                    log.Error($"Camera 1 connection failed: {connectResult}, Unit: {cam1UnitNumbers[cam1CurrentIndex]}");
+                    return;
+                }
+
+                // Reconnect imageWindow1 to the new coreRA2
+                imageWindow1.ConnectCoreRAComponent = coreRA1;
+                imageWindow1.UnitNo = cam1UnitNumbers[cam1CurrentIndex];
+                imageWindow1.SubNo = 1;
+                imageWindow1.WindowNo = 24;
+                imageWindow1.UpdateImage = cam1UpdateModes[cam1CurrentIndex];
+
+                // Show imageWindow2, hide imageWindow1
+                imageWindow1.Visible = true;
+                imageWindow2.Visible = false;
+                imageWindow1.BringToFront();
+
+                log.Info($"Camera 1 Display: UnitNo={imageWindow1.UnitNo}, LineNo={coreRA1.LineNo}, Mode={imageWindow1.UpdateImage}");
+            }
+            catch (Exception ex)
+            {
+                log.Error($"Error updating Camera 1 display: {ex.Message}");
+                MessageBox.Show($"Error switching Camera 1: {ex.Message}");
+            }
         }
-
         private void UpdateCamera2Display()
         {
-            // Show imageWindow2, hide imageWindow1
-            imageWindow1.Visible = false;
-            imageWindow2.Visible = true;
-            imageWindow2.BringToFront();
+            try
+            {
+                // Dispose existing coreRA2 connection
+                if (coreRA2 != null)
+                {
+                    coreRA2.Dispose();
+                }
 
-            // Change UnitNo - imageWindow will automatically update!
-            imageWindow2.UnitNo = cam2UnitNumbers[cam2CurrentIndex];
+                // Create new CoreRA instance
+                //coreRA2 = new FZ_Control.CoreRA();
+                //coreRA2.ContainerControl = this;
 
-            // Change UpdateImage mode
-            imageWindow2.UpdateImage = cam2UpdateModes[cam2CurrentIndex];
+                // Configure connection
+                coreRA2.FzPath = FZ_PATH;
+                coreRA2.ConnectMode = FZ_Control.ConnectionMode.Remote;
+                coreRA2.IpAddress = OMRON_IP;
+                coreRA2.LineNo = Camera2LineNo; // Use the UnitNo as LineNo
 
-            // Log for debugging
-            log.Info($"Camera 2 Display: UnitNo={imageWindow2.UnitNo}, Mode={imageWindow2.UpdateImage}");
+                // Connect
+                var connectResult = coreRA2.ConnectStart();
+
+                if (connectResult != FZ_Control.ConnectionState.Success)
+                {
+                    MessageBox.Show($"Vision Controller Camera 2 Connection fail! Unit: {cam2UnitNumbers[cam2CurrentIndex]}");
+                    log.Error($"Camera 2 connection failed: {connectResult}, Unit: {cam2UnitNumbers[cam2CurrentIndex]}");
+                    return;
+                }
+
+                // Reconnect imageWindow2 to the new coreRA2
+                imageWindow2.ConnectCoreRAComponent = coreRA2;
+                imageWindow2.UnitNo = cam2UnitNumbers[cam2CurrentIndex];
+                imageWindow2.SubNo = 1;
+                imageWindow2.WindowNo = 24;
+                imageWindow2.UpdateImage = cam2UpdateModes[cam2CurrentIndex];
+
+                // Show imageWindow2, hide imageWindow1
+                imageWindow1.Visible = false;
+                imageWindow2.Visible = true;
+                imageWindow2.BringToFront();
+
+                log.Info($"Camera 2 Display: UnitNo={imageWindow2.UnitNo}, LineNo={coreRA2.LineNo}, Mode={imageWindow2.UpdateImage}");
+            }
+            catch (Exception ex)
+            {
+                log.Error($"Error updating Camera 2 display: {ex.Message}");
+                MessageBox.Show($"Error switching Camera 2: {ex.Message}");
+            }
         }
-
 
         public void DoActiveButtons(int nUser)
         {
@@ -653,14 +735,14 @@ namespace Omnicheck360
         }
         private void PLCUpdate_Tick(object sender, EventArgs e)
         {
-            Console.WriteLine("[DEBUG] PLCUpdate_Tick started.");
+           // Console.WriteLine("[DEBUG] PLCUpdate_Tick started.");
 
             int PLC_Status = 0;
             int PLC_Status_Result = 0;
 
             // Check PLC status
             PLC_Status_Result = Client.PlcGetStatus(ref PLC_Status);
-            Console.WriteLine($"[DEBUG] PLC_Status_Result: {PLC_Status_Result}, PLC_Status: {PLC_Status}");
+           // Console.WriteLine($"[DEBUG] PLC_Status_Result: {PLC_Status_Result}, PLC_Status: {PLC_Status}");
 
             if (PLC_Status_Result == 0)
             {
@@ -668,7 +750,7 @@ namespace Omnicheck360
                 {
                     case S7Consts.S7CpuStatusRun:
                         {
-                            Console.WriteLine("[DEBUG] PLC is in RUN mode.");
+                         //   Console.WriteLine("[DEBUG] PLC is in RUN mode.");
 
                             try
                             {
@@ -678,11 +760,11 @@ namespace Omnicheck360
 
                                 // Allocate buffer with the correct size
                                 byte[] DB_Variables_Read_Buffer = new byte[size];
-                                Console.WriteLine($"[DEBUG] Allocated buffer size: {DB_Variables_Read_Buffer.Length}");
+                             //   Console.WriteLine($"[DEBUG] Allocated buffer size: {DB_Variables_Read_Buffer.Length}");
 
                                 // Read data from the PLC
                                 int result = plcData.client1.DBRead(dbNumber, startByte, size, DB_Variables_Read_Buffer);
-                                Console.WriteLine($"[DEBUG] DBRead result: {result}");
+                              //  Console.WriteLine($"[DEBUG] DBRead result: {result}");
 
                                 if (result == 0) // 0 means success
                                 {
@@ -774,17 +856,17 @@ namespace Omnicheck360
                                     prevRejectCam2 = currRejectCam2;
 
                                     // Log extracted values
-                                    Console.WriteLine($"[DEBUG] TotalCount: {TotalCountValue.Text}, TotalFails: {TotalFailValue.Text}, RejectPercentage: {RejectPercentage.Text}");
+                                   // Console.WriteLine($"[DEBUG] TotalCount: {TotalCountValue.Text}, TotalFails: {TotalFailValue.Text}, RejectPercentage: {RejectPercentage.Text}");
                                 }
                                 else
                                 {
-                                    Console.WriteLine($"[ERROR] Error reading from PLC: {result}");
+                                  //  Console.WriteLine($"[ERROR] Error reading from PLC: {result}");
                                     MessageBox.Show($"Error reading from PLC: {result}");
                                 }
                             }
                             catch (Exception ex)
                             {
-                                Console.WriteLine($"[ERROR] Exception in PLCUpdate_Tick: {ex.Message}");
+                              //  Console.WriteLine($"[ERROR] Exception in PLCUpdate_Tick: {ex.Message}");
                                 MessageBox.Show($"Exception: {ex.Message}");
                             }
 
@@ -793,23 +875,23 @@ namespace Omnicheck360
 
                     case S7Consts.S7CpuStatusStop:
                         {
-                            Console.WriteLine("[DEBUG] PLC is in STOP mode.");
+                           // Console.WriteLine("[DEBUG] PLC is in STOP mode.");
                             break;
                         }
 
                     default:
                         {
-                            Console.WriteLine("[DEBUG] PLC status is UNKNOWN.");
+                            //Console.WriteLine("[DEBUG] PLC status is UNKNOWN.");
                             break;
                         }
                 }
             }
             else
             {
-                Console.WriteLine("[ERROR] Failed to get PLC status.");
+               // Console.WriteLine("[ERROR] Failed to get PLC status.");
             }
 
-            Console.WriteLine("[DEBUG] PLCUpdate_Tick completed.");
+          //  Console.WriteLine("[DEBUG] PLCUpdate_Tick completed.");
         }
         public void CurrentRecipeName()
         {
@@ -850,42 +932,42 @@ namespace Omnicheck360
 
             try
             {
-                    coreRA1.FzPath = FZ_PATH;
-                    coreRA1.ConnectMode = FZ_Control.ConnectionMode.Remote;
-                    coreRA1.IpAddress = OMRON_IP;
-                    coreRA1.LineNo = Camera1LineNo;
+                //    coreRA1.FzPath = FZ_PATH;
+                //    coreRA1.ConnectMode = FZ_Control.ConnectionMode.Remote;
+                //    coreRA1.IpAddress = OMRON_IP;
+                //    coreRA1.LineNo = Camera1LineNo;
 
-                    switch (coreRA1.ConnectStart())
-                    {
-                        case FZ_Control.ConnectionState.InvalidArgumentError:
-                            MessageBox.Show("Vision Controller CoreRA1 Connection fail!");
-                            break;
+                //    switch (coreRA1.ConnectStart())
+                //    {
+                //        case FZ_Control.ConnectionState.InvalidArgumentError:
+                //            MessageBox.Show("Vision Controller CoreRA1 Connection fail!");
+                //            break;
 
-                        case FZ_Control.ConnectionState.DirectoryNotFoundError:
-                            MessageBox.Show("Vision Controller CoreRA1 Connection fail!");
-                            break;
+                //        case FZ_Control.ConnectionState.DirectoryNotFoundError:
+                //            MessageBox.Show("Vision Controller CoreRA1 Connection fail!");
+                //            break;
 
-                        default:
-                            break;
-                    }
-                coreRA2.FzPath = FZ_PATH;
-                coreRA2.ConnectMode = FZ_Control.ConnectionMode.Remote;
-                coreRA2.IpAddress = OMRON_IP;
-                coreRA2.LineNo = Camera2LineNo;
+                //        default:
+                //            break;
+                //    }
+                //coreRA2.FzPath = FZ_PATH;
+                //coreRA2.ConnectMode = FZ_Control.ConnectionMode.Remote;
+                //coreRA2.IpAddress = OMRON_IP;
+                //coreRA2.LineNo = Camera2LineNo;
+                
+                //switch (coreRA2.ConnectStart())
+                //{
+                //    case FZ_Control.ConnectionState.InvalidArgumentError:
+                //        MessageBox.Show("Vision Controller coreRA2 Connection fail!");
+                //        break;
 
-                switch (coreRA2.ConnectStart())
-                {
-                    case FZ_Control.ConnectionState.InvalidArgumentError:
-                        MessageBox.Show("Vision Controller coreRA2 Connection fail!");
-                        break;
+                //    case FZ_Control.ConnectionState.DirectoryNotFoundError:
+                //        MessageBox.Show("Vision Controller coreRA2 Connection fail!");
+                //        break;
 
-                    case FZ_Control.ConnectionState.DirectoryNotFoundError:
-                        MessageBox.Show("Vision Controller coreRA2 Connection fail!");
-                        break;
-
-                    default:
-                        break;
-                }
+                //    default:
+                //        break;
+                //}
 
             }
             catch
@@ -928,7 +1010,7 @@ namespace Omnicheck360
                     Client.DBWrite(4, 20, 4, new byte[4]); // Write 0 to Total Rejects (DWORD at offset 4)
                     Client.DBWrite(4, 24, 4, new byte[4]); // Write 0 to Total Rejects (DWORD at offset 4)
 
-                    Console.WriteLine("[DEBUG] Successfully reset Total Throughput and Total Rejects to 0.");
+                   // Console.WriteLine("[DEBUG] Successfully reset Total Throughput and Total Rejects to 0.");
 
                     // Reset the chart directly in this method
                     //if (cartesianChart1 != null) // Ensure the cartesian chart is initialized
@@ -962,7 +1044,7 @@ namespace Omnicheck360
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"[ERROR] Exception in ResetCounterBtn_Click: {ex.Message}");
+               // Console.WriteLine($"[ERROR] Exception in ResetCounterBtn_Click: {ex.Message}");
                 MessageBox.Show("PLC could not reset counters");
             }
 
