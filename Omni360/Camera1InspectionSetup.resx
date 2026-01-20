@@ -1,0 +1,3414 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="&gt;&gt;ProjectTitle.Name" xml:space="preserve">
+    <value>ProjectTitle</value>
+  </data>
+  <data name="&gt;&gt;ProjectTitle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ProjectTitle.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ProjectTitle.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;DateTimeLabel.Name" xml:space="preserve">
+    <value>DateTimeLabel</value>
+  </data>
+  <data name="&gt;&gt;DateTimeLabel.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;DateTimeLabel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;DateTimeLabel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;CurrentUserTxt.Name" xml:space="preserve">
+    <value>CurrentUserTxt</value>
+  </data>
+  <data name="&gt;&gt;CurrentUserTxt.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;CurrentUserTxt.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;CurrentUserTxt.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="coreRA1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>105, 17</value>
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>41</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>1920, 1080</value>
+  </data>
+  <data name="hiddenButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>681, 173</value>
+  </data>
+  <data name="hiddenButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="hiddenButton.TabIndex" type="System.Int32, mscorlib">
+    <value>748</value>
+  </data>
+  <data name="hiddenButton.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;hiddenButton.Name" xml:space="preserve">
+    <value>hiddenButton</value>
+  </data>
+  <data name="&gt;&gt;hiddenButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;hiddenButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;hiddenButton.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label15.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label15.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="label15.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
+    <value>467, 210</value>
+  </data>
+  <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 16</value>
+  </data>
+  <data name="label15.TabIndex" type="System.Int32, mscorlib">
+    <value>747</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>(0 - 99999)</value>
+  </data>
+  <data name="label15.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;label15.Name" xml:space="preserve">
+    <value>label15</value>
+  </data>
+  <data name="&gt;&gt;label15.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label15.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label16.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label16.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="label16.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
+    <value>467, 66</value>
+  </data>
+  <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 16</value>
+  </data>
+  <data name="label16.TabIndex" type="System.Int32, mscorlib">
+    <value>745</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>(0 - 99999)</value>
+  </data>
+  <data name="&gt;&gt;label16.Name" xml:space="preserve">
+    <value>label16</value>
+  </data>
+  <data name="&gt;&gt;label16.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label16.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label17.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label17.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="label17.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
+    <value>467, 102</value>
+  </data>
+  <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 16</value>
+  </data>
+  <data name="label17.TabIndex" type="System.Int32, mscorlib">
+    <value>744</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>(0 - 99999)</value>
+  </data>
+  <data name="&gt;&gt;label17.Name" xml:space="preserve">
+    <value>label17</value>
+  </data>
+  <data name="&gt;&gt;label17.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label17.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;label17.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label18.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label18.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="label18.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label18.Location" type="System.Drawing.Point, System.Drawing">
+    <value>467, 138</value>
+  </data>
+  <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 16</value>
+  </data>
+  <data name="label18.TabIndex" type="System.Int32, mscorlib">
+    <value>743</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>(0 - 99999)</value>
+  </data>
+  <data name="&gt;&gt;label18.Name" xml:space="preserve">
+    <value>label18</value>
+  </data>
+  <data name="&gt;&gt;label18.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label18.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;label18.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="label19.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label19.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="label19.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label19.Location" type="System.Drawing.Point, System.Drawing">
+    <value>467, 174</value>
+  </data>
+  <data name="label19.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 16</value>
+  </data>
+  <data name="label19.TabIndex" type="System.Int32, mscorlib">
+    <value>742</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>(0 - 99999)</value>
+  </data>
+  <data name="&gt;&gt;label19.Name" xml:space="preserve">
+    <value>label19</value>
+  </data>
+  <data name="&gt;&gt;label19.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label19.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;label19.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="label20.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label20.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="label20.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label20.Location" type="System.Drawing.Point, System.Drawing">
+    <value>349, 282</value>
+  </data>
+  <data name="label20.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 16</value>
+  </data>
+  <data name="label20.TabIndex" type="System.Int32, mscorlib">
+    <value>741</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>(0 - 999)</value>
+  </data>
+  <data name="&gt;&gt;label20.Name" xml:space="preserve">
+    <value>label20</value>
+  </data>
+  <data name="&gt;&gt;label20.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label20.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;label20.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="BarcodeSet.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 13.5pt</value>
+  </data>
+  <data name="BarcodeSet.Location" type="System.Drawing.Point, System.Drawing">
+    <value>347, 204</value>
+  </data>
+  <data name="BarcodeSet.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 28</value>
+  </data>
+  <data name="BarcodeSet.TabIndex" type="System.Int32, mscorlib">
+    <value>746</value>
+  </data>
+  <data name="BarcodeSet.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;BarcodeSet.Name" xml:space="preserve">
+    <value>BarcodeSet</value>
+  </data>
+  <data name="&gt;&gt;BarcodeSet.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BarcodeSet.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;BarcodeSet.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="label21.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label21.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="label21.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label21.Location" type="System.Drawing.Point, System.Drawing">
+    <value>349, 350</value>
+  </data>
+  <data name="label21.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 16</value>
+  </data>
+  <data name="label21.TabIndex" type="System.Int32, mscorlib">
+    <value>740</value>
+  </data>
+  <data name="label21.Text" xml:space="preserve">
+    <value>(0)</value>
+  </data>
+  <data name="&gt;&gt;label21.Name" xml:space="preserve">
+    <value>label21</value>
+  </data>
+  <data name="&gt;&gt;label21.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label21.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;label21.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="label26.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label26.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="label26.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label26.Location" type="System.Drawing.Point, System.Drawing">
+    <value>349, 316</value>
+  </data>
+  <data name="label26.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 16</value>
+  </data>
+  <data name="label26.TabIndex" type="System.Int32, mscorlib">
+    <value>739</value>
+  </data>
+  <data name="label26.Text" xml:space="preserve">
+    <value>(999,999,999)</value>
+  </data>
+  <data name="&gt;&gt;label26.Name" xml:space="preserve">
+    <value>label26</value>
+  </data>
+  <data name="&gt;&gt;label26.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label26.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;label26.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="alphaBlendTextBox22.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="alphaBlendTextBox22.Location" type="System.Drawing.Point, System.Drawing">
+    <value>99, 9</value>
+  </data>
+  <data name="alphaBlendTextBox22.Size" type="System.Drawing.Size, System.Drawing">
+    <value>259, 22</value>
+  </data>
+  <data name="alphaBlendTextBox22.TabIndex" type="System.Int32, mscorlib">
+    <value>738</value>
+  </data>
+  <data name="alphaBlendTextBox22.Text" xml:space="preserve">
+    <value>Paramètres de l’inspection 2</value>
+  </data>
+  <data name="alphaBlendTextBox22.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox22.Name" xml:space="preserve">
+    <value>alphaBlendTextBox22</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox22.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox22.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox22.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="alphaBlendTextBox23.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="alphaBlendTextBox23.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 312</value>
+  </data>
+  <data name="alphaBlendTextBox23.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 22</value>
+  </data>
+  <data name="alphaBlendTextBox23.TabIndex" type="System.Int32, mscorlib">
+    <value>734</value>
+  </data>
+  <data name="alphaBlendTextBox23.Text" xml:space="preserve">
+    <value>Upper Threshold</value>
+  </data>
+  <data name="alphaBlendTextBox23.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox23.Name" xml:space="preserve">
+    <value>alphaBlendTextBox23</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox23.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox23.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox23.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="alphaBlendTextBox24.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="alphaBlendTextBox24.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 99</value>
+  </data>
+  <data name="alphaBlendTextBox24.Size" type="System.Drawing.Size, System.Drawing">
+    <value>332, 22</value>
+  </data>
+  <data name="alphaBlendTextBox24.TabIndex" type="System.Int32, mscorlib">
+    <value>691</value>
+  </data>
+  <data name="alphaBlendTextBox24.Text" xml:space="preserve">
+    <value>Position Y du coin supérieur gauche:</value>
+  </data>
+  <data name="alphaBlendTextBox24.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox24.Name" xml:space="preserve">
+    <value>alphaBlendTextBox24</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox24.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox24.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox24.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="alphaBlendTextBox25.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="alphaBlendTextBox25.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 279</value>
+  </data>
+  <data name="alphaBlendTextBox25.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 22</value>
+  </data>
+  <data name="alphaBlendTextBox25.TabIndex" type="System.Int32, mscorlib">
+    <value>730</value>
+  </data>
+  <data name="alphaBlendTextBox25.Text" xml:space="preserve">
+    <value>Area Defect Level:</value>
+  </data>
+  <data name="alphaBlendTextBox25.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox25.Name" xml:space="preserve">
+    <value>alphaBlendTextBox25</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox25.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox25.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox25.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="alphaBlendTextBox26.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="alphaBlendTextBox26.Location" type="System.Drawing.Point, System.Drawing">
+    <value>40, 171</value>
+  </data>
+  <data name="alphaBlendTextBox26.Size" type="System.Drawing.Size, System.Drawing">
+    <value>295, 22</value>
+  </data>
+  <data name="alphaBlendTextBox26.TabIndex" type="System.Int32, mscorlib">
+    <value>692</value>
+  </data>
+  <data name="alphaBlendTextBox26.Text" xml:space="preserve">
+    <value>Position Y du coin inférieur droit:</value>
+  </data>
+  <data name="alphaBlendTextBox26.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox26.Name" xml:space="preserve">
+    <value>alphaBlendTextBox26</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox26.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox26.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox26.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="alphaBlendTextBox27.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="alphaBlendTextBox27.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 207</value>
+  </data>
+  <data name="alphaBlendTextBox27.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 22</value>
+  </data>
+  <data name="alphaBlendTextBox27.TabIndex" type="System.Int32, mscorlib">
+    <value>729</value>
+  </data>
+  <data name="alphaBlendTextBox27.Text" xml:space="preserve">
+    <value>OCR Set:</value>
+  </data>
+  <data name="alphaBlendTextBox27.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="alphaBlendTextBox27.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox27.Name" xml:space="preserve">
+    <value>alphaBlendTextBox27</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox27.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox27.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox27.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="InspectionValue2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="InspectionValue2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>341, 243</value>
+  </data>
+  <data name="InspectionValue2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 22</value>
+  </data>
+  <data name="InspectionValue2.TabIndex" type="System.Int32, mscorlib">
+    <value>655</value>
+  </data>
+  <data name="InspectionValue2.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="InspectionValue2.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;InspectionValue2.Name" xml:space="preserve">
+    <value>InspectionValue2</value>
+  </data>
+  <data name="&gt;&gt;InspectionValue2.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;InspectionValue2.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;InspectionValue2.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="alphaBlendTextBox28.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="alphaBlendTextBox28.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 63</value>
+  </data>
+  <data name="alphaBlendTextBox28.Size" type="System.Drawing.Size, System.Drawing">
+    <value>332, 22</value>
+  </data>
+  <data name="alphaBlendTextBox28.TabIndex" type="System.Int32, mscorlib">
+    <value>693</value>
+  </data>
+  <data name="alphaBlendTextBox28.Text" xml:space="preserve">
+    <value>Position X du coin supérieur gauche:</value>
+  </data>
+  <data name="alphaBlendTextBox28.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox28.Name" xml:space="preserve">
+    <value>alphaBlendTextBox28</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox28.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox28.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox28.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="Center2_Position_X.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 13.5pt</value>
+  </data>
+  <data name="Center2_Position_X.Location" type="System.Drawing.Point, System.Drawing">
+    <value>347, 60</value>
+  </data>
+  <data name="Center2_Position_X.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 28</value>
+  </data>
+  <data name="Center2_Position_X.TabIndex" type="System.Int32, mscorlib">
+    <value>701</value>
+  </data>
+  <data name="&gt;&gt;Center2_Position_X.Name" xml:space="preserve">
+    <value>Center2_Position_X</value>
+  </data>
+  <data name="&gt;&gt;Center2_Position_X.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Center2_Position_X.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;Center2_Position_X.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="Width2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 13.5pt</value>
+  </data>
+  <data name="Width2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>347, 168</value>
+  </data>
+  <data name="Width2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 28</value>
+  </data>
+  <data name="Width2.TabIndex" type="System.Int32, mscorlib">
+    <value>704</value>
+  </data>
+  <data name="&gt;&gt;Width2.Name" xml:space="preserve">
+    <value>Width2</value>
+  </data>
+  <data name="&gt;&gt;Width2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Width2.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;Width2.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="alphaBlendTextBox29.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="alphaBlendTextBox29.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 346</value>
+  </data>
+  <data name="alphaBlendTextBox29.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 22</value>
+  </data>
+  <data name="alphaBlendTextBox29.TabIndex" type="System.Int32, mscorlib">
+    <value>728</value>
+  </data>
+  <data name="alphaBlendTextBox29.Text" xml:space="preserve">
+    <value>Lower Threshold</value>
+  </data>
+  <data name="alphaBlendTextBox29.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox29.Name" xml:space="preserve">
+    <value>alphaBlendTextBox29</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox29.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox29.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox29.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="Radius2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 13.5pt</value>
+  </data>
+  <data name="Radius2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>347, 132</value>
+  </data>
+  <data name="Radius2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 28</value>
+  </data>
+  <data name="Radius2.TabIndex" type="System.Int32, mscorlib">
+    <value>703</value>
+  </data>
+  <data name="&gt;&gt;Radius2.Name" xml:space="preserve">
+    <value>Radius2</value>
+  </data>
+  <data name="&gt;&gt;Radius2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Radius2.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;Radius2.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="alphaBlendTextBox30.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="alphaBlendTextBox30.Location" type="System.Drawing.Point, System.Drawing">
+    <value>40, 135</value>
+  </data>
+  <data name="alphaBlendTextBox30.Size" type="System.Drawing.Size, System.Drawing">
+    <value>295, 22</value>
+  </data>
+  <data name="alphaBlendTextBox30.TabIndex" type="System.Int32, mscorlib">
+    <value>694</value>
+  </data>
+  <data name="alphaBlendTextBox30.Text" xml:space="preserve">
+    <value>Position X du coin inférieur droit:</value>
+  </data>
+  <data name="alphaBlendTextBox30.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox30.Name" xml:space="preserve">
+    <value>alphaBlendTextBox30</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox30.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox30.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox30.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="Center2_Position_Y.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 13.5pt</value>
+  </data>
+  <data name="Center2_Position_Y.Location" type="System.Drawing.Point, System.Drawing">
+    <value>347, 96</value>
+  </data>
+  <data name="Center2_Position_Y.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 28</value>
+  </data>
+  <data name="Center2_Position_Y.TabIndex" type="System.Int32, mscorlib">
+    <value>702</value>
+  </data>
+  <data name="&gt;&gt;Center2_Position_Y.Name" xml:space="preserve">
+    <value>Center2_Position_Y</value>
+  </data>
+  <data name="&gt;&gt;Center2_Position_Y.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Center2_Position_Y.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;Center2_Position_Y.ZOrder" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="alphaBlendTextBox37.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="alphaBlendTextBox37.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 243</value>
+  </data>
+  <data name="alphaBlendTextBox37.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 22</value>
+  </data>
+  <data name="alphaBlendTextBox37.TabIndex" type="System.Int32, mscorlib">
+    <value>727</value>
+  </data>
+  <data name="alphaBlendTextBox37.Text" xml:space="preserve">
+    <value>OCR Read:</value>
+  </data>
+  <data name="alphaBlendTextBox37.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="alphaBlendTextBox37.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox37.Name" xml:space="preserve">
+    <value>alphaBlendTextBox37</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox37.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox37.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox37.ZOrder" xml:space="preserve">
+    <value>23</value>
+  </data>
+  <data name="textBox6.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 13.5pt</value>
+  </data>
+  <data name="textBox6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>243, 310</value>
+  </data>
+  <data name="textBox6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 28</value>
+  </data>
+  <data name="textBox6.TabIndex" type="System.Int32, mscorlib">
+    <value>713</value>
+  </data>
+  <data name="&gt;&gt;textBox6.Name" xml:space="preserve">
+    <value>textBox6</value>
+  </data>
+  <data name="&gt;&gt;textBox6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBox6.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;textBox6.ZOrder" xml:space="preserve">
+    <value>24</value>
+  </data>
+  <data name="textBox7.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 13.5pt</value>
+  </data>
+  <data name="textBox7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>243, 276</value>
+  </data>
+  <data name="textBox7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 28</value>
+  </data>
+  <data name="textBox7.TabIndex" type="System.Int32, mscorlib">
+    <value>711</value>
+  </data>
+  <data name="&gt;&gt;textBox7.Name" xml:space="preserve">
+    <value>textBox7</value>
+  </data>
+  <data name="&gt;&gt;textBox7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBox7.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;textBox7.ZOrder" xml:space="preserve">
+    <value>25</value>
+  </data>
+  <data name="textBox8.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 13.5pt</value>
+  </data>
+  <data name="textBox8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>243, 344</value>
+  </data>
+  <data name="textBox8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 28</value>
+  </data>
+  <data name="textBox8.TabIndex" type="System.Int32, mscorlib">
+    <value>712</value>
+  </data>
+  <data name="&gt;&gt;textBox8.Name" xml:space="preserve">
+    <value>textBox8</value>
+  </data>
+  <data name="&gt;&gt;textBox8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBox8.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;textBox8.ZOrder" xml:space="preserve">
+    <value>26</value>
+  </data>
+  <data name="panel4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>785, 634</value>
+  </data>
+  <data name="panel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>542, 275</value>
+  </data>
+  <data name="panel4.TabIndex" type="System.Int32, mscorlib">
+    <value>747</value>
+  </data>
+  <data name="&gt;&gt;panel4.Name" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;panel4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel4.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel4.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="alphaBlendTextBox33.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="alphaBlendTextBox33.Location" type="System.Drawing.Point, System.Drawing">
+    <value>46, 102</value>
+  </data>
+  <data name="alphaBlendTextBox33.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>No</value>
+  </data>
+  <data name="alphaBlendTextBox33.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 22</value>
+  </data>
+  <data name="alphaBlendTextBox33.TabIndex" type="System.Int32, mscorlib">
+    <value>740</value>
+  </data>
+  <data name="alphaBlendTextBox33.Text" xml:space="preserve">
+    <value>Gain caméra:</value>
+  </data>
+  <data name="alphaBlendTextBox33.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox33.Name" xml:space="preserve">
+    <value>alphaBlendTextBox33</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox33.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox33.Parent" xml:space="preserve">
+    <value>panel5</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox33.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="alphaBlendTextBox32.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="alphaBlendTextBox32.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 62</value>
+  </data>
+  <data name="alphaBlendTextBox32.Size" type="System.Drawing.Size, System.Drawing">
+    <value>250, 22</value>
+  </data>
+  <data name="alphaBlendTextBox32.TabIndex" type="System.Int32, mscorlib">
+    <value>739</value>
+  </data>
+  <data name="alphaBlendTextBox32.Text" xml:space="preserve">
+    <value>Vitesse d’obturation caméra:</value>
+  </data>
+  <data name="alphaBlendTextBox32.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox32.Name" xml:space="preserve">
+    <value>alphaBlendTextBox32</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox32.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox32.Parent" xml:space="preserve">
+    <value>panel5</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox32.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="alphaBlendTextBox31.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="alphaBlendTextBox31.Location" type="System.Drawing.Point, System.Drawing">
+    <value>99, 9</value>
+  </data>
+  <data name="alphaBlendTextBox31.Size" type="System.Drawing.Size, System.Drawing">
+    <value>283, 22</value>
+  </data>
+  <data name="alphaBlendTextBox31.TabIndex" type="System.Int32, mscorlib">
+    <value>738</value>
+  </data>
+  <data name="alphaBlendTextBox31.Text" xml:space="preserve">
+    <value>Paramètres de la caméra 2</value>
+  </data>
+  <data name="alphaBlendTextBox31.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox31.Name" xml:space="preserve">
+    <value>alphaBlendTextBox31</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox31.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox31.Parent" xml:space="preserve">
+    <value>panel5</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox31.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="Camera2ShutterSpeedTextBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 13.5pt</value>
+  </data>
+  <data name="Camera2ShutterSpeedTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>266, 59</value>
+  </data>
+  <data name="Camera2ShutterSpeedTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 28</value>
+  </data>
+  <data name="Camera2ShutterSpeedTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>557</value>
+  </data>
+  <data name="&gt;&gt;Camera2ShutterSpeedTextBox.Name" xml:space="preserve">
+    <value>Camera2ShutterSpeedTextBox</value>
+  </data>
+  <data name="&gt;&gt;Camera2ShutterSpeedTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Camera2ShutterSpeedTextBox.Parent" xml:space="preserve">
+    <value>panel5</value>
+  </data>
+  <data name="&gt;&gt;Camera2ShutterSpeedTextBox.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="Camera2GainTextBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 13.5pt</value>
+  </data>
+  <data name="Camera2GainTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>266, 96</value>
+  </data>
+  <data name="Camera2GainTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 28</value>
+  </data>
+  <data name="Camera2GainTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>558</value>
+  </data>
+  <data name="&gt;&gt;Camera2GainTextBox.Name" xml:space="preserve">
+    <value>Camera2GainTextBox</value>
+  </data>
+  <data name="&gt;&gt;Camera2GainTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Camera2GainTextBox.Parent" xml:space="preserve">
+    <value>panel5</value>
+  </data>
+  <data name="&gt;&gt;Camera2GainTextBox.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="label22.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label22.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="label22.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label22.Location" type="System.Drawing.Point, System.Drawing">
+    <value>372, 102</value>
+  </data>
+  <data name="label22.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 16</value>
+  </data>
+  <data name="label22.TabIndex" type="System.Int32, mscorlib">
+    <value>662</value>
+  </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>(0-230)</value>
+  </data>
+  <data name="&gt;&gt;label22.Name" xml:space="preserve">
+    <value>label22</value>
+  </data>
+  <data name="&gt;&gt;label22.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label22.Parent" xml:space="preserve">
+    <value>panel5</value>
+  </data>
+  <data name="&gt;&gt;label22.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="label23.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label23.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="label23.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label23.Location" type="System.Drawing.Point, System.Drawing">
+    <value>372, 65</value>
+  </data>
+  <data name="label23.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 16</value>
+  </data>
+  <data name="label23.TabIndex" type="System.Int32, mscorlib">
+    <value>661</value>
+  </data>
+  <data name="label23.Text" xml:space="preserve">
+    <value>(20-100000)</value>
+  </data>
+  <data name="&gt;&gt;label23.Name" xml:space="preserve">
+    <value>label23</value>
+  </data>
+  <data name="&gt;&gt;label23.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label23.Parent" xml:space="preserve">
+    <value>panel5</value>
+  </data>
+  <data name="&gt;&gt;label23.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="panel5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>785, 456</value>
+  </data>
+  <data name="panel5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>460, 157</value>
+  </data>
+  <data name="panel5.TabIndex" type="System.Int32, mscorlib">
+    <value>740</value>
+  </data>
+  <data name="&gt;&gt;panel5.Name" xml:space="preserve">
+    <value>panel5</value>
+  </data>
+  <data name="&gt;&gt;panel5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel5.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel5.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="label25.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label25.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="label25.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label25.Location" type="System.Drawing.Point, System.Drawing">
+    <value>467, 210</value>
+  </data>
+  <data name="label25.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 16</value>
+  </data>
+  <data name="label25.TabIndex" type="System.Int32, mscorlib">
+    <value>747</value>
+  </data>
+  <data name="label25.Text" xml:space="preserve">
+    <value>(0 - 99999)</value>
+  </data>
+  <data name="label25.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;label25.Name" xml:space="preserve">
+    <value>label25</value>
+  </data>
+  <data name="&gt;&gt;label25.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label25.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;label25.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="OCRSet.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 13.5pt</value>
+  </data>
+  <data name="OCRSet.Location" type="System.Drawing.Point, System.Drawing">
+    <value>361, 204</value>
+  </data>
+  <data name="OCRSet.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 28</value>
+  </data>
+  <data name="OCRSet.TabIndex" type="System.Int32, mscorlib">
+    <value>746</value>
+  </data>
+  <data name="OCRSet.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;OCRSet.Name" xml:space="preserve">
+    <value>OCRSet</value>
+  </data>
+  <data name="&gt;&gt;OCRSet.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;OCRSet.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;OCRSet.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label9.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label9.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="label9.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>467, 66</value>
+  </data>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 16</value>
+  </data>
+  <data name="label9.TabIndex" type="System.Int32, mscorlib">
+    <value>745</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>(0 - 99999)</value>
+  </data>
+  <data name="&gt;&gt;label9.Name" xml:space="preserve">
+    <value>label9</value>
+  </data>
+  <data name="&gt;&gt;label9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>467, 102</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 16</value>
+  </data>
+  <data name="label7.TabIndex" type="System.Int32, mscorlib">
+    <value>744</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>(0 - 99999)</value>
+  </data>
+  <data name="&gt;&gt;label7.Name" xml:space="preserve">
+    <value>label7</value>
+  </data>
+  <data name="&gt;&gt;label7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="label6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>467, 138</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 16</value>
+  </data>
+  <data name="label6.TabIndex" type="System.Int32, mscorlib">
+    <value>743</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>(0 - 99999)</value>
+  </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>467, 174</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 16</value>
+  </data>
+  <data name="label5.TabIndex" type="System.Int32, mscorlib">
+    <value>742</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>(0 - 99999)</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>349, 282</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 16</value>
+  </data>
+  <data name="label3.TabIndex" type="System.Int32, mscorlib">
+    <value>741</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>(0 - 999)</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>349, 350</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 16</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>740</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>(0)</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="InspectionValue.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="InspectionValue.Location" type="System.Drawing.Point, System.Drawing">
+    <value>361, 243</value>
+  </data>
+  <data name="InspectionValue.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 22</value>
+  </data>
+  <data name="InspectionValue.TabIndex" type="System.Int32, mscorlib">
+    <value>655</value>
+  </data>
+  <data name="InspectionValue.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="InspectionValue.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;InspectionValue.Name" xml:space="preserve">
+    <value>InspectionValue</value>
+  </data>
+  <data name="&gt;&gt;InspectionValue.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;InspectionValue.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;InspectionValue.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>349, 316</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 16</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>739</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>(999,999,999)</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="alphaBlendTextBox18.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="alphaBlendTextBox18.Location" type="System.Drawing.Point, System.Drawing">
+    <value>99, 9</value>
+  </data>
+  <data name="alphaBlendTextBox18.Size" type="System.Drawing.Size, System.Drawing">
+    <value>259, 22</value>
+  </data>
+  <data name="alphaBlendTextBox18.TabIndex" type="System.Int32, mscorlib">
+    <value>738</value>
+  </data>
+  <data name="alphaBlendTextBox18.Text" xml:space="preserve">
+    <value>Paramètres de l’inspection 1</value>
+  </data>
+  <data name="alphaBlendTextBox18.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox18.Name" xml:space="preserve">
+    <value>alphaBlendTextBox18</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox18.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox18.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox18.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="alphaBlendTextBox12.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="alphaBlendTextBox12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 312</value>
+  </data>
+  <data name="alphaBlendTextBox12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 22</value>
+  </data>
+  <data name="alphaBlendTextBox12.TabIndex" type="System.Int32, mscorlib">
+    <value>734</value>
+  </data>
+  <data name="alphaBlendTextBox12.Text" xml:space="preserve">
+    <value>Upper Threshold</value>
+  </data>
+  <data name="alphaBlendTextBox12.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox12.Name" xml:space="preserve">
+    <value>alphaBlendTextBox12</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox12.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox12.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox12.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="Center_Position_X.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 13.5pt</value>
+  </data>
+  <data name="Center_Position_X.Location" type="System.Drawing.Point, System.Drawing">
+    <value>361, 60</value>
+  </data>
+  <data name="Center_Position_X.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 28</value>
+  </data>
+  <data name="Center_Position_X.TabIndex" type="System.Int32, mscorlib">
+    <value>701</value>
+  </data>
+  <data name="&gt;&gt;Center_Position_X.Name" xml:space="preserve">
+    <value>Center_Position_X</value>
+  </data>
+  <data name="&gt;&gt;Center_Position_X.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Center_Position_X.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;Center_Position_X.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="alphaBlendTextBox4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="alphaBlendTextBox4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 99</value>
+  </data>
+  <data name="alphaBlendTextBox4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>332, 22</value>
+  </data>
+  <data name="alphaBlendTextBox4.TabIndex" type="System.Int32, mscorlib">
+    <value>691</value>
+  </data>
+  <data name="alphaBlendTextBox4.Text" xml:space="preserve">
+    <value>Position Y du coin supérieur gauche:</value>
+  </data>
+  <data name="alphaBlendTextBox4.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox4.Name" xml:space="preserve">
+    <value>alphaBlendTextBox4</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox4.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox4.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox4.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="alphaBlendTextBox3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="alphaBlendTextBox3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 279</value>
+  </data>
+  <data name="alphaBlendTextBox3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 22</value>
+  </data>
+  <data name="alphaBlendTextBox3.TabIndex" type="System.Int32, mscorlib">
+    <value>730</value>
+  </data>
+  <data name="alphaBlendTextBox3.Text" xml:space="preserve">
+    <value>Area Defect Level:</value>
+  </data>
+  <data name="alphaBlendTextBox3.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox3.Name" xml:space="preserve">
+    <value>alphaBlendTextBox3</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox3.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox3.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox3.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="alphaBlendTextBox1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="alphaBlendTextBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>40, 171</value>
+  </data>
+  <data name="alphaBlendTextBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>295, 22</value>
+  </data>
+  <data name="alphaBlendTextBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>692</value>
+  </data>
+  <data name="alphaBlendTextBox1.Text" xml:space="preserve">
+    <value>Position Y du coin inférieur droit:</value>
+  </data>
+  <data name="alphaBlendTextBox1.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox1.Name" xml:space="preserve">
+    <value>alphaBlendTextBox1</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox1.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox1.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox1.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="alphaBlendTextBox7.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="alphaBlendTextBox7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 207</value>
+  </data>
+  <data name="alphaBlendTextBox7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 22</value>
+  </data>
+  <data name="alphaBlendTextBox7.TabIndex" type="System.Int32, mscorlib">
+    <value>729</value>
+  </data>
+  <data name="alphaBlendTextBox7.Text" xml:space="preserve">
+    <value>OCR Set:</value>
+  </data>
+  <data name="alphaBlendTextBox7.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="alphaBlendTextBox7.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox7.Name" xml:space="preserve">
+    <value>alphaBlendTextBox7</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox7.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox7.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox7.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="alphaBlendTextBox6.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="alphaBlendTextBox6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 63</value>
+  </data>
+  <data name="alphaBlendTextBox6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>332, 22</value>
+  </data>
+  <data name="alphaBlendTextBox6.TabIndex" type="System.Int32, mscorlib">
+    <value>693</value>
+  </data>
+  <data name="alphaBlendTextBox6.Text" xml:space="preserve">
+    <value>Position X du coin supérieur gauche:</value>
+  </data>
+  <data name="alphaBlendTextBox6.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox6.Name" xml:space="preserve">
+    <value>alphaBlendTextBox6</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox6.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox6.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox6.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="alphaBlendTextBox9.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="alphaBlendTextBox9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 346</value>
+  </data>
+  <data name="alphaBlendTextBox9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 22</value>
+  </data>
+  <data name="alphaBlendTextBox9.TabIndex" type="System.Int32, mscorlib">
+    <value>728</value>
+  </data>
+  <data name="alphaBlendTextBox9.Text" xml:space="preserve">
+    <value>Lower Threshold</value>
+  </data>
+  <data name="alphaBlendTextBox9.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox9.Name" xml:space="preserve">
+    <value>alphaBlendTextBox9</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox9.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox9.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox9.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="alphaBlendTextBox8.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="alphaBlendTextBox8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>40, 135</value>
+  </data>
+  <data name="alphaBlendTextBox8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>295, 22</value>
+  </data>
+  <data name="alphaBlendTextBox8.TabIndex" type="System.Int32, mscorlib">
+    <value>694</value>
+  </data>
+  <data name="alphaBlendTextBox8.Text" xml:space="preserve">
+    <value>Position X du coin inférieur droit:</value>
+  </data>
+  <data name="alphaBlendTextBox8.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox8.Name" xml:space="preserve">
+    <value>alphaBlendTextBox8</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox8.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox8.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox8.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="alphaBlendTextBox10.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="alphaBlendTextBox10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 243</value>
+  </data>
+  <data name="alphaBlendTextBox10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 22</value>
+  </data>
+  <data name="alphaBlendTextBox10.TabIndex" type="System.Int32, mscorlib">
+    <value>727</value>
+  </data>
+  <data name="alphaBlendTextBox10.Text" xml:space="preserve">
+    <value>OCR Read:</value>
+  </data>
+  <data name="alphaBlendTextBox10.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="alphaBlendTextBox10.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox10.Name" xml:space="preserve">
+    <value>alphaBlendTextBox10</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox10.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox10.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox10.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="Center_Position_Y.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 13.5pt</value>
+  </data>
+  <data name="Center_Position_Y.Location" type="System.Drawing.Point, System.Drawing">
+    <value>361, 96</value>
+  </data>
+  <data name="Center_Position_Y.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 28</value>
+  </data>
+  <data name="Center_Position_Y.TabIndex" type="System.Int32, mscorlib">
+    <value>702</value>
+  </data>
+  <data name="&gt;&gt;Center_Position_Y.Name" xml:space="preserve">
+    <value>Center_Position_Y</value>
+  </data>
+  <data name="&gt;&gt;Center_Position_Y.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Center_Position_Y.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;Center_Position_Y.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="Radius.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 13.5pt</value>
+  </data>
+  <data name="Radius.Location" type="System.Drawing.Point, System.Drawing">
+    <value>361, 132</value>
+  </data>
+  <data name="Radius.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 28</value>
+  </data>
+  <data name="Radius.TabIndex" type="System.Int32, mscorlib">
+    <value>703</value>
+  </data>
+  <data name="&gt;&gt;Radius.Name" xml:space="preserve">
+    <value>Radius</value>
+  </data>
+  <data name="&gt;&gt;Radius.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Radius.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;Radius.ZOrder" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="Width.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 13.5pt</value>
+  </data>
+  <data name="Width.Location" type="System.Drawing.Point, System.Drawing">
+    <value>361, 168</value>
+  </data>
+  <data name="Width.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 28</value>
+  </data>
+  <data name="Width.TabIndex" type="System.Int32, mscorlib">
+    <value>704</value>
+  </data>
+  <data name="&gt;&gt;Width.Name" xml:space="preserve">
+    <value>Width</value>
+  </data>
+  <data name="&gt;&gt;Width.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Width.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;Width.ZOrder" xml:space="preserve">
+    <value>23</value>
+  </data>
+  <data name="AreaJudgeUper.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 13.5pt</value>
+  </data>
+  <data name="AreaJudgeUper.Location" type="System.Drawing.Point, System.Drawing">
+    <value>243, 310</value>
+  </data>
+  <data name="AreaJudgeUper.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 28</value>
+  </data>
+  <data name="AreaJudgeUper.TabIndex" type="System.Int32, mscorlib">
+    <value>713</value>
+  </data>
+  <data name="&gt;&gt;AreaJudgeUper.Name" xml:space="preserve">
+    <value>AreaJudgeUper</value>
+  </data>
+  <data name="&gt;&gt;AreaJudgeUper.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AreaJudgeUper.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;AreaJudgeUper.ZOrder" xml:space="preserve">
+    <value>24</value>
+  </data>
+  <data name="AreaDefectLevel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 13.5pt</value>
+  </data>
+  <data name="AreaDefectLevel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>243, 276</value>
+  </data>
+  <data name="AreaDefectLevel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 28</value>
+  </data>
+  <data name="AreaDefectLevel.TabIndex" type="System.Int32, mscorlib">
+    <value>711</value>
+  </data>
+  <data name="&gt;&gt;AreaDefectLevel.Name" xml:space="preserve">
+    <value>AreaDefectLevel</value>
+  </data>
+  <data name="&gt;&gt;AreaDefectLevel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AreaDefectLevel.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;AreaDefectLevel.ZOrder" xml:space="preserve">
+    <value>25</value>
+  </data>
+  <data name="AreaJudgeLower.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 13.5pt</value>
+  </data>
+  <data name="AreaJudgeLower.Location" type="System.Drawing.Point, System.Drawing">
+    <value>243, 344</value>
+  </data>
+  <data name="AreaJudgeLower.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 28</value>
+  </data>
+  <data name="AreaJudgeLower.TabIndex" type="System.Int32, mscorlib">
+    <value>712</value>
+  </data>
+  <data name="&gt;&gt;AreaJudgeLower.Name" xml:space="preserve">
+    <value>AreaJudgeLower</value>
+  </data>
+  <data name="&gt;&gt;AreaJudgeLower.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AreaJudgeLower.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;AreaJudgeLower.ZOrder" xml:space="preserve">
+    <value>26</value>
+  </data>
+  <data name="panel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>75, 634</value>
+  </data>
+  <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>542, 275</value>
+  </data>
+  <data name="panel3.TabIndex" type="System.Int32, mscorlib">
+    <value>739</value>
+  </data>
+  <data name="&gt;&gt;panel3.Name" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;panel3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel3.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel3.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="panel1.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="alphaBlendTextBox34.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="alphaBlendTextBox34.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 806</value>
+  </data>
+  <data name="alphaBlendTextBox34.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="alphaBlendTextBox34.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 79</value>
+  </data>
+  <data name="alphaBlendTextBox34.TabIndex" type="System.Int32, mscorlib">
+    <value>768</value>
+  </data>
+  <data name="alphaBlendTextBox34.Text" xml:space="preserve">
+    <value>Largeur d’impulsion de soufflage d’air</value>
+  </data>
+  <data name="alphaBlendTextBox34.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox34.Name" xml:space="preserve">
+    <value>alphaBlendTextBox34</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox34.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox34.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox34.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="alphaBlendTextBox38.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="alphaBlendTextBox38.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 711</value>
+  </data>
+  <data name="alphaBlendTextBox38.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="alphaBlendTextBox38.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 79</value>
+  </data>
+  <data name="alphaBlendTextBox38.TabIndex" type="System.Int32, mscorlib">
+    <value>767</value>
+  </data>
+  <data name="alphaBlendTextBox38.Text" xml:space="preserve">
+    <value>Distance de déclenchement du soufflage d’air</value>
+  </data>
+  <data name="alphaBlendTextBox38.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox38.Name" xml:space="preserve">
+    <value>alphaBlendTextBox38</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox38.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox38.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox38.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label29.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label29.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="label29.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label29.Location" type="System.Drawing.Point, System.Drawing">
+    <value>359, 742</value>
+  </data>
+  <data name="label29.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 16</value>
+  </data>
+  <data name="label29.TabIndex" type="System.Int32, mscorlib">
+    <value>766</value>
+  </data>
+  <data name="label29.Text" xml:space="preserve">
+    <value>(5 - 10000)</value>
+  </data>
+  <data name="&gt;&gt;label29.Name" xml:space="preserve">
+    <value>label29</value>
+  </data>
+  <data name="&gt;&gt;label29.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label29.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;label29.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="AirPurgeDistance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="AirPurgeDistance.Location" type="System.Drawing.Point, System.Drawing">
+    <value>243, 736</value>
+  </data>
+  <data name="AirPurgeDistance.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 29</value>
+  </data>
+  <data name="AirPurgeDistance.TabIndex" type="System.Int32, mscorlib">
+    <value>765</value>
+  </data>
+  <data name="&gt;&gt;AirPurgeDistance.Name" xml:space="preserve">
+    <value>AirPurgeDistance</value>
+  </data>
+  <data name="&gt;&gt;AirPurgeDistance.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AirPurgeDistance.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;AirPurgeDistance.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="label30.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label30.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="label30.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label30.Location" type="System.Drawing.Point, System.Drawing">
+    <value>358, 837</value>
+  </data>
+  <data name="label30.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 16</value>
+  </data>
+  <data name="label30.TabIndex" type="System.Int32, mscorlib">
+    <value>764</value>
+  </data>
+  <data name="label30.Text" xml:space="preserve">
+    <value>(5 - 10000)</value>
+  </data>
+  <data name="&gt;&gt;label30.Name" xml:space="preserve">
+    <value>label30</value>
+  </data>
+  <data name="&gt;&gt;label30.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label30.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;label30.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="AirPurgePulse.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="AirPurgePulse.Location" type="System.Drawing.Point, System.Drawing">
+    <value>243, 831</value>
+  </data>
+  <data name="AirPurgePulse.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 29</value>
+  </data>
+  <data name="AirPurgePulse.TabIndex" type="System.Int32, mscorlib">
+    <value>763</value>
+  </data>
+  <data name="&gt;&gt;AirPurgePulse.Name" xml:space="preserve">
+    <value>AirPurgePulse</value>
+  </data>
+  <data name="&gt;&gt;AirPurgePulse.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AirPurgePulse.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;AirPurgePulse.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="alphaBlendTextBox19.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="alphaBlendTextBox19.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 284</value>
+  </data>
+  <data name="alphaBlendTextBox19.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="alphaBlendTextBox19.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 79</value>
+  </data>
+  <data name="alphaBlendTextBox19.TabIndex" type="System.Int32, mscorlib">
+    <value>762</value>
+  </data>
+  <data name="alphaBlendTextBox19.Text" xml:space="preserve">
+    <value>Largeur d’impulsion de déclenchement de la caméra 2</value>
+  </data>
+  <data name="alphaBlendTextBox19.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox19.Name" xml:space="preserve">
+    <value>alphaBlendTextBox19</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox19.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox19.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox19.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="alphaBlendTextBox21.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="alphaBlendTextBox21.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 189</value>
+  </data>
+  <data name="alphaBlendTextBox21.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="alphaBlendTextBox21.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 79</value>
+  </data>
+  <data name="alphaBlendTextBox21.TabIndex" type="System.Int32, mscorlib">
+    <value>761</value>
+  </data>
+  <data name="alphaBlendTextBox21.Text" xml:space="preserve">
+    <value>Largeur d’impulsion de déclenchement de la caméra 1</value>
+  </data>
+  <data name="alphaBlendTextBox21.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox21.Name" xml:space="preserve">
+    <value>alphaBlendTextBox21</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox21.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox21.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox21.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="alphaBlendTextBox14.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="alphaBlendTextBox14.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 128</value>
+  </data>
+  <data name="alphaBlendTextBox14.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="alphaBlendTextBox14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 55</value>
+  </data>
+  <data name="alphaBlendTextBox14.TabIndex" type="System.Int32, mscorlib">
+    <value>760</value>
+  </data>
+  <data name="alphaBlendTextBox14.Text" xml:space="preserve">
+    <value>Délai du déclenchement à la caméra 2</value>
+  </data>
+  <data name="alphaBlendTextBox14.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox14.Name" xml:space="preserve">
+    <value>alphaBlendTextBox14</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox14.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox14.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox14.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="alphaBlendTextBox36.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="alphaBlendTextBox36.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 645</value>
+  </data>
+  <data name="alphaBlendTextBox36.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="alphaBlendTextBox36.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 56</value>
+  </data>
+  <data name="alphaBlendTextBox36.TabIndex" type="System.Int32, mscorlib">
+    <value>759</value>
+  </data>
+  <data name="alphaBlendTextBox36.Text" xml:space="preserve">
+    <value>Largeur mesurée du produit</value>
+  </data>
+  <data name="alphaBlendTextBox36.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox36.Name" xml:space="preserve">
+    <value>alphaBlendTextBox36</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox36.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox36.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox36.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="MeasuredWidth.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="MeasuredWidth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>243, 662</value>
+  </data>
+  <data name="MeasuredWidth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 22</value>
+  </data>
+  <data name="MeasuredWidth.TabIndex" type="System.Int32, mscorlib">
+    <value>758</value>
+  </data>
+  <data name="&gt;&gt;MeasuredWidth.Name" xml:space="preserve">
+    <value>MeasuredWidth</value>
+  </data>
+  <data name="&gt;&gt;MeasuredWidth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MeasuredWidth.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;MeasuredWidth.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="label28.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label28.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="label28.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label28.Location" type="System.Drawing.Point, System.Drawing">
+    <value>359, 600</value>
+  </data>
+  <data name="label28.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 16</value>
+  </data>
+  <data name="label28.TabIndex" type="System.Int32, mscorlib">
+    <value>757</value>
+  </data>
+  <data name="label28.Text" xml:space="preserve">
+    <value>(5 - 5000)</value>
+  </data>
+  <data name="&gt;&gt;label28.Name" xml:space="preserve">
+    <value>label28</value>
+  </data>
+  <data name="&gt;&gt;label28.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label28.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;label28.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="alphaBlendTextBox35.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="alphaBlendTextBox35.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 597</value>
+  </data>
+  <data name="alphaBlendTextBox35.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 22</value>
+  </data>
+  <data name="alphaBlendTextBox35.TabIndex" type="System.Int32, mscorlib">
+    <value>756</value>
+  </data>
+  <data name="alphaBlendTextBox35.Text" xml:space="preserve">
+    <value>Largeur du produit</value>
+  </data>
+  <data name="alphaBlendTextBox35.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox35.Name" xml:space="preserve">
+    <value>alphaBlendTextBox35</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox35.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox35.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox35.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="ProductWidth.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="ProductWidth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>243, 594</value>
+  </data>
+  <data name="ProductWidth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 29</value>
+  </data>
+  <data name="ProductWidth.TabIndex" type="System.Int32, mscorlib">
+    <value>755</value>
+  </data>
+  <data name="&gt;&gt;ProductWidth.Name" xml:space="preserve">
+    <value>ProductWidth</value>
+  </data>
+  <data name="&gt;&gt;ProductWidth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ProductWidth.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;ProductWidth.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="label27.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label27.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="label27.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label27.Location" type="System.Drawing.Point, System.Drawing">
+    <value>359, 220</value>
+  </data>
+  <data name="label27.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 16</value>
+  </data>
+  <data name="label27.TabIndex" type="System.Int32, mscorlib">
+    <value>754</value>
+  </data>
+  <data name="label27.Text" xml:space="preserve">
+    <value>(5 - 10000)</value>
+  </data>
+  <data name="&gt;&gt;label27.Name" xml:space="preserve">
+    <value>label27</value>
+  </data>
+  <data name="&gt;&gt;label27.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label27.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;label27.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="Camera1PulseWidthTextBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="Camera1PulseWidthTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>243, 214</value>
+  </data>
+  <data name="Camera1PulseWidthTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 29</value>
+  </data>
+  <data name="Camera1PulseWidthTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>753</value>
+  </data>
+  <data name="&gt;&gt;Camera1PulseWidthTextBox.Name" xml:space="preserve">
+    <value>Camera1PulseWidthTextBox</value>
+  </data>
+  <data name="&gt;&gt;Camera1PulseWidthTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Camera1PulseWidthTextBox.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;Camera1PulseWidthTextBox.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="label24.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label24.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="label24.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label24.Location" type="System.Drawing.Point, System.Drawing">
+    <value>359, 531</value>
+  </data>
+  <data name="label24.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 16</value>
+  </data>
+  <data name="label24.TabIndex" type="System.Int32, mscorlib">
+    <value>751</value>
+  </data>
+  <data name="label24.Text" xml:space="preserve">
+    <value>(5 - 5000)</value>
+  </data>
+  <data name="&gt;&gt;label24.Name" xml:space="preserve">
+    <value>label24</value>
+  </data>
+  <data name="&gt;&gt;label24.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label24.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;label24.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="alphaBlendTextBox20.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="alphaBlendTextBox20.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 515</value>
+  </data>
+  <data name="alphaBlendTextBox20.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="alphaBlendTextBox20.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 49</value>
+  </data>
+  <data name="alphaBlendTextBox20.TabIndex" type="System.Int32, mscorlib">
+    <value>750</value>
+  </data>
+  <data name="alphaBlendTextBox20.Text" xml:space="preserve">
+    <value>Nombre de rejets consécutifs</value>
+  </data>
+  <data name="alphaBlendTextBox20.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox20.Name" xml:space="preserve">
+    <value>alphaBlendTextBox20</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox20.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox20.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox20.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="ConsReject.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="ConsReject.Location" type="System.Drawing.Point, System.Drawing">
+    <value>243, 525</value>
+  </data>
+  <data name="ConsReject.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 29</value>
+  </data>
+  <data name="ConsReject.TabIndex" type="System.Int32, mscorlib">
+    <value>749</value>
+  </data>
+  <data name="&gt;&gt;ConsReject.Name" xml:space="preserve">
+    <value>ConsReject</value>
+  </data>
+  <data name="&gt;&gt;ConsReject.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ConsReject.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;ConsReject.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="label14.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label14.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="label14.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
+    <value>358, 315</value>
+  </data>
+  <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 16</value>
+  </data>
+  <data name="label14.TabIndex" type="System.Int32, mscorlib">
+    <value>748</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>(5 - 10000)</value>
+  </data>
+  <data name="&gt;&gt;label14.Name" xml:space="preserve">
+    <value>label14</value>
+  </data>
+  <data name="&gt;&gt;label14.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label14.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="Camera2PulseWidthTextBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="Camera2PulseWidthTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>243, 309</value>
+  </data>
+  <data name="Camera2PulseWidthTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 29</value>
+  </data>
+  <data name="Camera2PulseWidthTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>747</value>
+  </data>
+  <data name="&gt;&gt;Camera2PulseWidthTextBox.Name" xml:space="preserve">
+    <value>Camera2PulseWidthTextBox</value>
+  </data>
+  <data name="&gt;&gt;Camera2PulseWidthTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Camera2PulseWidthTextBox.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;Camera2PulseWidthTextBox.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="label13.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label13.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="label13.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
+    <value>349, 77</value>
+  </data>
+  <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 16</value>
+  </data>
+  <data name="label13.TabIndex" type="System.Int32, mscorlib">
+    <value>745</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>(5 - 10000)</value>
+  </data>
+  <data name="&gt;&gt;label13.Name" xml:space="preserve">
+    <value>label13</value>
+  </data>
+  <data name="&gt;&gt;label13.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label13.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="label12.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label12.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="label12.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>358, 147</value>
+  </data>
+  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 16</value>
+  </data>
+  <data name="label12.TabIndex" type="System.Int32, mscorlib">
+    <value>744</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>(5 - 10000)</value>
+  </data>
+  <data name="&gt;&gt;label12.Name" xml:space="preserve">
+    <value>label12</value>
+  </data>
+  <data name="&gt;&gt;label12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="label11.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="label11.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>359, 408</value>
+  </data>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>81, 16</value>
+  </data>
+  <data name="label11.TabIndex" type="System.Int32, mscorlib">
+    <value>743</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>(500 - 10000)</value>
+  </data>
+  <data name="&gt;&gt;label11.Name" xml:space="preserve">
+    <value>label11</value>
+  </data>
+  <data name="&gt;&gt;label11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
+    <value>23</value>
+  </data>
+  <data name="label10.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label10.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="label10.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>359, 469</value>
+  </data>
+  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 16</value>
+  </data>
+  <data name="label10.TabIndex" type="System.Int32, mscorlib">
+    <value>742</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>(5 - 5000)</value>
+  </data>
+  <data name="&gt;&gt;label10.Name" xml:space="preserve">
+    <value>label10</value>
+  </data>
+  <data name="&gt;&gt;label10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
+    <value>24</value>
+  </data>
+  <data name="alphaBlendTextBox17.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="alphaBlendTextBox17.Location" type="System.Drawing.Point, System.Drawing">
+    <value>99, 9</value>
+  </data>
+  <data name="alphaBlendTextBox17.Size" type="System.Drawing.Size, System.Drawing">
+    <value>216, 22</value>
+  </data>
+  <data name="alphaBlendTextBox17.TabIndex" type="System.Int32, mscorlib">
+    <value>738</value>
+  </data>
+  <data name="alphaBlendTextBox17.Text" xml:space="preserve">
+    <value>Paramètres de suivi</value>
+  </data>
+  <data name="alphaBlendTextBox17.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox17.Name" xml:space="preserve">
+    <value>alphaBlendTextBox17</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox17.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox17.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox17.ZOrder" xml:space="preserve">
+    <value>25</value>
+  </data>
+  <data name="alphaBlendTextBox16.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="alphaBlendTextBox16.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 58</value>
+  </data>
+  <data name="alphaBlendTextBox16.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="alphaBlendTextBox16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 55</value>
+  </data>
+  <data name="alphaBlendTextBox16.TabIndex" type="System.Int32, mscorlib">
+    <value>721</value>
+  </data>
+  <data name="alphaBlendTextBox16.Text" xml:space="preserve">
+    <value>Délai du déclenchement à la caméra 1</value>
+  </data>
+  <data name="alphaBlendTextBox16.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox16.Name" xml:space="preserve">
+    <value>alphaBlendTextBox16</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox16.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox16.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox16.ZOrder" xml:space="preserve">
+    <value>26</value>
+  </data>
+  <data name="alphaBlendTextBox13.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="alphaBlendTextBox13.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 449</value>
+  </data>
+  <data name="alphaBlendTextBox13.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="alphaBlendTextBox13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 56</value>
+  </data>
+  <data name="alphaBlendTextBox13.TabIndex" type="System.Int32, mscorlib">
+    <value>736</value>
+  </data>
+  <data name="alphaBlendTextBox13.Text" xml:space="preserve">
+    <value>Largeur d’impulsion de rejet</value>
+  </data>
+  <data name="alphaBlendTextBox13.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox13.Name" xml:space="preserve">
+    <value>alphaBlendTextBox13</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox13.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox13.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox13.ZOrder" xml:space="preserve">
+    <value>27</value>
+  </data>
+  <data name="TrigToCamDelayTextBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="TrigToCamDelayTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>243, 71</value>
+  </data>
+  <data name="TrigToCamDelayTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 29</value>
+  </data>
+  <data name="TrigToCamDelayTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>722</value>
+  </data>
+  <data name="&gt;&gt;TrigToCamDelayTextBox.Name" xml:space="preserve">
+    <value>TrigToCamDelayTextBox</value>
+  </data>
+  <data name="&gt;&gt;TrigToCamDelayTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TrigToCamDelayTextBox.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;TrigToCamDelayTextBox.ZOrder" xml:space="preserve">
+    <value>28</value>
+  </data>
+  <data name="RejectPulseWidth.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="RejectPulseWidth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>243, 463</value>
+  </data>
+  <data name="RejectPulseWidth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 29</value>
+  </data>
+  <data name="RejectPulseWidth.TabIndex" type="System.Int32, mscorlib">
+    <value>735</value>
+  </data>
+  <data name="&gt;&gt;RejectPulseWidth.Name" xml:space="preserve">
+    <value>RejectPulseWidth</value>
+  </data>
+  <data name="&gt;&gt;RejectPulseWidth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RejectPulseWidth.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;RejectPulseWidth.ZOrder" xml:space="preserve">
+    <value>29</value>
+  </data>
+  <data name="TrigToCam2DelayTextBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="TrigToCam2DelayTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>243, 141</value>
+  </data>
+  <data name="TrigToCam2DelayTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 29</value>
+  </data>
+  <data name="TrigToCam2DelayTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>724</value>
+  </data>
+  <data name="&gt;&gt;TrigToCam2DelayTextBox.Name" xml:space="preserve">
+    <value>TrigToCam2DelayTextBox</value>
+  </data>
+  <data name="&gt;&gt;TrigToCam2DelayTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TrigToCam2DelayTextBox.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;TrigToCam2DelayTextBox.ZOrder" xml:space="preserve">
+    <value>30</value>
+  </data>
+  <data name="RejectDelay.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="RejectDelay.Location" type="System.Drawing.Point, System.Drawing">
+    <value>243, 402</value>
+  </data>
+  <data name="RejectDelay.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 29</value>
+  </data>
+  <data name="RejectDelay.TabIndex" type="System.Int32, mscorlib">
+    <value>724</value>
+  </data>
+  <data name="&gt;&gt;RejectDelay.Name" xml:space="preserve">
+    <value>RejectDelay</value>
+  </data>
+  <data name="&gt;&gt;RejectDelay.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RejectDelay.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;RejectDelay.ZOrder" xml:space="preserve">
+    <value>31</value>
+  </data>
+  <data name="alphaBlendTextBox11.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="alphaBlendTextBox11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 388</value>
+  </data>
+  <data name="alphaBlendTextBox11.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="alphaBlendTextBox11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 56</value>
+  </data>
+  <data name="alphaBlendTextBox11.TabIndex" type="System.Int32, mscorlib">
+    <value>731</value>
+  </data>
+  <data name="alphaBlendTextBox11.Text" xml:space="preserve">
+    <value>Délai du système de rejet</value>
+  </data>
+  <data name="alphaBlendTextBox11.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox11.Name" xml:space="preserve">
+    <value>alphaBlendTextBox11</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox11.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox11.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox11.ZOrder" xml:space="preserve">
+    <value>32</value>
+  </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1357, 115</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>489, 794</value>
+  </data>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>737</value>
+  </data>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="MainMenuFormBtn.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="MainMenuFormBtn.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="MainMenuFormBtn.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 24pt</value>
+  </data>
+  <data name="MainMenuFormBtn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="MainMenuFormBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1087, 950</value>
+  </data>
+  <data name="MainMenuFormBtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 120</value>
+  </data>
+  <data name="MainMenuFormBtn.TabIndex" type="System.Int32, mscorlib">
+    <value>725</value>
+  </data>
+  <data name="&gt;&gt;MainMenuFormBtn.Name" xml:space="preserve">
+    <value>MainMenuFormBtn</value>
+  </data>
+  <data name="&gt;&gt;MainMenuFormBtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MainMenuFormBtn.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;MainMenuFormBtn.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <metadata name="coreRA2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>291, 17</value>
+  </metadata>
+  <data name="imageWindow2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>785, 115</value>
+  </data>
+  <data name="imageWindow2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>460, 320</value>
+  </data>
+  <data name="imageWindow2.TabIndex" type="System.Int32, mscorlib">
+    <value>526</value>
+  </data>
+  <data name="&gt;&gt;imageWindow2.Name" xml:space="preserve">
+    <value>imageWindow2</value>
+  </data>
+  <data name="&gt;&gt;imageWindow2.Type" xml:space="preserve">
+    <value>FZ_Control.ImageWindow, FZ-Control, Version=1.0.6967.32606, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;imageWindow2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;imageWindow2.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="alphaBlendTextBox15.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="alphaBlendTextBox15.Location" type="System.Drawing.Point, System.Drawing">
+    <value>99, 9</value>
+  </data>
+  <data name="alphaBlendTextBox15.Size" type="System.Drawing.Size, System.Drawing">
+    <value>272, 22</value>
+  </data>
+  <data name="alphaBlendTextBox15.TabIndex" type="System.Int32, mscorlib">
+    <value>738</value>
+  </data>
+  <data name="alphaBlendTextBox15.Text" xml:space="preserve">
+    <value>Paramètres de la caméra 1</value>
+  </data>
+  <data name="alphaBlendTextBox15.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox15.Name" xml:space="preserve">
+    <value>alphaBlendTextBox15</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox15.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox15.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox15.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="alphaBlendTextBox5.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="alphaBlendTextBox5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 62</value>
+  </data>
+  <data name="alphaBlendTextBox5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>250, 22</value>
+  </data>
+  <data name="alphaBlendTextBox5.TabIndex" type="System.Int32, mscorlib">
+    <value>657</value>
+  </data>
+  <data name="alphaBlendTextBox5.Text" xml:space="preserve">
+    <value>Vitesse d’obturation caméra:</value>
+  </data>
+  <data name="alphaBlendTextBox5.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox5.Name" xml:space="preserve">
+    <value>alphaBlendTextBox5</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox5.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox5.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox5.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="CameraShutterSpeedTextBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 13.5pt</value>
+  </data>
+  <data name="CameraShutterSpeedTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>264, 59</value>
+  </data>
+  <data name="CameraShutterSpeedTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 28</value>
+  </data>
+  <data name="CameraShutterSpeedTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>557</value>
+  </data>
+  <data name="&gt;&gt;CameraShutterSpeedTextBox.Name" xml:space="preserve">
+    <value>CameraShutterSpeedTextBox</value>
+  </data>
+  <data name="&gt;&gt;CameraShutterSpeedTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CameraShutterSpeedTextBox.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;CameraShutterSpeedTextBox.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="CameraGainTextBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 13.5pt</value>
+  </data>
+  <data name="CameraGainTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>264, 96</value>
+  </data>
+  <data name="CameraGainTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 28</value>
+  </data>
+  <data name="CameraGainTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>558</value>
+  </data>
+  <data name="&gt;&gt;CameraGainTextBox.Name" xml:space="preserve">
+    <value>CameraGainTextBox</value>
+  </data>
+  <data name="&gt;&gt;CameraGainTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CameraGainTextBox.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;CameraGainTextBox.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="label8.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="label8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>370, 102</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 16</value>
+  </data>
+  <data name="label8.TabIndex" type="System.Int32, mscorlib">
+    <value>662</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>(0-230)</value>
+  </data>
+  <data name="&gt;&gt;label8.Name" xml:space="preserve">
+    <value>label8</value>
+  </data>
+  <data name="&gt;&gt;label8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="alphaBlendTextBox2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="alphaBlendTextBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>44, 99</value>
+  </data>
+  <data name="alphaBlendTextBox2.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>No</value>
+  </data>
+  <data name="alphaBlendTextBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 22</value>
+  </data>
+  <data name="alphaBlendTextBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>658</value>
+  </data>
+  <data name="alphaBlendTextBox2.Text" xml:space="preserve">
+    <value>Gain caméra:</value>
+  </data>
+  <data name="alphaBlendTextBox2.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox2.Name" xml:space="preserve">
+    <value>alphaBlendTextBox2</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox2.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox2.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox2.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>370, 65</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 16</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>661</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>(20-100000)</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>157, 456</value>
+  </data>
+  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>460, 157</value>
+  </data>
+  <data name="panel2.TabIndex" type="System.Int32, mscorlib">
+    <value>738</value>
+  </data>
+  <data name="&gt;&gt;panel2.Name" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;timer1.Name" xml:space="preserve">
+    <value>timer1</value>
+  </data>
+  <data name="&gt;&gt;timer1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;coreRA1.Name" xml:space="preserve">
+    <value>coreRA1</value>
+  </data>
+  <data name="&gt;&gt;coreRA1.Type" xml:space="preserve">
+    <value>FZ_Control.CoreRA, FZ-Control, Version=1.0.6967.32606, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;coreRA2.Name" xml:space="preserve">
+    <value>coreRA2</value>
+  </data>
+  <data name="&gt;&gt;coreRA2.Type" xml:space="preserve">
+    <value>FZ_Control.CoreRA, FZ-Control, Version=1.0.6967.32606, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;timer2.Name" xml:space="preserve">
+    <value>timer2</value>
+  </data>
+  <data name="&gt;&gt;timer2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>Camera1InspectionSetup</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>Omnicheck360.BaseForm, Omnicheck360, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="imageWindow1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>157, 115</value>
+  </data>
+  <data name="imageWindow1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>460, 320</value>
+  </data>
+  <data name="imageWindow1.TabIndex" type="System.Int32, mscorlib">
+    <value>525</value>
+  </data>
+  <data name="&gt;&gt;imageWindow1.Name" xml:space="preserve">
+    <value>imageWindow1</value>
+  </data>
+  <data name="&gt;&gt;imageWindow1.Type" xml:space="preserve">
+    <value>FZ_Control.ImageWindow, FZ-Control, Version=1.0.6967.32606, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;imageWindow1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;imageWindow1.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <metadata name="timer2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>203, 17</value>
+  </metadata>
+</root>

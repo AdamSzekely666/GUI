@@ -1,0 +1,1132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="DateTimeLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 890</value>
+  </data>
+  <data name="&gt;&gt;DateTimeLabel.Name" xml:space="preserve">
+    <value>DateTimeLabel</value>
+  </data>
+  <data name="&gt;&gt;DateTimeLabel.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;DateTimeLabel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;DateTimeLabel.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="CurrentUserTxt.Text" xml:space="preserve">
+    <value>Operate Mode</value>
+  </data>
+  <data name="&gt;&gt;CurrentUserTxt.Name" xml:space="preserve">
+    <value>CurrentUserTxt</value>
+  </data>
+  <data name="&gt;&gt;CurrentUserTxt.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;CurrentUserTxt.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;CurrentUserTxt.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 23</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="label6.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="alphaBlendTextBox1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 20.25pt</value>
+  </data>
+  <data name="alphaBlendTextBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>33, 206</value>
+  </data>
+  <data name="alphaBlendTextBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>247, 31</value>
+  </data>
+  <data name="alphaBlendTextBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>509</value>
+  </data>
+  <data name="alphaBlendTextBox1.Text" xml:space="preserve">
+    <value>Total Count</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox1.Name" xml:space="preserve">
+    <value>alphaBlendTextBox1</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox1.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox1.ZOrder" xml:space="preserve">
+    <value>31</value>
+  </data>
+  <data name="alphaBlendTextBox3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 24pt</value>
+  </data>
+  <data name="alphaBlendTextBox3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>64, 333</value>
+  </data>
+  <data name="alphaBlendTextBox3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>119, 37</value>
+  </data>
+  <data name="alphaBlendTextBox3.TabIndex" type="System.Int32, mscorlib">
+    <value>511</value>
+  </data>
+  <data name="alphaBlendTextBox3.Text" xml:space="preserve">
+    <value>Reject</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox3.Name" xml:space="preserve">
+    <value>alphaBlendTextBox3</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox3.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox3.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox3.ZOrder" xml:space="preserve">
+    <value>30</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="MainMenuFormBtn.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="MainMenuFormBtn.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="MainMenuFormBtn.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 24pt</value>
+  </data>
+  <data name="MainMenuFormBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>560, 880</value>
+  </data>
+  <data name="MainMenuFormBtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 120</value>
+  </data>
+  <data name="MainMenuFormBtn.TabIndex" type="System.Int32, mscorlib">
+    <value>514</value>
+  </data>
+  <data name="&gt;&gt;MainMenuFormBtn.Name" xml:space="preserve">
+    <value>MainMenuFormBtn</value>
+  </data>
+  <data name="&gt;&gt;MainMenuFormBtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MainMenuFormBtn.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;MainMenuFormBtn.ZOrder" xml:space="preserve">
+    <value>29</value>
+  </data>
+  <data name="ResetCounterBtn.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="ResetCounterBtn.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="ResetCounterBtn.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 24pt</value>
+  </data>
+  <data name="ResetCounterBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>840, 880</value>
+  </data>
+  <data name="ResetCounterBtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 120</value>
+  </data>
+  <data name="ResetCounterBtn.TabIndex" type="System.Int32, mscorlib">
+    <value>515</value>
+  </data>
+  <data name="&gt;&gt;ResetCounterBtn.Name" xml:space="preserve">
+    <value>ResetCounterBtn</value>
+  </data>
+  <data name="&gt;&gt;ResetCounterBtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ResetCounterBtn.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ResetCounterBtn.ZOrder" xml:space="preserve">
+    <value>28</value>
+  </data>
+  <data name="TotalCountValue.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 48pt</value>
+  </data>
+  <data name="TotalCountValue.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 244</value>
+  </data>
+  <data name="TotalCountValue.Size" type="System.Drawing.Size, System.Drawing">
+    <value>522, 73</value>
+  </data>
+  <data name="TotalCountValue.TabIndex" type="System.Int32, mscorlib">
+    <value>516</value>
+  </data>
+  <data name="TotalCountValue.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="TotalCountValue.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;TotalCountValue.Name" xml:space="preserve">
+    <value>TotalCountValue</value>
+  </data>
+  <data name="&gt;&gt;TotalCountValue.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;TotalCountValue.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;TotalCountValue.ZOrder" xml:space="preserve">
+    <value>27</value>
+  </data>
+  <data name="TotalFailValue.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 24pt</value>
+  </data>
+  <data name="TotalFailValue.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 376</value>
+  </data>
+  <data name="TotalFailValue.Size" type="System.Drawing.Size, System.Drawing">
+    <value>258, 37</value>
+  </data>
+  <data name="TotalFailValue.TabIndex" type="System.Int32, mscorlib">
+    <value>518</value>
+  </data>
+  <data name="TotalFailValue.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="TotalFailValue.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;TotalFailValue.Name" xml:space="preserve">
+    <value>TotalFailValue</value>
+  </data>
+  <data name="&gt;&gt;TotalFailValue.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;TotalFailValue.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;TotalFailValue.ZOrder" xml:space="preserve">
+    <value>26</value>
+  </data>
+  <data name="alphaBlendTextBox2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 24pt</value>
+  </data>
+  <data name="alphaBlendTextBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>276, 333</value>
+  </data>
+  <data name="alphaBlendTextBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 37</value>
+  </data>
+  <data name="alphaBlendTextBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>521</value>
+  </data>
+  <data name="alphaBlendTextBox2.Text" xml:space="preserve">
+    <value>Reject %</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox2.Name" xml:space="preserve">
+    <value>alphaBlendTextBox2</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox2.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox2.ZOrder" xml:space="preserve">
+    <value>25</value>
+  </data>
+  <data name="RejectPercentage.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 24pt</value>
+  </data>
+  <data name="RejectPercentage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>283, 376</value>
+  </data>
+  <data name="RejectPercentage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>123, 37</value>
+  </data>
+  <data name="RejectPercentage.TabIndex" type="System.Int32, mscorlib">
+    <value>522</value>
+  </data>
+  <data name="RejectPercentage.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="RejectPercentage.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;RejectPercentage.Name" xml:space="preserve">
+    <value>RejectPercentage</value>
+  </data>
+  <data name="&gt;&gt;RejectPercentage.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;RejectPercentage.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;RejectPercentage.ZOrder" xml:space="preserve">
+    <value>24</value>
+  </data>
+  <metadata name="PLCUpdate.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>253, 17</value>
+  </metadata>
+  <metadata name="sqLiteCommand1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>105, 17</value>
+  </metadata>
+  <metadata name="coreRA1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>366, 17</value>
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>58</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>1280, 1024</value>
+  </data>
+  <data name="imageWindow1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="imageWindow1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>570, 450</value>
+  </data>
+  <data name="imageWindow1.TabIndex" type="System.Int32, mscorlib">
+    <value>559</value>
+  </data>
+  <data name="&gt;&gt;imageWindow1.Name" xml:space="preserve">
+    <value>imageWindow1</value>
+  </data>
+  <data name="&gt;&gt;imageWindow1.Type" xml:space="preserve">
+    <value>FZ_Control.ImageWindow, FZ-Control, Version=1.0.6967.32606, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;imageWindow1.Parent" xml:space="preserve">
+    <value>panelControl</value>
+  </data>
+  <data name="&gt;&gt;imageWindow1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panelControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>617, 227</value>
+  </data>
+  <data name="panelControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>570, 450</value>
+  </data>
+  <data name="panelControl.TabIndex" type="System.Int32, mscorlib">
+    <value>687</value>
+  </data>
+  <data name="&gt;&gt;panelControl.Name" xml:space="preserve">
+    <value>panelControl</value>
+  </data>
+  <data name="&gt;&gt;panelControl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelControl.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panelControl.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panelCam2Dots.Location" type="System.Drawing.Point, System.Drawing">
+    <value>948, 697</value>
+  </data>
+  <data name="panelCam2Dots.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 21</value>
+  </data>
+  <data name="panelCam2Dots.TabIndex" type="System.Int32, mscorlib">
+    <value>686</value>
+  </data>
+  <data name="&gt;&gt;panelCam2Dots.Name" xml:space="preserve">
+    <value>panelCam2Dots</value>
+  </data>
+  <data name="&gt;&gt;panelCam2Dots.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelCam2Dots.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panelCam2Dots.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="panelCam1Dots.Location" type="System.Drawing.Point, System.Drawing">
+    <value>720, 697</value>
+  </data>
+  <data name="panelCam1Dots.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 21</value>
+  </data>
+  <data name="panelCam1Dots.TabIndex" type="System.Int32, mscorlib">
+    <value>685</value>
+  </data>
+  <data name="&gt;&gt;panelCam1Dots.Name" xml:space="preserve">
+    <value>panelCam1Dots</value>
+  </data>
+  <data name="&gt;&gt;panelCam1Dots.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelCam1Dots.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panelCam1Dots.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="Cam2Scroll.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <data name="Cam2Scroll.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Cam2Scroll.Location" type="System.Drawing.Point, System.Drawing">
+    <value>948, 724</value>
+  </data>
+  <data name="Cam2Scroll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 75</value>
+  </data>
+  <data name="Cam2Scroll.TabIndex" type="System.Int32, mscorlib">
+    <value>684</value>
+  </data>
+  <data name="Cam2Scroll.Text" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;Cam2Scroll.Name" xml:space="preserve">
+    <value>Cam2Scroll</value>
+  </data>
+  <data name="&gt;&gt;Cam2Scroll.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Cam2Scroll.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Cam2Scroll.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="Cam1Scroll.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <data name="Cam1Scroll.Location" type="System.Drawing.Point, System.Drawing">
+    <value>720, 724</value>
+  </data>
+  <data name="Cam1Scroll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 75</value>
+  </data>
+  <data name="Cam1Scroll.TabIndex" type="System.Int32, mscorlib">
+    <value>683</value>
+  </data>
+  <data name="Cam1Scroll.Text" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;Cam1Scroll.Name" xml:space="preserve">
+    <value>Cam1Scroll</value>
+  </data>
+  <data name="&gt;&gt;Cam1Scroll.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Cam1Scroll.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Cam1Scroll.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="DownCanNumber.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 24pt</value>
+  </data>
+  <data name="DownCanNumber.Location" type="System.Drawing.Point, System.Drawing">
+    <value>88, 668</value>
+  </data>
+  <data name="DownCanNumber.Size" type="System.Drawing.Size, System.Drawing">
+    <value>123, 37</value>
+  </data>
+  <data name="DownCanNumber.TabIndex" type="System.Int32, mscorlib">
+    <value>682</value>
+  </data>
+  <data name="DownCanNumber.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;DownCanNumber.Name" xml:space="preserve">
+    <value>DownCanNumber</value>
+  </data>
+  <data name="&gt;&gt;DownCanNumber.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;DownCanNumber.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;DownCanNumber.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="DentNumber.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 24pt</value>
+  </data>
+  <data name="DentNumber.Location" type="System.Drawing.Point, System.Drawing">
+    <value>88, 611</value>
+  </data>
+  <data name="DentNumber.Size" type="System.Drawing.Size, System.Drawing">
+    <value>123, 37</value>
+  </data>
+  <data name="DentNumber.TabIndex" type="System.Int32, mscorlib">
+    <value>681</value>
+  </data>
+  <data name="DentNumber.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;DentNumber.Name" xml:space="preserve">
+    <value>DentNumber</value>
+  </data>
+  <data name="&gt;&gt;DentNumber.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;DentNumber.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;DentNumber.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="ISWNumber.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 24pt</value>
+  </data>
+  <data name="ISWNumber.Location" type="System.Drawing.Point, System.Drawing">
+    <value>88, 555</value>
+  </data>
+  <data name="ISWNumber.Size" type="System.Drawing.Size, System.Drawing">
+    <value>123, 37</value>
+  </data>
+  <data name="ISWNumber.TabIndex" type="System.Int32, mscorlib">
+    <value>680</value>
+  </data>
+  <data name="ISWNumber.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;ISWNumber.Name" xml:space="preserve">
+    <value>ISWNumber</value>
+  </data>
+  <data name="&gt;&gt;ISWNumber.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ISWNumber.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ISWNumber.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="BaseNumber.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 24pt</value>
+  </data>
+  <data name="BaseNumber.Location" type="System.Drawing.Point, System.Drawing">
+    <value>88, 499</value>
+  </data>
+  <data name="BaseNumber.Size" type="System.Drawing.Size, System.Drawing">
+    <value>123, 37</value>
+  </data>
+  <data name="BaseNumber.TabIndex" type="System.Int32, mscorlib">
+    <value>679</value>
+  </data>
+  <data name="BaseNumber.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;BaseNumber.Name" xml:space="preserve">
+    <value>BaseNumber</value>
+  </data>
+  <data name="&gt;&gt;BaseNumber.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;BaseNumber.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;BaseNumber.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="FinishNumber.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 24pt</value>
+  </data>
+  <data name="FinishNumber.Location" type="System.Drawing.Point, System.Drawing">
+    <value>88, 443</value>
+  </data>
+  <data name="FinishNumber.Size" type="System.Drawing.Size, System.Drawing">
+    <value>123, 37</value>
+  </data>
+  <data name="FinishNumber.TabIndex" type="System.Int32, mscorlib">
+    <value>678</value>
+  </data>
+  <data name="FinishNumber.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;FinishNumber.Name" xml:space="preserve">
+    <value>FinishNumber</value>
+  </data>
+  <data name="&gt;&gt;FinishNumber.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;FinishNumber.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;FinishNumber.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="pictureBox6.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Zoom</value>
+  </data>
+  <data name="pictureBox6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="pictureBox6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 661</value>
+  </data>
+  <data name="pictureBox6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 50</value>
+  </data>
+  <data name="pictureBox6.TabIndex" type="System.Int32, mscorlib">
+    <value>677</value>
+  </data>
+  <data name="&gt;&gt;pictureBox6.Name" xml:space="preserve">
+    <value>pictureBox6</value>
+  </data>
+  <data name="&gt;&gt;pictureBox6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBox6.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pictureBox6.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="pictureBox5.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Zoom</value>
+  </data>
+  <data name="pictureBox5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="pictureBox5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 604</value>
+  </data>
+  <data name="pictureBox5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 50</value>
+  </data>
+  <data name="pictureBox5.TabIndex" type="System.Int32, mscorlib">
+    <value>676</value>
+  </data>
+  <data name="&gt;&gt;pictureBox5.Name" xml:space="preserve">
+    <value>pictureBox5</value>
+  </data>
+  <data name="&gt;&gt;pictureBox5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBox5.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pictureBox5.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="pictureBox4.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Zoom</value>
+  </data>
+  <data name="pictureBox4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="pictureBox4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 548</value>
+  </data>
+  <data name="pictureBox4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 50</value>
+  </data>
+  <data name="pictureBox4.TabIndex" type="System.Int32, mscorlib">
+    <value>675</value>
+  </data>
+  <data name="&gt;&gt;pictureBox4.Name" xml:space="preserve">
+    <value>pictureBox4</value>
+  </data>
+  <data name="&gt;&gt;pictureBox4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBox4.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pictureBox4.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="pictureBox3.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Zoom</value>
+  </data>
+  <data name="pictureBox3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="pictureBox3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 492</value>
+  </data>
+  <data name="pictureBox3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 50</value>
+  </data>
+  <data name="pictureBox3.TabIndex" type="System.Int32, mscorlib">
+    <value>674</value>
+  </data>
+  <data name="&gt;&gt;pictureBox3.Name" xml:space="preserve">
+    <value>pictureBox3</value>
+  </data>
+  <data name="&gt;&gt;pictureBox3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBox3.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pictureBox3.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="pictureBox2.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Zoom</value>
+  </data>
+  <data name="pictureBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 436</value>
+  </data>
+  <data name="pictureBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 50</value>
+  </data>
+  <data name="pictureBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>673</value>
+  </data>
+  <data name="&gt;&gt;pictureBox2.Name" xml:space="preserve">
+    <value>pictureBox2</value>
+  </data>
+  <data name="&gt;&gt;pictureBox2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBox2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pictureBox2.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="ResetMaxConsecutiveBtn.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <data name="ResetMaxConsecutiveBtn.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="ResetMaxConsecutiveBtn.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 24pt</value>
+  </data>
+  <data name="ResetMaxConsecutiveBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1164, 921</value>
+  </data>
+  <data name="ResetMaxConsecutiveBtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 39</value>
+  </data>
+  <data name="ResetMaxConsecutiveBtn.TabIndex" type="System.Int32, mscorlib">
+    <value>565</value>
+  </data>
+  <data name="ResetMaxConsecutiveBtn.Text" xml:space="preserve">
+    <value>Consecutive Reject</value>
+  </data>
+  <data name="&gt;&gt;ResetMaxConsecutiveBtn.Name" xml:space="preserve">
+    <value>ResetMaxConsecutiveBtn</value>
+  </data>
+  <data name="&gt;&gt;ResetMaxConsecutiveBtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ResetMaxConsecutiveBtn.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ResetMaxConsecutiveBtn.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="DescriptionNameLb.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 24pt</value>
+  </data>
+  <data name="DescriptionNameLb.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="DescriptionNameLb.Location" type="System.Drawing.Point, System.Drawing">
+    <value>198, 153</value>
+  </data>
+  <data name="DescriptionNameLb.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 37</value>
+  </data>
+  <data name="DescriptionNameLb.TabIndex" type="System.Int32, mscorlib">
+    <value>671</value>
+  </data>
+  <data name="DescriptionNameLb.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="DescriptionNameLb.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;DescriptionNameLb.Name" xml:space="preserve">
+    <value>DescriptionNameLb</value>
+  </data>
+  <data name="&gt;&gt;DescriptionNameLb.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DescriptionNameLb.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;DescriptionNameLb.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="BtnSelectFlavour.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="BtnSelectFlavour.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="BtnSelectFlavour.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 24pt</value>
+  </data>
+  <data name="BtnSelectFlavour.Location" type="System.Drawing.Point, System.Drawing">
+    <value>280, 715</value>
+  </data>
+  <data name="BtnSelectFlavour.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 120</value>
+  </data>
+  <data name="BtnSelectFlavour.TabIndex" type="System.Int32, mscorlib">
+    <value>670</value>
+  </data>
+  <data name="&gt;&gt;BtnSelectFlavour.Name" xml:space="preserve">
+    <value>BtnSelectFlavour</value>
+  </data>
+  <data name="&gt;&gt;BtnSelectFlavour.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BtnSelectFlavour.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;BtnSelectFlavour.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="TotalTrigger.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 24pt</value>
+  </data>
+  <data name="TotalTrigger.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1204, 724</value>
+  </data>
+  <data name="TotalTrigger.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 37</value>
+  </data>
+  <data name="TotalTrigger.TabIndex" type="System.Int32, mscorlib">
+    <value>646</value>
+  </data>
+  <data name="TotalTrigger.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="TotalTrigger.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;TotalTrigger.Name" xml:space="preserve">
+    <value>TotalTrigger</value>
+  </data>
+  <data name="&gt;&gt;TotalTrigger.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;TotalTrigger.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;TotalTrigger.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="OmronRej.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 24pt</value>
+  </data>
+  <data name="OmronRej.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1204, 668</value>
+  </data>
+  <data name="OmronRej.Size" type="System.Drawing.Size, System.Drawing">
+    <value>33, 37</value>
+  </data>
+  <data name="OmronRej.TabIndex" type="System.Int32, mscorlib">
+    <value>642</value>
+  </data>
+  <data name="OmronRej.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="OmronRej.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;OmronRej.Name" xml:space="preserve">
+    <value>OmronRej</value>
+  </data>
+  <data name="&gt;&gt;OmronRej.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;OmronRej.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;OmronRej.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="BPMValue.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 24pt</value>
+  </data>
+  <data name="BPMValue.Location" type="System.Drawing.Point, System.Drawing">
+    <value>441, 376</value>
+  </data>
+  <data name="BPMValue.Size" type="System.Drawing.Size, System.Drawing">
+    <value>123, 37</value>
+  </data>
+  <data name="BPMValue.TabIndex" type="System.Int32, mscorlib">
+    <value>558</value>
+  </data>
+  <data name="BPMValue.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="BPMValue.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;BPMValue.Name" xml:space="preserve">
+    <value>BPMValue</value>
+  </data>
+  <data name="&gt;&gt;BPMValue.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;BPMValue.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;BPMValue.ZOrder" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="alphaBlendTextBox5.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 24pt</value>
+  </data>
+  <data name="alphaBlendTextBox5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>459, 333</value>
+  </data>
+  <data name="alphaBlendTextBox5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 37</value>
+  </data>
+  <data name="alphaBlendTextBox5.TabIndex" type="System.Int32, mscorlib">
+    <value>557</value>
+  </data>
+  <data name="alphaBlendTextBox5.Text" xml:space="preserve">
+    <value>CPM
+</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox5.Name" xml:space="preserve">
+    <value>alphaBlendTextBox5</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox5.Type" xml:space="preserve">
+    <value>ZBobb.AlphaBlendTextBox, AlphaBlendTextBox, Version=1.0.1270.35793, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox5.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;alphaBlendTextBox5.ZOrder" xml:space="preserve">
+    <value>23</value>
+  </data>
+  <metadata name="coreRA2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>552, 17</value>
+  </metadata>
+  <data name="imageWindow2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1040, 28</value>
+  </data>
+  <data name="imageWindow2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>228, 193</value>
+  </data>
+  <data name="imageWindow2.TabIndex" type="System.Int32, mscorlib">
+    <value>668</value>
+  </data>
+  <data name="&gt;&gt;imageWindow2.Name" xml:space="preserve">
+    <value>imageWindow2</value>
+  </data>
+  <data name="&gt;&gt;imageWindow2.Type" xml:space="preserve">
+    <value>FZ_Control.ImageWindow, FZ-Control, Version=1.0.6967.32606, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;imageWindow2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;imageWindow2.ZOrder" xml:space="preserve">
+    <value>32</value>
+  </data>
+  <data name="&gt;&gt;timer1.Name" xml:space="preserve">
+    <value>timer1</value>
+  </data>
+  <data name="&gt;&gt;timer1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PLCUpdate.Name" xml:space="preserve">
+    <value>PLCUpdate</value>
+  </data>
+  <data name="&gt;&gt;PLCUpdate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;sqLiteCommand1.Name" xml:space="preserve">
+    <value>sqLiteCommand1</value>
+  </data>
+  <data name="&gt;&gt;sqLiteCommand1.Type" xml:space="preserve">
+    <value>System.Data.SQLite.SQLiteCommand, System.Data.SQLite, Version=1.0.115.5, Culture=neutral, PublicKeyToken=db937bc2d44ff139</value>
+  </data>
+  <data name="&gt;&gt;coreRA1.Name" xml:space="preserve">
+    <value>coreRA1</value>
+  </data>
+  <data name="&gt;&gt;coreRA1.Type" xml:space="preserve">
+    <value>FZ_Control.CoreRA, FZ-Control, Version=1.0.6967.32606, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;coreRA3.Name" xml:space="preserve">
+    <value>coreRA3</value>
+  </data>
+  <data name="&gt;&gt;coreRA3.Type" xml:space="preserve">
+    <value>FZ_Control.CoreRA, FZ-Control, Version=1.0.6967.32606, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;timer2.Name" xml:space="preserve">
+    <value>timer2</value>
+  </data>
+  <data name="&gt;&gt;timer2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;coreRA4.Name" xml:space="preserve">
+    <value>coreRA4</value>
+  </data>
+  <data name="&gt;&gt;coreRA4.Type" xml:space="preserve">
+    <value>FZ_Control.CoreRA, FZ-Control, Version=1.0.6967.32606, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;coreRA2.Name" xml:space="preserve">
+    <value>coreRA2</value>
+  </data>
+  <data name="&gt;&gt;coreRA2.Type" xml:space="preserve">
+    <value>FZ_Control.CoreRA, FZ-Control, Version=1.0.6967.32606, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>MainForm</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>Omnicheck360.BaseForm, Omnicheck360, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <metadata name="coreRA3.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>650, 17</value>
+  </metadata>
+  <metadata name="timer2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>464, 17</value>
+  </metadata>
+  <metadata name="coreRA4.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>748, 17</value>
+  </metadata>
+</root>
