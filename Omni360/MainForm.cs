@@ -1,28 +1,29 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Data;
-using System.Data.SQLite;
-using System.Windows.Forms;
-using Timer = System.Windows.Forms.Timer;
+﻿using FZ_Control;
+using LiveChartsCore;
+using LiveChartsCore.Drawing;
+using LiveChartsCore.SkiaSharpView;
+using LiveChartsCore.SkiaSharpView.Painting;
 using Nini.Config;
-using System.IO;
-using System.Threading;
+using Omnicheck360;
 using Omnicheck360.Properties;
 using Sharp7;
-using System.Text;
-using System.Diagnostics;
-using FZ_Control;
-using System.Threading.Tasks;
-using LiveChartsCore;
-using LiveChartsCore.SkiaSharpView;
-using LiveChartsCore.Drawing;
 using SkiaSharp;
-using LiveChartsCore.SkiaSharpView.Painting;
-using System.Windows.Forms.DataVisualization.Charting;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SQLite;
+using System.Diagnostics;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Text;
 using System.Text.Json.Serialization;
-using Omnicheck360;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
+using Timer = System.Windows.Forms.Timer;
 
 namespace Omnicheck360
 {
@@ -152,6 +153,38 @@ namespace Omnicheck360
         private int prevThroughputCam2 = 0, prevRejectCam2 = 0;
         private string currentSize = "";
         private string currentFlavour = "";
+        // Camera configuration arrays
+        private int[] cam1UnitNumbers = { 1, 2, 3, 4, 5 };
+        private int[] cam2UnitNumbers = { 1, 2, 3, 4, 5 };
+
+        // Configure which units show LAST_NG (red) vs FREEZE (blue)
+        // Index 0 = UnitNo 1, Index 1 = UnitNo 2, etc.
+        // Use FZ_Control.UPDATE_IMAGE enum instead of strings
+        private FZ_Control.UPDATE_IMAGE[] cam1UpdateModes = {
+        FZ_Control.UPDATE_IMAGE.FREEZE,
+        FZ_Control.UPDATE_IMAGE.FREEZE,
+        FZ_Control.UPDATE_IMAGE.FREEZE,
+        FZ_Control.UPDATE_IMAGE.NG_IMAGE,
+        FZ_Control.UPDATE_IMAGE.FREEZE
+    };
+
+        private FZ_Control.UPDATE_IMAGE[] cam2UpdateModes = {
+        FZ_Control.UPDATE_IMAGE.FREEZE,
+        FZ_Control.UPDATE_IMAGE. FREEZE,
+        FZ_Control.UPDATE_IMAGE. NG_IMAGE,
+        FZ_Control.UPDATE_IMAGE. FREEZE,
+        FZ_Control.UPDATE_IMAGE. FREEZE
+    };
+
+        private int cam1CurrentIndex = 1; // Start at UnitNo 2 (index 1)
+        private int cam2CurrentIndex = 0;
+
+        private bool cam2Visible = false;
+
+        // Dot indicators
+        private List<Panel> cam1Dots = new List<Panel>();
+        private List<Panel> cam2Dots = new List<Panel>();
+
 
         public MainForm()
         {
@@ -223,6 +256,7 @@ namespace Omnicheck360
             }
 
             ConnectOmronCore();
+            InitializeCameraSystem();
             DoActiveButtons(0);
             CurrentRecipeName();
             LoadLastSelectedRecipe();
@@ -238,6 +272,183 @@ namespace Omnicheck360
 
 
         }
+        private void InitializeCameraSystem()
+        {
+            // Move imageWindows inside panelControl
+            imageWindow1.Parent = panelControl;
+            imageWindow1.Dock = DockStyle.Fill;
+            imageWindow1.BringToFront();
+
+            imageWindow2.Parent = panelControl;
+            imageWindow2.Dock = DockStyle.Fill;
+            imageWindow2.Visible = false; // Hide cam2 initially
+
+            // Set initial camera 1 display (UnitNo = 2)
+            UpdateCamera1Display();
+
+            // Create indicator dots
+            CreateIndicatorDots();
+            UpdateDotIndicators();
+
+            // Wire up button events
+            Cam1Scroll.Click += Cam1Scroll_Click;
+            Cam2Scroll.Click += Cam2Scroll_Click;
+        }
+        private void CreateIndicatorDots()
+        {
+            panelCam1Dots.Controls.Clear();
+            panelCam2Dots.Controls.Clear();
+            cam1Dots.Clear();
+            cam2Dots.Clear();
+
+            int dotSize = 15;
+            int spacing = 5;
+            int totalWidth = (dotSize * 5) + (spacing * 4);
+            int startX = (panelCam1Dots.Width - totalWidth) / 2;
+            int startY = (panelCam1Dots.Height - dotSize) / 2;
+
+            // Create 5 dots for camera 1
+            for (int i = 0; i < 5; i++)
+            {
+                Panel dot = new Panel
+                {
+                    Width = dotSize,
+                    Height = dotSize,
+                    Left = startX + (i * (dotSize + spacing)),
+                    Top = startY,
+                    BackColor = Color.Gray
+                };
+
+                // Make circular
+                System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
+                path.AddEllipse(0, 0, dotSize, dotSize);
+                dot.Region = new Region(path);
+
+                panelCam1Dots.Controls.Add(dot);
+                cam1Dots.Add(dot);
+            }
+
+            // Create 5 dots for camera 2
+            for (int i = 0; i < 5; i++)
+            {
+                Panel dot = new Panel
+                {
+                    Width = dotSize,
+                    Height = dotSize,
+                    Left = startX + (i * (dotSize + spacing)),
+                    Top = startY,
+                    BackColor = Color.Gray
+                };
+
+                System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
+                path.AddEllipse(0, 0, dotSize, dotSize);
+                dot.Region = new Region(path);
+
+                panelCam2Dots.Controls.Add(dot);
+                cam2Dots.Add(dot);
+            }
+        }
+
+        private void UpdateDotIndicators()
+        {
+            // Update camera 1 dots
+            for (int i = 0; i < cam1Dots.Count; i++)
+            {
+                if (i == cam1CurrentIndex && !cam2Visible)
+                {
+                    // Currently displayed - bright color
+                    cam1Dots[i].BackColor = (cam1UpdateModes[i] == FZ_Control.UPDATE_IMAGE.NG_IMAGE) ?
+                        Color.Red : Color.DodgerBlue;
+                }
+                else
+                {
+                    // Not displayed - dim color
+                    cam1Dots[i].BackColor = (cam1UpdateModes[i] == FZ_Control.UPDATE_IMAGE.NG_IMAGE) ?
+                        Color.FromArgb(80, 255, 0, 0) : // Dim red
+                        Color.FromArgb(80, 30, 144, 255); // Dim blue
+                }
+            }
+
+            // Update camera 2 dots
+            for (int i = 0; i < cam2Dots.Count; i++)
+            {
+                if (i == cam2CurrentIndex && cam2Visible)
+                {
+                    // Currently displayed - bright color
+                    cam2Dots[i].BackColor = (cam2UpdateModes[i] == FZ_Control.UPDATE_IMAGE.NG_IMAGE) ?
+                        Color.Red : Color.DodgerBlue;
+                }
+                else
+                {
+                    // Not displayed - dim color
+                    cam2Dots[i].BackColor = (cam2UpdateModes[i] == FZ_Control.UPDATE_IMAGE.NG_IMAGE) ?
+                        Color.FromArgb(80, 255, 0, 0) : // Dim red
+                        Color.FromArgb(80, 30, 144, 255); // Dim blue
+                }
+            }
+        }
+        private void Cam1Scroll_Click(object sender, EventArgs e)
+        {
+            // Cycle to next unit
+            cam1CurrentIndex = (cam1CurrentIndex + 1) % cam1UnitNumbers.Length;
+
+            // Show camera 1
+            cam2Visible = false;
+            UpdateCamera1Display();
+            UpdateDotIndicators();
+        }
+
+        private void Cam2Scroll_Click(object sender, EventArgs e)
+        {
+            if (!cam2Visible)
+            {
+                // First press - show camera 2
+                cam2Visible = true;
+            }
+            else
+            {
+                // Subsequent presses - cycle units
+                cam2CurrentIndex = (cam2CurrentIndex + 1) % cam2UnitNumbers.Length;
+            }
+
+            UpdateCamera2Display();
+            UpdateDotIndicators();
+        }
+
+        private void UpdateCamera1Display()
+        {
+            // Show imageWindow1, hide imageWindow2
+            imageWindow1.Visible = true;
+            imageWindow2.Visible = false;
+            imageWindow1.BringToFront();
+
+            // Change UnitNo - imageWindow will automatically update! 
+            imageWindow1.UnitNo = cam1UnitNumbers[cam1CurrentIndex];
+
+            // Change UpdateImage mode
+            imageWindow1.UpdateImage = cam1UpdateModes[cam1CurrentIndex];
+
+            // Log for debugging
+            log.Info($"Camera 1 Display: UnitNo={imageWindow1.UnitNo}, Mode={imageWindow1.UpdateImage}");
+        }
+
+        private void UpdateCamera2Display()
+        {
+            // Show imageWindow2, hide imageWindow1
+            imageWindow1.Visible = false;
+            imageWindow2.Visible = true;
+            imageWindow2.BringToFront();
+
+            // Change UnitNo - imageWindow will automatically update!
+            imageWindow2.UnitNo = cam2UnitNumbers[cam2CurrentIndex];
+
+            // Change UpdateImage mode
+            imageWindow2.UpdateImage = cam2UpdateModes[cam2CurrentIndex];
+
+            // Log for debugging
+            log.Info($"Camera 2 Display: UnitNo={imageWindow2.UnitNo}, Mode={imageWindow2.UpdateImage}");
+        }
+
 
         public void DoActiveButtons(int nUser)
         {
